@@ -9,7 +9,6 @@ type Attendance = 'accepts' | 'declines'
 type RsvpRecord = {
   name: string
   attendance: Attendance
-  guests: number
 }
 
 const STORAGE_KEY = 'shai18-rsvp'
@@ -19,7 +18,6 @@ export default function Rsvp() {
   const [editing, setEditing] = useState(true)
   const [name, setName] = useState('')
   const [attendance, setAttendance] = useState<Attendance>('accepts')
-  const [guests, setGuests] = useState(1)
   const [error, setError] = useState('')
   const [fire, setFire] = useState(0)
 
@@ -31,7 +29,6 @@ export default function Rsvp() {
         setRecord(saved)
         setName(saved.name)
         setAttendance(saved.attendance)
-        setGuests(saved.guests)
         setEditing(false)
       }
     } catch {
@@ -46,7 +43,7 @@ export default function Rsvp() {
       return
     }
     setError('')
-    const next: RsvpRecord = { name: name.trim(), attendance, guests }
+    const next: RsvpRecord = { name: name.trim(), attendance }
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
     setRecord(next)
     setEditing(false)
@@ -69,6 +66,13 @@ export default function Rsvp() {
           people.
         </p>
       </Reveal>
+      {!invitationConfig.allowPlusOnes && (
+        <Reveal delay={250}>
+          <p className="mx-auto mt-3 max-w-sm font-sans text-[10px] tracking-widest2 text-gold uppercase">
+            {invitationConfig.exclusivityNote}
+          </p>
+        </Reveal>
+      )}
       <Reveal delay={300}>
         <div className="mx-auto mt-6 w-16">
           <GoldLine className="from-ink/0 via-ink/30 to-ink/0" />
@@ -120,31 +124,6 @@ export default function Rsvp() {
                 </div>
               </div>
 
-              {attendance === 'accepts' && (
-                <div>
-                  <span className="font-sans text-[10px] tracking-widest2 text-ink/60 uppercase">Party Size</span>
-                  <div className="mt-2 flex items-center gap-4">
-                    <button
-                      type="button"
-                      onClick={() => setGuests((g) => Math.max(1, g - 1))}
-                      aria-label="Decrease guest count"
-                      className="flex h-9 w-9 items-center justify-center border border-ink/30 text-ink hover:border-ink"
-                    >
-                      &minus;
-                    </button>
-                    <span className="w-6 text-center font-display text-xl">{guests}</span>
-                    <button
-                      type="button"
-                      onClick={() => setGuests((g) => Math.min(6, g + 1))}
-                      aria-label="Increase guest count"
-                      className="flex h-9 w-9 items-center justify-center border border-ink/30 text-ink hover:border-ink"
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              )}
-
               <button
                 type="submit"
                 className="w-full border border-ink px-12 py-4 font-sans text-xs tracking-widest2 uppercase transition-colors hover:bg-ink hover:text-ivory"
@@ -161,10 +140,8 @@ export default function Rsvp() {
                   {record.attendance === 'accepts' ? "You're on the list." : 'Noted, with regret.'}
                 </p>
                 <p className="mt-3 font-display text-2xl">{record.name}</p>
-                {record.attendance === 'accepts' && (
-                  <p className="mt-1 font-body text-ivory/70">
-                    Party of {record.guests}
-                  </p>
+                {record.attendance === 'accepts' && !invitationConfig.allowPlusOnes && (
+                  <p className="mt-1 font-body text-ivory/60 text-sm">A party of one — no plus ones.</p>
                 )}
                 <button
                   onClick={() => setEditing(true)}

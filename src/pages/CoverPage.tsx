@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import invitationConfig from '../config'
 import PlaceholderArt from '../components/PlaceholderArt'
 import GoldLine from '../components/GoldLine'
+import IntroReveal from '../components/IntroReveal'
 
-type Stage = 'sealed' | 'cracking' | 'open' | 'revealed'
+type Stage = 'sealed' | 'cracking' | 'open' | 'revealed' | 'intro'
 
 export default function CoverPage() {
   const navigate = useNavigate()
   const [mounted, setMounted] = useState(false)
   const [stage, setStage] = useState<Stage>('sealed')
-  const [transitioning, setTransitioning] = useState(false)
   const openButtonRef = useRef<HTMLButtonElement | null>(null)
   const reducedMotion =
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -38,14 +38,11 @@ export default function CoverPage() {
   }
 
   const handleOpen = () => {
-    if (transitioning) return
-    setTransitioning(true)
-    window.setTimeout(() => {
-      navigate('/shais-18th-home')
-    }, 1100)
+    if (stage === 'intro') return
+    setStage('intro')
   }
 
-  const envelopeOpen = stage === 'open' || stage === 'revealed'
+  const envelopeOpen = stage === 'open' || stage === 'revealed' || stage === 'intro'
 
   return (
     <main className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-ink px-6 text-center">
@@ -57,7 +54,7 @@ export default function CoverPage() {
       <div
         className={`relative z-10 flex flex-col items-center transition-all duration-[1200ms] ease-out ${
           mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-        } ${transitioning ? 'opacity-0 -translate-y-4 scale-95 transition-all duration-[900ms]' : ''}`}
+        }`}
       >
         {stage === 'sealed' || stage === 'cracking' ? (
           <p className="mb-8 font-sans text-[11px] tracking-widest2 text-gold/80 uppercase animate-pulseSlow">
@@ -145,12 +142,9 @@ export default function CoverPage() {
         </div>
       </div>
 
-      <div
-        className={`pointer-events-none fixed inset-0 z-40 bg-ink transition-opacity duration-[1100ms] ${
-          transitioning ? 'opacity-100' : 'opacity-0'
-        }`}
-        aria-hidden="true"
-      />
+      {stage === 'intro' && (
+        <IntroReveal onFinished={() => navigate('/shais-18th-home')} />
+      )}
     </main>
   )
 }

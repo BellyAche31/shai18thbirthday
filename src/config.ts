@@ -37,6 +37,10 @@ export const invitationConfig = {
   dressCode: 'BLACK TIE / FORMAL',
   dressCodeNote: "Come dressed like the night belongs to you.",
 
+  // The invitation is non-transferable — one name, one seat.
+  allowPlusOnes: false,
+  exclusivityNote: 'No plus ones — this invitation is exclusive to you.',
+
   mapsUrl: '#location',
   rsvpUrl: '#rsvp',
 
