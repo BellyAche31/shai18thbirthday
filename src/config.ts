@@ -236,8 +236,28 @@ export const invitationConfig = {
   // The Eighteen Gifts — a keepsake tradition, no assigned names.
   eighteenGiftsNote: 'Surprise me with anything thoughtful from your heart to make this milestone unforgettable.',
 
-  // The Eighteen Blue Bills — a monetary-blessing tradition, no assigned names.
+  // The Eighteen Blue Bills — a monetary-blessing tradition.
   eighteenBlueBillsNote: 'Share a little blessing with a heartfelt wish for my journey ahead.',
+  eighteenBlueBills: [
+    'Tito Jaynar Gasmen',
+    'Tito Marlon Gasmen',
+    'Amelia Dumlao',
+    'Jason Ordiz',
+    'Alvin Cortez',
+    'Tito Larry Aujero',
+    'Dhen Colipano',
+    'Doc Robert Corpuz',
+    'Alexis Taguinod',
+    'Ramie Depiedra',
+    'Joan Orellano',
+    'Doc Leonisa Abasolo',
+    'Manuel Cambe',
+    'Jharo Abdon',
+    'Antonio Marquez III',
+    'Debbie Ong',
+    'Ferdie Velasquez',
+    'Violy Ipanag',
+  ] as string[],
 
   // A gentle note on gifts, shown near the RSVP.
   giftNote: "Your presence is the present. If you'd like to give something more, gifts and cash gifts can be handed directly to Mommy or Kuya.",
