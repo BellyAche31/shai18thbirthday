@@ -34,8 +34,10 @@ export const invitationConfig = {
   venue: 'THE ARCHIVE BALLROOM',
   address: '412 Madison Avenue, New York, NY',
 
-  dressCode: 'BLACK TIE / FORMAL',
+  dressCode: 'FORMAL ATTIRE',
   dressCodeNote: "Come dressed like the night belongs to you.",
+  // Black and gold are the house palette for the evening — reserved, not shared.
+  styleAlert: 'No black. No gold. Those shades are reserved for the house tonight.',
 
   // The invitation is non-transferable — one name, one seat.
   allowPlusOnes: false,
@@ -106,7 +108,7 @@ export const invitationConfig = {
   tickerHeadlines: [
     'SHAI TURNS 18 THIS NOVEMBER',
     'THE GUEST LIST IS ALREADY A RUMOR',
-    'BLACK TIE. NO EXCEPTIONS.',
+    'FORMAL ATTIRE. NO BLACK. NO GOLD.',
     'THE ARCHIVE BALLROOM, TRANSFORMED FOR ONE NIGHT ONLY',
     'SOURCES CONFIRM: THIS IS THE PARTY OF THE SEASON',
     'XOXO',
@@ -120,6 +122,7 @@ export const invitationConfig = {
     'RUMOR HAS IT: the cake has a secret ingredient.',
     'SPOTTED: a guest list getting harder to get on by the hour.',
     'BREAKING: this invitation self-destructs at midnight. (Kidding. Mostly.)',
+    'STYLE MEMO: black and gold are reserved for the house tonight.',
   ] as string[],
 
   // Click-to-reveal gossip cards.
@@ -139,6 +142,10 @@ export const invitationConfig = {
     {
       teaser: 'What time does this exclusive affair really get started?',
       reveal: '7:00 PM sharp. Fashionably late is still just late.',
+    },
+    {
+      teaser: 'Which two colors are strictly off the guest list tonight?',
+      reveal: 'Black and gold. The house is wearing those — you are not.',
     },
   ] as { teaser: string; reveal: string }[],
 

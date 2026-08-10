@@ -23,6 +23,13 @@ export default function DressCode() {
             {invitationConfig.dressCodeNote}
           </p>
         </Reveal>
+
+        <Reveal delay={300}>
+          <div className="mx-auto mt-10 inline-flex max-w-sm flex-col items-center gap-2 border border-burgundy/60 bg-burgundy/20 px-6 py-5 backdrop-blur-sm">
+            <span className="font-sans text-[10px] tracking-widest2 text-gold uppercase">Style Alert</span>
+            <p className="font-body text-lg text-ivory">{invitationConfig.styleAlert}</p>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
