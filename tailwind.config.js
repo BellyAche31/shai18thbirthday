@@ -28,6 +28,9 @@ export default {
         body: ['"Cormorant Garamond"', 'serif'],
         sans: ['"Jost"', 'system-ui', 'sans-serif'],
         script: ['"Tangerine"', 'cursive'],
+        // The two halves of the sign-off lockup.
+        xoxo: ['"Sacramento"', 'cursive'],
+        gossip: ['"Poiret One"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         widest2: '0.35em',

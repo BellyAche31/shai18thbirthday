@@ -1,5 +1,6 @@
 import invitationConfig from '../config'
 import SmartImage from './SmartImage'
+import Signoff from './Signoff'
 import { useT } from '../LanguageContext'
 
 /**
@@ -7,7 +8,7 @@ import { useT } from '../LanguageContext'
  * a note scrawled beneath it, tilted like it was pinned to a corkboard.
  */
 export default function SpottedCard({ visible }: { visible: boolean }) {
-  const { eyebrow, lines, signoff } = useT().spottedCard
+  const { eyebrow, lines } = useT().spottedCard
 
   return (
     <article
@@ -34,7 +35,8 @@ export default function SpottedCard({ visible }: { visible: boolean }) {
             {line}
           </p>
         ))}
-        <p className="whitespace-pre-line pt-1 font-script text-3xl leading-tight text-gold">{signoff}</p>
+        {/* On the paper card the sign-off reads in ink, not gold. */}
+        <Signoff size="sm" align="left" className="pt-2 text-ink" />
       </div>
     </article>
   )

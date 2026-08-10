@@ -2,6 +2,7 @@ import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import GoldLine from '../GoldLine'
 import PhotoBackdrop from '../PhotoBackdrop'
+import Signoff from '../Signoff'
 import { useT } from '../../LanguageContext'
 
 export default function FinalSection() {
@@ -31,7 +32,7 @@ export default function FinalSection() {
         <p className="mt-8 font-display text-2xl tracking-widest text-gold sm:text-3xl">{t.final.name}</p>
       </Reveal>
       <Reveal delay={500}>
-        <p className="mt-6 font-script text-5xl text-gold/90">{t.final.signoff}</p>
+        <Signoff size="lg" className="mt-6 text-gold/90" />
       </Reveal>
 
       {/* A little unfiltered credit from whoever stayed up building this. */}

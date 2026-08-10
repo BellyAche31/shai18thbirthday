@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* The "xoxo, gossip girl" sign-off lockup. Self-hosted (rather than pulled
+   from the Google CDN with the other four) so the two faces the sign-off
+   depends on are always there — it's the last thing a guest reads. */
+@font-face {
+  font-family: 'Sacramento';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/sacramento-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poiret One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/poiret-one-latin.woff2') format('woff2');
+}
+
 /* Dark is the default look, so it lives on the bare :root — a guest who has
    never touched the toggle gets the intended cinematic version. */
 :root {

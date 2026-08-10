@@ -36,7 +36,6 @@ const en = {
       'So put on your finest attire, bring your best secrets, and get ready for an evening filled with glamour, laughter, and memories worth gossiping about.',
       'After all, you wouldn’t want to miss the party everyone will be talking about. 💋',
     ],
-    signoff: 'XOXO,\nGossip Girl',
   },
 
   // --- Hero ---------------------------------------------------------------
@@ -44,7 +43,6 @@ const en = {
     title: 'SHAINA REIGNS AT 18',
     subtitle: 'A new chapter, a timeless reign',
     place: 'New York · After Dark',
-    signoff: 'XOXO, GOSSIP GIRL',
     scroll: 'Scroll',
   },
 
@@ -251,7 +249,6 @@ const en = {
   final: {
     seeYouThere: 'SEE YOU THERE.',
     name: 'SHAI',
-    signoff: 'XOXO, GOSSIP GIRL',
   },
 
   music: {
@@ -290,14 +287,12 @@ const tl: Copy = {
       'Kaya isuot mo ang pinakamaganda mong damit, dalhin ang pinakamasarap mong tsismis, at maghanda para sa gabing puno ng ganda, halakhak, at mga alaalang sulit tsismisan.',
       'Sa huli, ayaw mo namang mapalampas ang partido na pag-uusapan ng lahat. 💋',
     ],
-    signoff: 'XOXO,\nGossip Girl',
   },
 
   hero: {
     title: 'NAGHAHARI SI SHAINA SA 18',
     subtitle: 'Bagong yugto, walang kupas na paghahari',
     place: 'New York · Pagsapit ng Dilim',
-    signoff: 'XOXO, GOSSIP GIRL',
     scroll: 'Mag-scroll',
   },
 
@@ -489,7 +484,6 @@ const tl: Copy = {
   final: {
     seeYouThere: 'MAGKITA TAYO DOON.',
     name: 'SHAI',
-    signoff: 'XOXO, GOSSIP GIRL',
   },
 
   music: {

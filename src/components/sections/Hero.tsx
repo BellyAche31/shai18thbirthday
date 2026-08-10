@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import PhotoBackdrop from '../PhotoBackdrop'
 import GoldLine from '../GoldLine'
+import Signoff from '../Signoff'
 import { useT } from '../../LanguageContext'
 
 export default function Hero() {
@@ -88,13 +89,12 @@ export default function Hero() {
           {t.hero.place}
         </p>
 
-        <p
-          className={`mt-10 font-script text-3xl text-gold/80 transition-all duration-1000 delay-[1500ms] ${
+        <Signoff
+          size="md"
+          className={`mt-10 text-gold/90 transition-all duration-1000 delay-[1500ms] ${
             mounted ? 'opacity-100' : 'opacity-0'
           }`}
-        >
-          {t.hero.signoff}
-        </p>
+        />
       </div>
 
       <div
