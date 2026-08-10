@@ -218,6 +218,19 @@ export const invitationConfig = {
 
   // A small, honest, self-promoting easter egg from whoever built this thing.
   creatorCredit: "Gawa ni JC Gasmen tong invitation hehe #broken aray koooo.. cool pa rin ba yan? haha",
+
+  // The gossip-column dispatch that opens the invitation — an instant photo
+  // pinned to the page, written in the voice of an anonymous society source.
+  // Deliberately original: no lines lifted from the show.
+  spottedCard: {
+    eyebrow: 'Spotted : The Debutante…',
+    lines: [
+      'Your favourite anonymous source here, with the only headline that matters this season.',
+      'Shai turns eighteen — and the whole city is already whispering about it.',
+      'One night. One very short list. Think you can keep up?',
+    ] as string[],
+    signoff: 'XOXO',
+  },
 } as const
 
 export default invitationConfig
