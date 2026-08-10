@@ -4,11 +4,13 @@ import invitationConfig from '../config'
 import PlaceholderArt from '../components/PlaceholderArt'
 import GoldLine from '../components/GoldLine'
 import IntroReveal from '../components/IntroReveal'
+import { useMusic } from '../MusicContext'
 
 type Stage = 'sealed' | 'cracking' | 'open' | 'revealed' | 'intro'
 
 export default function CoverPage() {
   const navigate = useNavigate()
+  const { start: startMusic } = useMusic()
   const [mounted, setMounted] = useState(false)
   const [stage, setStage] = useState<Stage>('sealed')
   const openButtonRef = useRef<HTMLButtonElement | null>(null)
@@ -28,6 +30,11 @@ export default function CoverPage() {
 
   const breakSeal = () => {
     if (stage !== 'sealed') return
+
+    // Breaking the seal is the guest's first gesture, which is what lets the
+    // browser allow audio at all — so the music opens with the envelope.
+    startMusic()
+
     if (reducedMotion) {
       setStage('revealed')
       return

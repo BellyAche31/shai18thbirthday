@@ -1,5 +1,4 @@
 import FloatingNav from '../components/FloatingNav'
-import MusicPlayer from '../components/MusicPlayer'
 import ScrollProgress from '../components/ScrollProgress'
 import GossipTicker from '../components/GossipTicker'
 import SpottedToast from '../components/SpottedToast'
@@ -42,7 +41,6 @@ export default function HomePage() {
       <DressCode />
       <Rsvp />
       <FinalSection />
-      <MusicPlayer />
       <SpottedToast />
     </main>
   )

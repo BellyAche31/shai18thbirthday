@@ -50,6 +50,10 @@ export const invitationConfig = {
   // Background-music level, 0–1. Kept low so it sits under the moment
   // rather than competing with it. Raise toward 0.5 for a fuller sound.
   musicVolume: 0.3,
+  // Start the music on the guest's first tap (breaking the wax seal).
+  // Browsers block audio that starts before any interaction, so this rides
+  // on that opening gesture rather than firing on page load.
+  autoplayOnOpen: true,
 
   galleryImages: [
     { src: '/images/photo-01.jpg', caption: 'THE BIRTHDAY GIRL', variant: 'silhouette' },
