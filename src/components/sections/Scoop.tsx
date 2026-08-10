@@ -87,7 +87,7 @@ export default function Scoop() {
 
         <Reveal delay={650}>
           <div className="mx-auto mt-14 max-w-md overflow-hidden rounded-sm border border-gold/20">
-            <PlaceholderVenueMap />
+            <VenuePhoto />
           </div>
         </Reveal>
 
@@ -116,20 +116,19 @@ export default function Scoop() {
   )
 }
 
-function PlaceholderVenueMap() {
+function VenuePhoto() {
   return (
-    <div className="relative flex aspect-[16/9] w-full items-center justify-center bg-[#0c1a14]">
-      <svg viewBox="0 0 400 225" className="absolute inset-0 h-full w-full opacity-40" preserveAspectRatio="xMidYMid slice">
-        <path d="M0 160 L60 150 L110 175 L170 140 L220 165 L280 130 L340 155 L400 120 L400 225 L0 225 Z" fill="#123024" />
-        <path d="M0 60 L70 80 L140 55 L210 90 L280 60 L340 85 L400 50" stroke="#d4af37" strokeOpacity="0.25" strokeWidth="1.5" fill="none" />
-        <path d="M0 100 L90 120 L160 95 L230 125 L300 100 L400 130" stroke="#d4af37" strokeOpacity="0.15" strokeWidth="1" fill="none" />
-      </svg>
-      <div className="relative z-10 flex flex-col items-center gap-2 px-6 text-center">
-        <span className="text-gold">
-          <PinIcon />
-        </span>
-        <p className="font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">{invitationConfig.venue}</p>
-        <p className="max-w-xs font-body text-xs text-ivory/50">{invitationConfig.address}</p>
+    <div className="relative aspect-[16/9] w-full">
+      <SmartImage
+        src="/images/venue-dos-casa.jpg"
+        variant="architecture"
+        alt={invitationConfig.venue}
+        className="h-full w-full object-cover"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-1 px-6 pb-4 text-center">
+        <p className="font-sans text-[10px] tracking-widest2 text-gold uppercase">{invitationConfig.venue}</p>
+        <p className="max-w-xs font-body text-xs text-ivory/70">{invitationConfig.address}</p>
       </div>
     </div>
   )

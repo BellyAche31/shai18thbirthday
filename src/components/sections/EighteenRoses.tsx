@@ -10,12 +10,14 @@ export default function EighteenRoses() {
   return (
     <section className="relative bg-surface px-6 py-24 sm:py-32">
       <Reveal>
-        <SectionLabel>{t.roses.label}</SectionLabel>
+        <h2 className="text-center font-display text-4xl tracking-wide text-onsurface sm:text-5xl">
+          {t.roses.label}
+        </h2>
       </Reveal>
       <Reveal delay={100}>
-        <h2 className="mt-6 text-center font-display text-3xl tracking-wide text-onsurface sm:text-4xl">
-          {t.roses.heading}
-        </h2>
+        <div className="mt-5">
+          <SectionLabel>{t.roses.heading}</SectionLabel>
+        </div>
       </Reveal>
       <Reveal delay={150}>
         <p className="mx-auto mt-4 max-w-md text-center font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">

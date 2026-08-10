@@ -1,15 +1,24 @@
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
-import PlaceholderArt from '../PlaceholderArt'
+import PhotoBackdrop from '../PhotoBackdrop'
+import SmartImage from '../SmartImage'
 import { useT } from '../../LanguageContext'
 
 export default function DressCode() {
   const t = useT()
   return (
     <section className="relative min-h-[70vh] overflow-hidden bg-surface px-6 py-24 text-center sm:py-32">
-      <PlaceholderArt variant="jewelry" className="absolute inset-0 h-full w-full" label="Dress code editorial placeholder" />
-      <div className="absolute inset-0 bg-surface/[0.93]" />
+      <PhotoBackdrop
+        src="/images/bg-nyc-midtown.jpg"
+        variant="city"
+        label="New York at night"
+        className="absolute inset-0 h-full w-full"
+        opacity={0.35}
+        blurPx={4}
+        grayscale={0.2}
+        overlayClassName="bg-surface/90"
+      />
 
       <div className="relative z-10">
         <Reveal>
@@ -34,36 +43,55 @@ export default function DressCode() {
         </Reveal>
 
         <Reveal delay={400}>
-          <div className="mx-auto mt-14 grid max-w-lg gap-8 sm:grid-cols-2">
-            <div>
-              <p className="font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">{t.dressCode.women}</p>
-              <div className="mt-4 flex justify-center gap-4 sm:justify-start">
-                {invitationConfig.dressCodePalette.women.map((c, i) => (
-                  <div key={c.name} className="flex flex-col items-center gap-2">
+          <div className="mx-auto mt-14 max-w-3xl">
+            <p className="font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">{t.dressCode.women}</p>
+            <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {invitationConfig.dressCodePalette.women.map((c, i) => (
+                <div key={c.name} className="flex flex-col items-center gap-3">
+                  <div className="aspect-[3/4] w-full max-w-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+                    <SmartImage
+                      src={c.image}
+                      variant="flowers"
+                      alt={t.dressCode.womenColors[i] ?? c.name}
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
                     <span
-                      className="h-10 w-10 rounded-full border border-onsurface/30 shadow-[0_2px_10px_rgba(0,0,0,0.4)]"
+                      className="h-4 w-4 rounded-full border border-onsurface/30"
                       style={{ backgroundColor: c.hex }}
                       aria-hidden="true"
                     />
-                    <span className="font-body text-xs text-onsurface/70">{t.dressCode.womenColors[i] ?? c.name}</span>
+                    <span className="font-body text-sm text-onsurface/80">{t.dressCode.womenColors[i] ?? c.name}</span>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-            <div>
-              <p className="font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">{t.dressCode.men}</p>
-              <div className="mt-4 flex justify-center gap-4 sm:justify-start">
-                {invitationConfig.dressCodePalette.men.map((c, i) => (
-                  <div key={c.name} className="flex flex-col items-center gap-2">
-                    <span
-                      className="h-10 w-10 rounded-full border border-onsurface/30 shadow-[0_2px_10px_rgba(0,0,0,0.4)]"
-                      style={{ backgroundColor: c.hex }}
-                      aria-hidden="true"
-                    />
-                    <span className="font-body text-xs text-onsurface/70">{t.dressCode.menColors[i] ?? c.name}</span>
-                  </div>
-                ))}
-              </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={500}>
+          <div className="mx-auto mt-14 max-w-2xl">
+            <p className="font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">{t.dressCode.men}</p>
+            <div className="mt-4 overflow-hidden rounded-sm border border-gold/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+              <SmartImage
+                src={invitationConfig.dressCodePalette.menReferenceImage}
+                variant="silhouette"
+                alt={`${t.dressCode.men}: ${invitationConfig.dressCodePalette.men.map((c, i) => t.dressCode.menColors[i] ?? c.name).join(' & ')}`}
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+            <div className="mt-4 flex justify-center gap-4">
+              {invitationConfig.dressCodePalette.men.map((c, i) => (
+                <div key={c.name} className="flex items-center gap-2">
+                  <span
+                    className="h-4 w-4 rounded-full border border-onsurface/30"
+                    style={{ backgroundColor: c.hex }}
+                    aria-hidden="true"
+                  />
+                  <span className="font-body text-sm text-onsurface/80">{t.dressCode.menColors[i] ?? c.name}</span>
+                </div>
+              ))}
             </div>
           </div>
         </Reveal>

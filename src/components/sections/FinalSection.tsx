@@ -1,12 +1,23 @@
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import GoldLine from '../GoldLine'
+import PhotoBackdrop from '../PhotoBackdrop'
 import { useT } from '../../LanguageContext'
 
 export default function FinalSection() {
   const t = useT()
   return (
     <section className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden bg-surface px-6 py-24 text-center">
+      <PhotoBackdrop
+        src="/images/bg-nyc-midtown.jpg"
+        variant="city"
+        label="New York at night"
+        className="absolute inset-0 h-full w-full"
+        opacity={0.35}
+        blurPx={4}
+        grayscale={0.2}
+        overlayClassName="bg-surface/85"
+      />
       <div className="pointer-events-none absolute inset-0 border-y border-gold/10" />
       <Reveal>
         <p className="font-display text-3xl tracking-wide text-onsurface sm:text-4xl">{t.final.seeYouThere}</p>

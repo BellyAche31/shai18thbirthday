@@ -10,9 +10,11 @@ export default function TheNight() {
       <Reveal>
         <SectionLabel>{t.theNight.label}</SectionLabel>
       </Reveal>
-      <Reveal delay={100}>
-        <h2 className="mt-6 text-center font-display text-3xl tracking-wide sm:text-4xl">{t.theNight.heading}</h2>
-      </Reveal>
+      {t.theNight.heading && (
+        <Reveal delay={100}>
+          <h2 className="mt-6 text-center font-display text-3xl tracking-wide sm:text-4xl">{t.theNight.heading}</h2>
+        </Reveal>
+      )}
 
       <div className="relative mx-auto mt-16 max-w-md">
         <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gold/30 sm:left-[9px]" aria-hidden="true" />

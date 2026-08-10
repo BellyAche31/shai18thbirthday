@@ -36,10 +36,14 @@ function BlindCard({
               {labels.tapToReveal}
             </span>
           </div>
-          {/* Gold fill — its text stays dark whichever theme is on. */}
+          {/* Gold fill — its text stays dark whichever theme is on. Item 5
+              (the color rule) reads bigger — it's the one guests need to
+              actually catch, not skim. */}
           <div className="flip-face flip-face-back flex-col items-start justify-between border border-gold bg-gradient-to-br from-gold-light/95 to-gold p-6">
             <span className="font-sans text-[10px] tracking-widest2 text-ink/70 uppercase">{labels.confirmed}</span>
-            <p className="font-display text-lg leading-snug text-ink sm:text-xl">{reveal}</p>
+            <p className={`font-display leading-snug text-ink ${index === 4 ? 'text-xl sm:text-2xl font-bold' : 'text-lg sm:text-xl'}`}>
+              {reveal}
+            </p>
             <span className="font-sans text-[10px] tracking-widest2 text-ink/60 uppercase">{labels.tapToHide}</span>
           </div>
         </div>

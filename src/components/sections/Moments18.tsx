@@ -42,11 +42,13 @@ export default function Moments18() {
       <Reveal delay={100}>
         <h2 className="mt-6 text-center font-display text-6xl leading-none text-onalt sm:text-8xl">18</h2>
       </Reveal>
-      <Reveal delay={150}>
-        <p className="mx-auto mt-4 max-w-md text-center font-body text-lg text-onalt/60">
-          {t.wishesSection.subtitle}
-        </p>
-      </Reveal>
+      {t.wishesSection.subtitle && (
+        <Reveal delay={150}>
+          <p className="mx-auto mt-4 max-w-md text-center font-body text-lg text-onalt/60">
+            {t.wishesSection.subtitle}
+          </p>
+        </Reveal>
+      )}
 
       <div className="mx-auto mt-14 grid max-w-3xl gap-4 sm:grid-cols-3">
         {wishes.map((wish, i) => (

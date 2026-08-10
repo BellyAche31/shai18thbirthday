@@ -6,18 +6,20 @@ import { useT } from '../LanguageContext'
 /** title -> the gossip dispatch -> fade out into the invitation. */
 type Phase = 'title-in' | 'title' | 'card' | 'out'
 
+// The card carries a full paragraph now (eyebrow, four lines, sign-off), so
+// it needs real reading time — not just enough to register the photo.
 const TIMINGS = {
   toTitle: 800,
   toCard: 2900,
-  toOut: 8500,
-  toDone: 9400,
+  toOut: 15000,
+  toDone: 15900,
 }
 
 const REDUCED = {
   toTitle: 50,
   toCard: 700,
-  toOut: 2600,
-  toDone: 3100,
+  toOut: 6000,
+  toDone: 6500,
 }
 
 export default function IntroReveal({ onFinished }: { onFinished: () => void }) {
@@ -42,8 +44,8 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
     if (phase === 'title-in' || phase === 'title') {
       clearTimers()
       setPhase('card')
-      timers.current.push(window.setTimeout(() => setPhase('out'), 6400))
-      timers.current.push(window.setTimeout(finish, 7400))
+      timers.current.push(window.setTimeout(() => setPhase('out'), 12800))
+      timers.current.push(window.setTimeout(finish, 13700))
       return
     }
     clearTimers()

@@ -9,12 +9,14 @@ export default function EighteenGifts() {
   return (
     <section className="relative bg-surface px-6 py-24 text-center sm:py-32">
       <Reveal>
-        <SectionLabel>{t.gifts.label}</SectionLabel>
+        <h2 className="font-display text-4xl tracking-wide text-onsurface sm:text-5xl">
+          {t.gifts.label}
+        </h2>
       </Reveal>
       <Reveal delay={100}>
-        <h2 className="mt-6 font-display text-3xl tracking-wide text-onsurface sm:text-4xl">
-          {t.gifts.heading}
-        </h2>
+        <div className="mt-5">
+          <SectionLabel>{t.gifts.heading}</SectionLabel>
+        </div>
       </Reveal>
       <Reveal delay={150}>
         <div className="mx-auto mt-8 w-16">

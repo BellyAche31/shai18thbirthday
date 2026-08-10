@@ -41,10 +41,10 @@ const en = {
 
   // --- Hero ---------------------------------------------------------------
   hero: {
-    eyebrow: 'Exclusive',
-    name: "SHAI'S",
+    title: 'SHAINA REIGNS AT 18',
+    subtitle: 'A new chapter, a timeless reign',
     place: 'New York · After Dark',
-    signoff: 'XOXO',
+    signoff: 'XOXO, GOSSIP GIRL',
     scroll: 'Scroll',
   },
 
@@ -121,8 +121,8 @@ const en = {
         reveal: 'Five o’clock sharp. Fashionably late is still just late.',
       },
       {
-        teaser: 'Which color is strictly off the guest list tonight?',
-        reveal: 'Gold. The house is wearing that — you are not.',
+        teaser: 'Which colors are strictly off the guest list tonight?',
+        reveal: 'Black and gold. The house is wearing those — you are not.',
       },
     ],
   },
@@ -152,8 +152,7 @@ const en = {
   // --- 18 Wishes ----------------------------------------------------------
   wishesSection: {
     label: '18 Wishes',
-    subtitle:
-      'Eighteen small instructions for the biggest night of the year. Tap each number to reveal.',
+    subtitle: '',
     reveal: 'Reveal',
   },
   wishes: [
@@ -180,7 +179,7 @@ const en = {
   // --- Poll ---------------------------------------------------------------
   poll: {
     label: 'Cast Your Vote',
-    question: 'What steals the show tonight?',
+    question: '',
     options: ['The Dress', 'The Playlist', 'The Cake', 'The Surprise'],
     footer: 'votes and counting · tap to change your vote',
   },
@@ -218,7 +217,7 @@ const en = {
   // --- Programme ----------------------------------------------------------
   theNight: {
     label: 'The Night',
-    heading: 'HOW IT UNFOLDS',
+    heading: '',
   },
   programTitles: ['ARRIVAL', 'WELCOME', 'DINNER', '18 ROSES', '18 CANDLES', 'CELEBRATION'],
 
@@ -252,7 +251,7 @@ const en = {
   final: {
     seeYouThere: 'SEE YOU THERE.',
     name: 'SHAI',
-    signoff: 'XOXO',
+    signoff: 'XOXO, GOSSIP GIRL',
   },
 
   music: {
@@ -295,10 +294,10 @@ const tl: Copy = {
   },
 
   hero: {
-    eyebrow: 'Eksklusibo',
-    name: 'KAY SHAI',
+    title: 'NAGHAHARI SI SHAINA SA 18',
+    subtitle: 'Bagong yugto, walang kupas na paghahari',
     place: 'New York · Pagsapit ng Dilim',
-    signoff: 'XOXO',
+    signoff: 'XOXO, GOSSIP GIRL',
     scroll: 'Mag-scroll',
   },
 
@@ -371,8 +370,8 @@ const tl: Copy = {
         reveal: 'Alas-singko, hindi lalampas. Ang late ay late pa rin kahit maganda ang damit.',
       },
       {
-        teaser: 'Anong kulay ang mahigpit na ipinagbabawal ngayong gabi?',
-        reveal: 'Ginto. Iyan ang suot ng okasyon — hindi mo iyan puwedeng agawin.',
+        teaser: 'Anong mga kulay ang mahigpit na ipinagbabawal ngayong gabi?',
+        reveal: 'Itim at ginto. Iyan ang suot ng okasyon — hindi mo iyan puwedeng agawin.',
       },
     ],
   },
@@ -399,8 +398,7 @@ const tl: Copy = {
 
   wishesSection: {
     label: '18 Hiling',
-    subtitle:
-      'Labingwalong maliliit na paalala para sa pinakamalaking gabi ng taon. Pindutin ang bawat numero.',
+    subtitle: '',
     reveal: 'Buksan',
   },
   wishes: [
@@ -426,7 +424,7 @@ const tl: Copy = {
 
   poll: {
     label: 'Iboto Mo',
-    question: 'Ano ang magnanakaw ng eksena ngayong gabi?',
+    question: '',
     options: ['Ang Damit', 'Ang Playlist', 'Ang Cake', 'Ang Sorpresa'],
     footer: 'boto at patuloy pa · pindutin para palitan ang boto mo',
   },
@@ -461,7 +459,7 @@ const tl: Copy = {
 
   theNight: {
     label: 'Ang Gabi',
-    heading: 'KUNG PAANO ITO MAGAGANAP',
+    heading: '',
   },
   programTitles: ['PAGDATING', 'PAGSALUBONG', 'HAPUNAN', '18 ROSAS', '18 KANDILA', 'SELEBRASYON'],
 
@@ -491,7 +489,7 @@ const tl: Copy = {
   final: {
     seeYouThere: 'MAGKITA TAYO DOON.',
     name: 'SHAI',
-    signoff: 'XOXO',
+    signoff: 'XOXO, GOSSIP GIRL',
   },
 
   music: {

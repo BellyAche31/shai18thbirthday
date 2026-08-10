@@ -48,14 +48,16 @@ export const invitationConfig = {
   styleAlert: 'Please follow the assigned color palette, and do not wear gold.',
   dressCodePalette: {
     women: [
-      { name: 'Midnight Blue', hex: '#1a2744' },
-      { name: 'Emerald Green', hex: '#0b6e4f' },
-      { name: 'Burgundy', hex: '#5c1a2e' },
+      { name: 'Midnight Blue', hex: '#1a2744', image: '/images/dresscode-women-midnight.jpg' },
+      { name: 'Emerald Green', hex: '#0b6e4f', image: '/images/dresscode-women-emerald.jpg' },
+      { name: 'Burgundy', hex: '#5c1a2e', image: '/images/dresscode-women-burgundy.jpg' },
     ],
     men: [
       { name: 'Black', hex: '#111111' },
       { name: 'Blue', hex: '#1e3a6d' },
     ],
+    // One reference sheet covers both men's colors — the suits in it span black tuxedo to navy.
+    menReferenceImage: '/images/dresscode-men-blue.jpg',
   },
 
   // The invitation is non-transferable — one name, one seat.

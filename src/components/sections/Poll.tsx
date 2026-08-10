@@ -52,11 +52,13 @@ export default function Poll() {
       <Reveal>
         <SectionLabel>{t.poll.label}</SectionLabel>
       </Reveal>
-      <Reveal delay={100}>
-        <h2 className="mt-6 text-center font-display text-3xl tracking-wide sm:text-4xl">
-          {t.poll.question}
-        </h2>
-      </Reveal>
+      {t.poll.question && (
+        <Reveal delay={100}>
+          <h2 className="mt-6 text-center font-display text-3xl tracking-wide sm:text-4xl">
+            {t.poll.question}
+          </h2>
+        </Reveal>
+      )}
 
       <div className="mx-auto mt-12 max-w-md space-y-4">
         {options.map((option, i) => {

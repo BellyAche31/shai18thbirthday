@@ -10,12 +10,14 @@ export default function EighteenGossips() {
   return (
     <section className="relative bg-alt px-6 py-24 text-onalt sm:py-32">
       <Reveal>
-        <SectionLabel>{t.gossips.label}</SectionLabel>
+        <h2 className="text-center font-display text-4xl tracking-wide sm:text-5xl">
+          {t.gossips.label}
+        </h2>
       </Reveal>
       <Reveal delay={100}>
-        <h2 className="mt-6 text-center font-display text-3xl tracking-wide sm:text-4xl">
-          {t.gossips.heading}
-        </h2>
+        <div className="mt-5">
+          <SectionLabel>{t.gossips.heading}</SectionLabel>
+        </div>
       </Reveal>
       <Reveal delay={150}>
         <p className="mx-auto mt-4 max-w-md text-center font-sans text-[10px] tracking-widest2 text-gold uppercase">
