@@ -2,23 +2,15 @@ import { useTheme } from '../ThemeContext'
 import { useLang } from '../LanguageContext'
 
 /**
- * Language + theme switches, shared between the cover page (which has no
- * nav bar yet) and the floating nav on the invitation itself.
+ * Theme switch, shared between the cover page (which has no nav bar yet)
+ * and the floating nav on the invitation itself.
  */
 export default function PreferenceToggles({ className = '' }: { className?: string }) {
   const { theme, toggle: toggleTheme } = useTheme()
-  const { lang, toggle: toggleLang, t } = useLang()
+  const { t } = useLang()
 
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <button
-        onClick={toggleLang}
-        aria-label={t.nav.language}
-        title={t.nav.language}
-        className="flex h-8 items-center justify-center rounded-full border border-gold/30 px-3 font-sans text-[10px] tracking-widest2 text-gold uppercase transition-colors hover:bg-gold hover:text-ink"
-      >
-        {lang === 'en' ? 'EN' : 'TL'}
-      </button>
       <button
         onClick={toggleTheme}
         aria-label={theme === 'dark' ? t.nav.switchToLight : t.nav.switchToDark}
