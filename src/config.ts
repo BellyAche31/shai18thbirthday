@@ -35,9 +35,9 @@ export const invitationConfig = {
   },
 
   // ISO date string — drives the live countdown. Change this when the date is set.
-  eventDate: '2026-09-26T18:00:00',
+  eventDate: '2026-09-26T17:00:00',
   eventDateDisplay: 'SATURDAY, SEPTEMBER 26, 2026',
-  eventTimeDisplay: 'Six o’clock in the evening',
+  eventTimeDisplay: 'Five o’clock in the evening',
 
   venue: 'DOS CASA DE AMENA',
   address: 'Far East Ave, Bankers Village, Bagumbong, Caloocan City',
@@ -94,12 +94,12 @@ export const invitationConfig = {
   ] as GalleryImage[],
 
   program: [
-    { time: '6:00 PM', title: 'ARRIVAL' },
-    { time: '6:30 PM', title: 'WELCOME' },
-    { time: '7:00 PM', title: 'DINNER' },
-    { time: '7:30 PM', title: '18 ROSES' },
-    { time: '8:00 PM', title: '18 CANDLES' },
-    { time: '8:30 PM', title: 'CELEBRATION' },
+    { time: '5:00 PM', title: 'ARRIVAL' },
+    { time: '5:30 PM', title: 'WELCOME' },
+    { time: '6:00 PM', title: 'DINNER' },
+    { time: '6:30 PM', title: '18 ROSES' },
+    { time: '7:00 PM', title: '18 CANDLES' },
+    { time: '7:30 PM', title: 'CELEBRATION' },
   ] as ProgramItem[],
 
   guestList: [
@@ -171,7 +171,7 @@ export const invitationConfig = {
     },
     {
       teaser: 'What time does this exclusive affair really get started?',
-      reveal: 'Six o’clock sharp. Fashionably late is still just late.',
+      reveal: 'Five o’clock sharp. Fashionably late is still just late.',
     },
     {
       teaser: 'Which color is strictly off the guest list tonight?',
