@@ -12,6 +12,8 @@ import CoverStory from '../components/sections/CoverStory'
 import Gallery from '../components/sections/Gallery'
 import Moments18 from '../components/sections/Moments18'
 import Poll from '../components/sections/Poll'
+import EighteenRoses from '../components/sections/EighteenRoses'
+import EighteenGossips from '../components/sections/EighteenGossips'
 import GuestList from '../components/sections/GuestList'
 import TheNight from '../components/sections/TheNight'
 import DressCode from '../components/sections/DressCode'
@@ -33,6 +35,8 @@ export default function HomePage() {
       <Gallery />
       <Moments18 />
       <Poll />
+      <EighteenRoses />
+      <EighteenGossips />
       <GuestList />
       <TheNight />
       <DressCode />

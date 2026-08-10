@@ -147,6 +147,56 @@ export const invitationConfig = {
     question: 'What steals the show tonight?',
     options: ['The Dress', 'The Playlist', 'The Cake', 'The Surprise'] as string[],
   },
+
+  // The 18 gentlemen presenting a rose during the program.
+  roses: [
+    'Yruz',
+    'VA',
+    'Lemuel',
+    'Lance',
+    'James',
+    'Jacob',
+    'Ralph',
+    'Kuya JC',
+    'JK',
+    'Daddy',
+    'JL',
+    'Justin',
+    'Rajan',
+    'Kuya Roji',
+    'Tito Edward',
+    'Tito Larry',
+    'Kuya Joey',
+    'Kuya Buboy',
+  ] as string[],
+
+  // The 18 ladies sharing a message, memory, or piece of advice.
+  gossipsAndShots: {
+    prompt: 'Share a heartwarming message, favorite memory, or advice for me!',
+    names: [
+      'Eldrich',
+      'Ate Arianne',
+      'Ate Dimple',
+      'Kim',
+      'Althea',
+      'Santhena',
+      'Bea',
+      'Julia',
+      'Briyanna',
+      'Izy',
+      'Camille',
+      'Ate Althea',
+      'Ate Faye',
+      'Ate Elaine',
+      'Ate Angela',
+      'Ate Lil',
+      'Ate Kring',
+      'Pauleen',
+    ] as string[],
+  },
+
+  // A gentle note on gifts, shown near the RSVP.
+  giftNote: "Your presence is the present. If you'd like to give something more, gifts and cash gifts can be handed directly to Mommy or Kuya.",
 } as const
 
 export default invitationConfig

@@ -73,6 +73,11 @@ export default function Rsvp() {
           </p>
         </Reveal>
       )}
+      <Reveal delay={280}>
+        <p className="mx-auto mt-4 max-w-sm font-body text-sm italic text-ink/60">
+          {invitationConfig.giftNote}
+        </p>
+      </Reveal>
       <Reveal delay={300}>
         <div className="mx-auto mt-6 w-16">
           <GoldLine className="from-ink/0 via-ink/30 to-ink/0" />
