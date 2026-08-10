@@ -13,7 +13,6 @@ import EighteenRoses from '../components/sections/EighteenRoses'
 import EighteenGossips from '../components/sections/EighteenGossips'
 import EighteenGifts from '../components/sections/EighteenGifts'
 import EighteenBlueBills from '../components/sections/EighteenBlueBills'
-import GuestList from '../components/sections/GuestList'
 import TheNight from '../components/sections/TheNight'
 import DressCode from '../components/sections/DressCode'
 import Rsvp from '../components/sections/Rsvp'
@@ -36,7 +35,6 @@ export default function HomePage() {
       <EighteenGossips />
       <EighteenGifts />
       <EighteenBlueBills />
-      <GuestList />
       <TheNight />
       <DressCode />
       <Rsvp />

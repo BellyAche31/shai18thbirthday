@@ -69,8 +69,8 @@ export default function CoverPage() {
         opacity={0.5}
         blurPx={4}
         grayscale={0.65}
-        sizingClassName="[background-size:contain] [background-position:50%_4%] md:[background-size:cover] md:[background-position:50%_16%]"
-        overlayClassName="bg-gradient-to-b from-ink/70 via-ink/45 to-ink/95 md:from-ink/85 md:via-ink/80"
+        sizingClassName="[background-size:cover] [background-position:50%_22%]"
+        overlayClassName="bg-gradient-to-b from-ink/75 via-ink/55 to-ink/90 md:from-ink/85 md:via-ink/80"
       />
 
       <div
@@ -83,9 +83,14 @@ export default function CoverPage() {
             {t.cover.tapSeal}
           </p>
         ) : (
-          <p className="mb-8 max-w-xs font-script text-2xl text-gold/90 sm:text-3xl">
-            {t.cover.sealBrokenNote}
-          </p>
+          <div className="mb-8 flex flex-col items-center gap-1">
+            <span className="font-sans text-[10px] tracking-widest3 text-gold/70 uppercase">
+              {t.cover.sealBrokenLabel}
+            </span>
+            <p className="font-xoxo text-4xl leading-none text-gold sm:text-5xl">
+              {t.cover.sealBrokenNote}
+            </p>
+          </div>
         )}
 
         {/* Envelope */}

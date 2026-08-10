@@ -46,6 +46,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Several controls are gold-on-dark with no border, so the default focus
+   ring was invisible against them. Only shows for keyboard users. */
+:focus-visible {
+  outline: 2px solid rgb(var(--c-gold));
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 body {
   @apply bg-surface text-onsurface antialiased;
   font-family: 'Cormorant Garamond', serif;

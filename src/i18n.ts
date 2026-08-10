@@ -17,7 +17,10 @@ const en = {
   // --- Cover page / envelope ---------------------------------------------
   cover: {
     tapSeal: 'Tap the seal to open your invitation',
-    sealBrokenNote: "SPOTTED: Shai's 18th birthday",
+    // Split in two: an all-caps word set in a cursive face reads as
+    // squiggles, so the label stays in the letterspaced sans.
+    sealBrokenLabel: 'Spotted',
+    sealBrokenNote: "Shai's 18th birthday",
     innerLine1: 'Shaina reigns at eighteen',
     innerLine2: 'A new chapter, a timeless reign',
     openInvitation: 'Open Invitation',
@@ -205,12 +208,6 @@ const en = {
     note: 'Share a little blessing with a heartfelt wish for my journey ahead.',
   },
 
-  // --- Guest list ---------------------------------------------------------
-  guestList: {
-    label: 'The Guest List',
-    subtitle: 'Every unforgettable night has the right company.',
-    more: '& a very select few more',
-  },
 
   // --- Programme ----------------------------------------------------------
   theNight: {
@@ -269,7 +266,8 @@ const tl: Copy = {
 
   cover: {
     tapSeal: 'Pindutin ang selyo para buksan ang paanyaya',
-    sealBrokenNote: 'SPOTTED: Ika-18 kaarawan ni Shai',
+    sealBrokenLabel: 'Spotted',
+    sealBrokenNote: 'Ika-18 kaarawan ni Shai',
     innerLine1: 'Naghahari si Shaina sa labingwalo',
     innerLine2: 'Bagong yugto, walang kupas na paghahari',
     openInvitation: 'Buksan ang Paanyaya',
@@ -446,11 +444,6 @@ const tl: Copy = {
     note: 'Magbahagi ng kaunting biyaya kasama ang taos-pusong hiling para sa aking paglalakbay.',
   },
 
-  guestList: {
-    label: 'Ang Listahan ng Bisita',
-    subtitle: 'Bawat gabing di malilimutan ay may tamang kasama.',
-    more: '& iilan pa na piling-pili',
-  },
 
   theNight: {
     label: 'Ang Gabi',

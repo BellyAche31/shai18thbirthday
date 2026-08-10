@@ -81,21 +81,6 @@ export const invitationConfig = {
   // on that opening gesture rather than firing on page load.
   autoplayOnOpen: true,
 
-  galleryImages: [
-    { src: '/images/photo-01.jpg', caption: 'THE BIRTHDAY GIRL', variant: 'silhouette' },
-    { src: '/images/photo-02.jpg', caption: 'THE NIGHT', variant: 'nightlife' },
-    { src: '/images/photo-03.jpg', caption: 'THE LOOK', variant: 'flash' },
-    { src: '/images/photo-04.jpg', caption: 'THE MOMENT', variant: 'champagne' },
-    { src: '/images/photo-05.jpg', caption: 'THE CROWD', variant: 'nightlife' },
-    { src: '/images/photo-06.jpg', caption: 'THE CITY', variant: 'city' },
-    { src: '/images/photo-07.jpg', caption: 'THE DETAILS', variant: 'jewelry' },
-    { src: '/images/photo-08.jpg', caption: 'THE ROOM', variant: 'interior' },
-    { src: '/images/photo-09.jpg', caption: 'THE BOUQUET', variant: 'flowers' },
-    { src: '/images/photo-10.jpg', caption: 'THE ARRIVAL', variant: 'architecture' },
-    { src: '/images/photo-11.jpg', caption: 'THE TOAST', variant: 'champagne' },
-    { src: '/images/photo-12.jpg', caption: 'THE AFTERGLOW', variant: 'texture' },
-  ] as GalleryImage[],
-
   program: [
     { time: '5:00 PM', title: 'ARRIVAL' },
     { time: '5:30 PM', title: 'WELCOME' },
@@ -104,17 +89,6 @@ export const invitationConfig = {
     { time: '7:00 PM', title: '18 CANDLES' },
     { time: '7:30 PM', title: 'CELEBRATION' },
   ] as ProgramItem[],
-
-  guestList: [
-    'The Aldridge Family',
-    'Genevieve Marchetti',
-    'The Whitfield Twins',
-    'Isabella Cross',
-    'The Harrington Party',
-    'Nico Delacroix',
-    'The St. James Circle',
-    'Amara Voss',
-  ],
 
   wishes: [
     'Dance until the heels come off.',
