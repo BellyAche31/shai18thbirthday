@@ -35,9 +35,12 @@ export default function BokehLights() {
       <div className="absolute left-1/2 top-0 h-[10%] w-[3px] -translate-x-1/2 bg-emerald-200/90 blur-[2px]" />
 
       <style>{`
+        /* Opacity only — pulsing the scale meant the compositor had to redo
+           every blob's blur each frame, which is what made the intro stutter
+           on phones. Opacity animates on the existing texture for free. */
         @keyframes bokeh {
-          0%, 100% { opacity: 0.35; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.18); }
+          0%, 100% { opacity: 0.35; }
+          50% { opacity: 0.7; }
         }
         .animate-bokeh {
           animation: bokeh 6s ease-in-out infinite;

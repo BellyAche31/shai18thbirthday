@@ -11,9 +11,13 @@ export default function SpottedCard({ visible }: { visible: boolean }) {
   const { eyebrow, lines } = useT().spottedCard
 
   return (
+    // Deliberately no blur/scale in this transition. A lingering `filter`
+    // (even blur(0)) keeps the card on its own composited layer, and mobile
+    // browsers rasterize those at reduced resolution — which turned the photo
+    // and the text visibly pixelated. Fading and sliding only keeps it crisp.
     <article
-      className={`relative w-[86vw] max-w-[340px] rotate-[-1.5deg] bg-ivory p-4 shadow-[0_28px_70px_rgba(0,0,0,0.7)] transition-all duration-[1100ms] ease-out motion-reduce:transition-none sm:max-w-[380px] sm:p-5 ${
-        visible ? 'translate-y-0 scale-100 opacity-100 blur-0' : 'translate-y-6 scale-95 opacity-0 blur-sm'
+      className={`relative w-[86vw] max-w-[340px] rotate-[-1.5deg] bg-ivory p-4 shadow-[0_28px_70px_rgba(0,0,0,0.7)] transition-[opacity,transform] duration-[1100ms] ease-out motion-reduce:transition-none sm:max-w-[380px] sm:p-5 ${
+        visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
       }`}
     >
       <p className="font-display text-lg italic tracking-wide text-ink sm:text-xl">{eyebrow}</p>

@@ -77,10 +77,11 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
       <BokehLights />
       <div className="absolute inset-0 bg-ink/45" />
 
-      {/* Beat one: the title, focusing out of the blur. */}
+      {/* Beat one: the title, easing up into place. Same reasoning as the
+          card — no filter in the transition, so the type stays sharp. */}
       <h1
-        className={`absolute px-6 text-center font-display text-3xl tracking-wide text-ivory transition-all duration-[1300ms] ease-out motion-reduce:transition-none sm:text-5xl ${
-          titleVisible ? 'scale-100 opacity-100 blur-0' : 'scale-95 opacity-0 blur-md'
+        className={`absolute px-6 text-center font-display text-3xl tracking-wide text-ivory transition-[opacity,transform] duration-[1300ms] ease-out motion-reduce:transition-none sm:text-5xl ${
+          titleVisible ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
         }`}
       >
         {t.intro.title}
