@@ -90,12 +90,22 @@ export default function Scoop() {
         </Reveal>
 
         <Reveal delay={700}>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <a
-              href={invitationConfig.mapsUrl}
-              className="group relative inline-flex items-center gap-3 border border-gold/50 px-8 py-4 font-sans text-xs tracking-widest2 text-gold uppercase transition-colors hover:bg-gold hover:text-ink"
+              href={invitationConfig.googleMapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative inline-flex items-center justify-center gap-3 border border-gold/50 px-8 py-4 font-sans text-xs tracking-widest2 text-gold uppercase transition-colors hover:bg-gold hover:text-ink"
             >
-              View Location
+              Google Maps
+            </a>
+            <a
+              href={invitationConfig.wazeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative inline-flex items-center justify-center gap-3 border border-gold/50 px-8 py-4 font-sans text-xs tracking-widest2 text-gold uppercase transition-colors hover:bg-gold hover:text-ink"
+            >
+              Waze
             </a>
           </div>
         </Reveal>
