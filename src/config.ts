@@ -97,6 +97,52 @@ export const invitationConfig = {
     'Leave room for one more surprise.',
     'Remember this is only the beginning.',
   ] as string[],
+
+  // Scrolling ticker headlines — the ambient gossip-column marquee.
+  tickerHeadlines: [
+    'SHAI TURNS 18 THIS NOVEMBER',
+    'THE GUEST LIST IS ALREADY A RUMOR',
+    'BLACK TIE. NO EXCEPTIONS.',
+    'THE ARCHIVE BALLROOM, TRANSFORMED FOR ONE NIGHT ONLY',
+    'SOURCES CONFIRM: THIS IS THE PARTY OF THE SEASON',
+    'XOXO',
+  ] as string[],
+
+  // Rotating ambient "breaking" notifications that surface while guests browse.
+  spottedHeadlines: [
+    'SPOTTED: an invitation nobody wanted to miss.',
+    'BREAKING: the dress code is non-negotiable.',
+    "SOURCES SAY: Shai's playlist is under lock and key.",
+    'RUMOR HAS IT: the cake has a secret ingredient.',
+    'SPOTTED: a guest list getting harder to get on by the hour.',
+    'BREAKING: this invitation self-destructs at midnight. (Kidding. Mostly.)',
+  ] as string[],
+
+  // Click-to-reveal gossip cards.
+  blindItems: [
+    {
+      teaser: 'Which birthday girl is turning a very significant age this year?',
+      reveal: "It's Shai. It was always going to be Shai.",
+    },
+    {
+      teaser: 'What NYC ballroom is getting a total transformation for one night only?',
+      reveal: 'The Archive Ballroom — gold everything, dress code enforced.',
+    },
+    {
+      teaser: 'Who requested absolutely no phones during the cake?',
+      reveal: 'The birthday girl herself. Live it, don’t film it.',
+    },
+    {
+      teaser: 'What time does this exclusive affair really get started?',
+      reveal: '7:00 PM sharp. Fashionably late is still just late.',
+    },
+  ] as { teaser: string; reveal: string }[],
+
+  // Interactive live poll.
+  poll: {
+    question: 'What steals the show tonight?',
+    options: ['The Dress', 'The Playlist', 'The Cake', 'The Surprise'] as string[],
+  },
 } as const
 
 export default invitationConfig

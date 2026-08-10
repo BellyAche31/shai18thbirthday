@@ -1,14 +1,22 @@
+import { useEffect, useRef, useState } from 'react'
 import invitationConfig from '../../config'
 import { useCountdown } from '../../hooks/useCountdown'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
-
-function pad(n: number) {
-  return n.toString().padStart(2, '0')
-}
+import FlipUnit from '../FlipUnit'
+import Confetti from '../Confetti'
 
 export default function Countdown() {
   const { days, hours, minutes, seconds, done } = useCountdown(invitationConfig.eventDate)
+  const [fire, setFire] = useState(0)
+  const firedRef = useRef(false)
+
+  useEffect(() => {
+    if (done && !firedRef.current) {
+      firedRef.current = true
+      setFire((f) => f + 1)
+    }
+  }, [done])
 
   const units = [
     { value: days, label: 'Days' },
@@ -34,20 +42,13 @@ export default function Countdown() {
         <div className="mx-auto mt-14 grid max-w-2xl grid-cols-4 gap-2 sm:gap-6">
           {units.map((unit, i) => (
             <Reveal key={unit.label} delay={150 + i * 100}>
-              <div className="relative flex flex-col items-center border border-gold/25 px-2 py-6 sm:px-4 sm:py-10">
-                <span className="absolute left-2 top-2 h-2 w-2 border-l border-t border-gold/50 sm:left-3 sm:top-3" />
-                <span className="absolute right-2 bottom-2 h-2 w-2 border-r border-b border-gold/50 sm:right-3 sm:bottom-3" />
-                <span className="font-display text-4xl tabular-nums text-gold sm:text-6xl md:text-7xl">
-                  {pad(unit.value)}
-                </span>
-                <span className="mt-3 font-sans text-[9px] tracking-widest2 text-ivory/70 uppercase sm:text-xs">
-                  {unit.label}
-                </span>
-              </div>
+              <FlipUnit value={unit.value} label={unit.label} />
             </Reveal>
           ))}
         </div>
       )}
+
+      <Confetti fire={fire} />
     </section>
   )
 }

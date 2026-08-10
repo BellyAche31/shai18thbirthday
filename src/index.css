@@ -16,6 +16,35 @@ body {
   color: #080808;
 }
 
+.flip-unit {
+  perspective: 900px;
+}
+.flip-card {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.45, 0, 0.2, 1);
+}
+.flip-card.is-flipping {
+  transform: rotateX(-180deg);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  backface-visibility: hidden;
+}
+.flip-face-back {
+  transform: rotateX(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-card {
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

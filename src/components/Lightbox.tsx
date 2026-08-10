@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import SmartImage from './SmartImage'
 import type { GalleryImage } from '../config'
 
@@ -13,6 +13,8 @@ export default function Lightbox({
   onClose: () => void
   onNavigate: (nextIndex: number) => void
 }) {
+  const touchStartX = useRef<number | null>(null)
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -29,12 +31,28 @@ export default function Lightbox({
 
   const image = images[index]
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const delta = e.changedTouches[0].clientX - touchStartX.current
+    if (Math.abs(delta) > 50) {
+      if (delta < 0) onNavigate((index + 1) % images.length)
+      else onNavigate((index - 1 + images.length) % images.length)
+    }
+    touchStartX.current = null
+  }
+
   return (
     <div
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-ink/97 backdrop-blur-md animate-fadeIn px-4"
       role="dialog"
       aria-modal="true"
       aria-label={`${image.caption} — full screen view`}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <button
         onClick={onClose}
@@ -77,6 +95,9 @@ export default function Lightbox({
       <p className="mt-5 font-sans text-xs tracking-widest2 text-gold uppercase">{image.caption}</p>
       <p className="mt-1 font-body text-ivory/50 text-sm">
         {index + 1} / {images.length}
+      </p>
+      <p className="mt-1 font-sans text-[9px] tracking-widest2 text-ivory/30 uppercase sm:hidden">
+        Swipe to browse
       </p>
     </div>
   )

@@ -1,25 +1,46 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import invitationConfig from '../../config'
 import PlaceholderArt from '../PlaceholderArt'
 import GoldLine from '../GoldLine'
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const enableTilt = useRef(false)
 
   useEffect(() => {
     const t = window.setTimeout(() => setMounted(true), 100)
+    enableTilt.current =
+      window.matchMedia('(pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
     return () => window.clearTimeout(t)
   }, [])
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!enableTilt.current) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2
+    setTilt({ x, y })
+  }
+
+  const handleMouseLeave = () => setTilt({ x: 0, y: 0 })
 
   return (
     <section
       id="home"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-ink px-6 text-center"
     >
       <div
-        className={`absolute inset-0 transition-all duration-[2000ms] ease-out ${
-          mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
+        className={`absolute inset-0 transition-opacity duration-[2000ms] ease-out ${
+          mounted ? 'opacity-100' : 'opacity-0'
         }`}
+        style={{
+          transform: `scale(${mounted ? 1.08 : 1.16}) translate3d(${tilt.x * -12}px, ${tilt.y * -12}px, 0)`,
+          transition: 'transform 0.6s ease-out',
+        }}
       >
         <PlaceholderArt variant="silhouette" className="h-full w-full" label="Editorial portrait placeholder" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink" />
