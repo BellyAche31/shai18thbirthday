@@ -8,7 +8,7 @@ export default function EighteenRoses() {
   return (
     <section className="relative bg-ink px-6 py-24 sm:py-32">
       <Reveal>
-        <SectionLabel>18 Roses</SectionLabel>
+        <SectionLabel>The Eighteen Roses</SectionLabel>
       </Reveal>
       <Reveal delay={100}>
         <h2 className="mt-6 text-center font-display text-3xl tracking-wide text-ivory sm:text-4xl">
@@ -16,8 +16,13 @@ export default function EighteenRoses() {
         </h2>
       </Reveal>
       <Reveal delay={150}>
-        <p className="mx-auto mt-4 max-w-md text-center font-body text-lg text-ivory/60">
-          One rose, one dance, one thank-you each.
+        <p className="mx-auto mt-4 max-w-md text-center font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">
+          The insider's note
+        </p>
+      </Reveal>
+      <Reveal delay={175}>
+        <p className="mx-auto mt-2 max-w-md text-center font-body text-lg italic text-ivory/60">
+          {invitationConfig.rosesNote}
         </p>
       </Reveal>
 

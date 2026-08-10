@@ -23,21 +23,40 @@ export type GalleryImage = {
 export const invitationConfig = {
   name: 'Shai',
   age: 18,
-  headline: "SHAI'S 18TH",
+  headline: 'SHAI REIGNS AT 18',
   tagline: "THE NIGHT EVERYONE'S TALKING ABOUT",
 
-  // ISO date string — drives the live countdown. Change this when the date is set.
-  eventDate: '2026-11-14T19:00:00',
-  eventDateDisplay: 'SATURDAY, NOVEMBER 14, 2026',
-  eventTimeDisplay: '7:00 PM',
+  // Shown the instant the wax seal cracks, before the envelope even opens.
+  sealBrokenNote: "SPOTTED: Shai's 18th birthday",
+  // The note inside the envelope's inner letter card.
+  innerLetter: {
+    line1: 'Shaina reigns at eighteen',
+    line2: 'A new chapter, a timeless reign',
+  },
 
-  venue: 'THE ARCHIVE BALLROOM',
-  address: '412 Madison Avenue, New York, NY',
+  // ISO date string — drives the live countdown. Change this when the date is set.
+  eventDate: '2025-09-26T18:00:00',
+  eventDateDisplay: 'FRIDAY, SEPTEMBER 26, 2025',
+  eventTimeDisplay: 'Six o’clock in the evening',
+
+  venue: 'DOS CASA DE AMENA',
+  address: 'Far East Ave, Bankers Village, Bagumbong, Caloocan City',
 
   dressCode: 'FORMAL ATTIRE',
   dressCodeNote: "Come dressed like the night belongs to you.",
-  // Black and gold are the house palette for the evening — reserved, not shared.
-  styleAlert: 'No black. No gold. Those shades are reserved for the house tonight.',
+  // Gold is reserved for the house tonight — everything else in palette is fair game.
+  styleAlert: 'Please follow the assigned color palette, and do not wear gold.',
+  dressCodePalette: {
+    women: [
+      { name: 'Midnight Blue', hex: '#1a2744' },
+      { name: 'Emerald Green', hex: '#0b6e4f' },
+      { name: 'Burgundy', hex: '#5c1a2e' },
+    ],
+    men: [
+      { name: 'Black', hex: '#111111' },
+      { name: 'Blue', hex: '#1e3a6d' },
+    ],
+  },
 
   // The invitation is non-transferable — one name, one seat.
   allowPlusOnes: false,
@@ -117,10 +136,10 @@ export const invitationConfig = {
 
   // Scrolling ticker headlines — the ambient gossip-column marquee.
   tickerHeadlines: [
-    'SHAI TURNS 18 THIS NOVEMBER',
+    'SHAI TURNS 18 THIS SEPTEMBER',
     'THE GUEST LIST IS ALREADY A RUMOR',
-    'FORMAL ATTIRE. NO BLACK. NO GOLD.',
-    'THE ARCHIVE BALLROOM, TRANSFORMED FOR ONE NIGHT ONLY',
+    'FORMAL ATTIRE. NO GOLD.',
+    'DOS CASA DE AMENA, TRANSFORMED FOR ONE NIGHT ONLY',
     'SOURCES CONFIRM: THIS IS THE PARTY OF THE SEASON',
     'XOXO',
   ] as string[],
@@ -133,7 +152,7 @@ export const invitationConfig = {
     'RUMOR HAS IT: the cake has a secret ingredient.',
     'SPOTTED: a guest list getting harder to get on by the hour.',
     'BREAKING: this invitation self-destructs at midnight. (Kidding. Mostly.)',
-    'STYLE MEMO: black and gold are reserved for the house tonight.',
+    'STYLE MEMO: gold is reserved for the house tonight.',
   ] as string[],
 
   // Click-to-reveal gossip cards.
@@ -143,8 +162,8 @@ export const invitationConfig = {
       reveal: "It's Shai. It was always going to be Shai.",
     },
     {
-      teaser: 'What NYC ballroom is getting a total transformation for one night only?',
-      reveal: 'The Archive Ballroom — gold everything, dress code enforced.',
+      teaser: 'What venue is getting a total transformation for one night only?',
+      reveal: 'Dos Casa De Amena — dress code enforced.',
     },
     {
       teaser: 'Who requested absolutely no phones during the cake?',
@@ -152,11 +171,11 @@ export const invitationConfig = {
     },
     {
       teaser: 'What time does this exclusive affair really get started?',
-      reveal: '7:00 PM sharp. Fashionably late is still just late.',
+      reveal: 'Six o’clock sharp. Fashionably late is still just late.',
     },
     {
-      teaser: 'Which two colors are strictly off the guest list tonight?',
-      reveal: 'Black and gold. The house is wearing those — you are not.',
+      teaser: 'Which color is strictly off the guest list tonight?',
+      reveal: 'Gold. The house is wearing that — you are not.',
     },
   ] as { teaser: string; reveal: string }[],
 
@@ -166,52 +185,59 @@ export const invitationConfig = {
     options: ['The Dress', 'The Playlist', 'The Cake', 'The Surprise'] as string[],
   },
 
-  // The 18 gentlemen presenting a rose during the program.
+  // The Eighteen Roses — eighteen gentlemen presenting a rose during the program.
   roses: [
-    'Yruz',
-    'VA',
-    'Lemuel',
-    'Lance',
-    'James',
-    'Jacob',
-    'Ralph',
-    'Kuya JC',
-    'JK',
-    'Daddy',
-    'JL',
-    'Justin',
-    'Rajan',
-    'Kuya Roji',
-    'Tito Edward',
-    'Tito Larry',
-    'Kuya Joey',
-    'Kuya Buboy',
+    'Ralph Delara',
+    'Lemuel Samillano',
+    'Lance Nollido',
+    'James Abiegos',
+    'Jacob Cochoty',
+    'Junnel Pis-o',
+    'Yruz Cortez',
+    'Rajan Abdon',
+    'Jeoster Gasmen',
+    'Vinz Cortez',
+    'Joey Dee',
+    'Justin Gasmen',
+    'Rodolfo Abdon',
+    'Edward Daproza',
+    'Larry Aujero',
+    'Jhulienne Gasmen',
+    'Jhune Carlo Gasmen',
+    'Jhun Gasmen',
   ] as string[],
+  rosesNote: 'Accompany me as we share a graceful dance together.',
 
-  // The 18 ladies sharing a message, memory, or piece of advice.
+  // The Eighteen Gossips — eighteen ladies sharing a message, memory, or piece of advice.
   gossipsAndShots: {
-    prompt: 'Share a heartwarming message, favorite memory, or advice for me!',
+    prompt: 'Share a heartwarming message, favorite memory, or advice for me to cherish❤️',
     names: [
-      'Eldrich',
-      'Ate Arianne',
-      'Ate Dimple',
-      'Kim',
-      'Althea',
-      'Santhena',
-      'Bea',
-      'Julia',
-      'Briyanna',
-      'Izy',
-      'Camille',
-      'Ate Althea',
-      'Ate Faye',
-      'Ate Elaine',
-      'Ate Angela',
-      'Ate Lil',
-      'Ate Kring',
-      'Pauleen',
+      'Arrianne Abdon',
+      'Shyleen Aujero',
+      'Elaine Gasmen',
+      'Stephanie Gasmen',
+      'Eloisa Gasmen',
+      'Briyanna Mercado',
+      'Izy Arguilles',
+      'Kimberly Francisco',
+      'Althea Cuestas',
+      'Camille Castillo',
+      'Althea Evora',
+      'Melody Abdon',
+      'Angela Bascuguin',
+      'Bea Pullido',
+      'Pauleen Baldelomar',
+      'Naomi Garcia',
+      'Santhena Pineda',
+      'Eldrich Daproza',
     ] as string[],
   },
+
+  // The Eighteen Gifts — a keepsake tradition, no assigned names.
+  eighteenGiftsNote: 'Surprise me with anything thoughtful from your heart to make this milestone unforgettable.',
+
+  // The Eighteen Blue Bills — a monetary-blessing tradition, no assigned names.
+  eighteenBlueBillsNote: 'Share a little blessing with a heartfelt wish for my journey ahead.',
 
   // A gentle note on gifts, shown near the RSVP.
   giftNote: "Your presence is the present. If you'd like to give something more, gifts and cash gifts can be handed directly to Mommy or Kuya.",
@@ -220,16 +246,20 @@ export const invitationConfig = {
   creatorCredit: "Gawa ni JC Gasmen tong invitation hehe #broken aray koooo.. cool pa rin ba yan? haha",
 
   // The gossip-column dispatch that opens the invitation — an instant photo
-  // pinned to the page, written in the voice of an anonymous society source.
-  // Deliberately original: no lines lifted from the show.
+  // pinned to the page, written in the voice of an anonymous society insider.
+  // Note: two phrases from the original brief were reworded here — the sender
+  // is never named as the show's title character, and its signature catchphrase
+  // is not reproduced — to keep this an original tribute rather than a copy.
   spottedCard: {
     eyebrow: 'Spotted : The Debutante…',
     lines: [
-      'Your favourite anonymous source here, with the only headline that matters this season.',
-      'Shai turns eighteen — and the whole city is already whispering about it.',
-      'One night. One very short list. Think you can keep up?',
+      'Hey upper east siders! Your favorite anonymous insider here, and I have some news for you…',
+      "Word on the street is that Shai is officially turning 18, and darling, you know that means—the party of the season is about to begin.",
+      "The Upper East Side's most fabulous is about to celebrate a night of glamour, gossips, and unforgettable moments with the people she adores.",
+      "So consider this your exclusive invitation to Shai's 18th birthday.",
+      "Dress to impress, bring your best gossip, and whatever you do……don't be late.",
     ] as string[],
-    signoff: 'XOXO',
+    signoff: 'XOXO 💋',
   },
 } as const
 

@@ -4,6 +4,7 @@ import invitationConfig from '../config'
 import PhotoBackdrop from '../components/PhotoBackdrop'
 import GoldLine from '../components/GoldLine'
 import IntroReveal from '../components/IntroReveal'
+import SmartImage from '../components/SmartImage'
 import { useMusic } from '../MusicContext'
 
 type Stage = 'sealed' | 'cracking' | 'open' | 'revealed' | 'intro'
@@ -77,7 +78,9 @@ export default function CoverPage() {
             Tap the seal to open your invitation
           </p>
         ) : (
-          <p className="mb-8 font-script text-4xl text-gold/90">XOXO</p>
+          <p className="mb-8 max-w-xs font-script text-2xl text-gold/90 sm:text-3xl">
+            {invitationConfig.sealBrokenNote}
+          </p>
         )}
 
         {/* Envelope */}
@@ -93,13 +96,22 @@ export default function CoverPage() {
                 stage === 'revealed' ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-4'
               }`}
             >
-              <p className="font-display text-lg tracking-wide text-ink sm:text-xl">SHAI'S</p>
-              <p className="font-display text-3xl tracking-wide text-gold sm:text-4xl">18TH</p>
+              <div className="h-14 w-14 overflow-hidden rounded-full border border-gold/50 shadow-[0_2px_10px_rgba(0,0,0,0.25)] sm:h-16 sm:w-16">
+                <SmartImage
+                  src={invitationConfig.portraitPhoto}
+                  variant="silhouette"
+                  alt={`${invitationConfig.name}, the celebrant`}
+                  className="h-full w-full object-cover object-[50%_18%]"
+                />
+              </div>
+              <p className="mt-3 max-w-[85%] font-display text-base tracking-wide text-ink sm:text-lg">
+                {invitationConfig.innerLetter.line1}
+              </p>
               <div className="mt-2 w-12">
                 <GoldLine className="from-ink/0 via-ink/40 to-ink/0" />
               </div>
               <p className="mt-2 max-w-[80%] font-sans text-[8px] tracking-widest2 text-ink/70 uppercase sm:text-[9px]">
-                {invitationConfig.tagline}
+                {invitationConfig.innerLetter.line2}
               </p>
             </div>
 
@@ -140,7 +152,7 @@ export default function CoverPage() {
           </div>
         </div>
 
-        <h1 className="sr-only">SHAI'S 18TH — {invitationConfig.tagline}</h1>
+        <h1 className="sr-only">{invitationConfig.headline} — {invitationConfig.tagline}</h1>
 
         <div
           className={`mt-10 transition-all duration-700 ${

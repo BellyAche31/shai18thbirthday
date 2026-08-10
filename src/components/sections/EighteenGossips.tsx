@@ -8,7 +8,7 @@ export default function EighteenGossips() {
   return (
     <section className="relative bg-ivory px-6 py-24 text-ink sm:py-32">
       <Reveal>
-        <SectionLabel>18 Gossips &amp; Shots</SectionLabel>
+        <SectionLabel>The Eighteen Gossips</SectionLabel>
       </Reveal>
       <Reveal delay={100}>
         <h2 className="mt-6 text-center font-display text-3xl tracking-wide sm:text-4xl">
@@ -16,7 +16,12 @@ export default function EighteenGossips() {
         </h2>
       </Reveal>
       <Reveal delay={150}>
-        <p className="mx-auto mt-4 max-w-md text-center font-body text-lg italic text-ink/70">
+        <p className="mx-auto mt-4 max-w-md text-center font-sans text-[10px] tracking-widest2 text-gold uppercase">
+          The insider's note
+        </p>
+      </Reveal>
+      <Reveal delay={175}>
+        <p className="mx-auto mt-2 max-w-md text-center font-body text-lg italic text-ink/70">
           {prompt}
         </p>
       </Reveal>
