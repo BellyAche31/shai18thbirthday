@@ -246,20 +246,16 @@ export const invitationConfig = {
   creatorCredit: "Gawa ni JC Gasmen tong invitation hehe #broken aray koooo.. cool pa rin ba yan? haha",
 
   // The gossip-column dispatch that opens the invitation — an instant photo
-  // pinned to the page, written in the voice of an anonymous society insider.
-  // Note: two phrases from the original brief were reworded here — the sender
-  // is never named as the show's title character, and its signature catchphrase
-  // is not reproduced — to keep this an original tribute rather than a copy.
+  // pinned to the page, written in the voice of the party's gossip narrator.
   spottedCard: {
-    eyebrow: 'Spotted : The Debutante…',
+    eyebrow: 'Spotted: Shaina Jhianne',
     lines: [
-      'Hey upper east siders! Your favorite anonymous insider here, and I have some news for you…',
-      "Word on the street is that Shai is officially turning 18, and darling, you know that means—the party of the season is about to begin.",
-      "The Upper East Side's most fabulous is about to celebrate a night of glamour, gossips, and unforgettable moments with the people she adores.",
-      "So consider this your exclusive invitation to Shai's 18th birthday.",
-      "Dress to impress, bring your best gossip, and whatever you do……don't be late.",
+      'Hey, Upper East Siders. Gossip Girl here…',
+      'Stepping into the spotlight and leaving childhood behind. On September 26, 2026, our favorite girl will officially be turning 18—and you’re invited to witness the celebration.',
+      'So put on your finest attire, bring your best secrets, and get ready for an evening filled with glamour, laughter, and memories worth gossiping about.',
+      'After all, you wouldn’t want to miss the party everyone will be talking about. 💋',
     ] as string[],
-    signoff: 'XOXO 💋',
+    signoff: 'XOXO,\nGossip Girl',
   },
 } as const
 

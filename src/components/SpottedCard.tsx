@@ -33,7 +33,7 @@ export default function SpottedCard({ visible }: { visible: boolean }) {
             {line}
           </p>
         ))}
-        <p className="pt-1 font-script text-3xl leading-none text-gold">{signoff}</p>
+        <p className="whitespace-pre-line pt-1 font-script text-3xl leading-tight text-gold">{signoff}</p>
       </div>
     </article>
   )
