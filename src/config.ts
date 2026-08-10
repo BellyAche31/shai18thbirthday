@@ -233,8 +233,28 @@ export const invitationConfig = {
     ] as string[],
   },
 
-  // The Eighteen Gifts — a keepsake tradition, no assigned names.
+  // The Eighteen Gifts — a keepsake tradition.
   eighteenGiftsNote: 'Surprise me with anything thoughtful from your heart to make this milestone unforgettable.',
+  eighteenGifts: [
+    'Anabella Aujero',
+    'Melojane Abdon',
+    'Ma. Elena Gasmen',
+    'Jennifer Gasmen',
+    'Mark Dumlao',
+    'Raquel Abasolo',
+    'Cynthia Tuburan',
+    'Melody Joy Hope Abdon',
+    'Brigitte Romero',
+    'Eva Inojales',
+    'Arlene Trinidad',
+    'Lilet Rivera',
+    'Joan Abdon',
+    'Cherry Ong',
+    'Doc Christine Baligod Corpuz',
+    'Michelle Ordiz',
+    'Mayet Elico',
+    'Marlyn Cambe',
+  ] as string[],
 
   // The Eighteen Blue Bills — a monetary-blessing tradition.
   eighteenBlueBillsNote: 'Share a little blessing with a heartfelt wish for my journey ahead.',

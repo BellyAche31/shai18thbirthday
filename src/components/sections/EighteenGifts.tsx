@@ -29,6 +29,17 @@ export default function EighteenGifts() {
           {invitationConfig.eighteenGiftsNote}
         </p>
       </Reveal>
+
+      <div className="mx-auto mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-3">
+        {invitationConfig.eighteenGifts.map((name, i) => (
+          <Reveal key={name} delay={(i % 9) * 60}>
+            <div className="flex items-baseline gap-3 border-b border-gold/10 pb-3">
+              <span className="font-display text-sm text-gold">{String(i + 1).padStart(2, '0')}</span>
+              <p className="font-body text-lg text-ivory/90">{name}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
     </section>
   )
 }
