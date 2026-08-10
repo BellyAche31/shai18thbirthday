@@ -64,7 +64,7 @@ export const invitationConfig = {
 
   googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Dos+Casa+De+Amena%2C+Far+East+Ave%2C+Bankers+Village%2C+Bagumbong%2C+Caloocan+City',
   wazeUrl: 'https://waze.com/ul?q=Dos%20Casa%20De%20Amena%2C%20Far%20East%20Ave%2C%20Bankers%20Village%2C%20Bagumbong%2C%20Caloocan%20City&navigate=yes',
-  rsvpUrl: 'https://appt.apptrainings.com/r/caS9k1HFSz8pvaj1',
+  rsvpUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeHu1ZzTZBx_zreeO7B9GPL9cymhzS7rx2lhtVlPsthxY4HlQ/viewform',
 
   // The celebrant's portrait, used as the softly-darkened backdrop behind the
   // sealed envelope and the hero. Swap the path to change both at once.
