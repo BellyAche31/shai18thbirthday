@@ -1,11 +1,48 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import invitationConfig from '../config'
 import assetUrl from '../assetUrl'
 
+const FADE_MS = 800
+const FADE_STEPS = 16
+
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const fadeRef = useRef<number | null>(null)
   const [playing, setPlaying] = useState(false)
   const [unavailable, setUnavailable] = useState(false)
+
+  const targetVolume = invitationConfig.musicVolume
+
+  const clearFade = () => {
+    if (fadeRef.current !== null) {
+      window.clearInterval(fadeRef.current)
+      fadeRef.current = null
+    }
+  }
+
+  // Never leave a fade timer running after unmount.
+  useEffect(() => clearFade, [])
+
+  /** Ease the volume toward `to` so the track never cuts in or out abruptly. */
+  const fadeTo = (to: number, onDone?: () => void) => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    clearFade()
+    const from = audio.volume
+    const delta = (to - from) / FADE_STEPS
+    let step = 0
+
+    fadeRef.current = window.setInterval(() => {
+      step += 1
+      const next = step >= FADE_STEPS ? to : from + delta * step
+      audio.volume = Math.min(1, Math.max(0, next))
+      if (step >= FADE_STEPS) {
+        clearFade()
+        onDone?.()
+      }
+    }, FADE_MS / FADE_STEPS)
+  }
 
   const toggle = async () => {
     const audio = audioRef.current
@@ -13,13 +50,19 @@ export default function MusicPlayer() {
 
     try {
       if (playing) {
-        audio.pause()
         setPlaying(false)
+        fadeTo(0, () => audio.pause())
       } else {
+        // Start silent and rise, so tapping play feels like the room
+        // warming up rather than a speaker switching on.
+        clearFade()
+        audio.volume = 0
         await audio.play()
         setPlaying(true)
+        fadeTo(targetVolume)
       }
     } catch {
+      clearFade()
       setUnavailable(true)
       setPlaying(false)
     }

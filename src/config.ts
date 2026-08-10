@@ -47,6 +47,9 @@ export const invitationConfig = {
   rsvpUrl: '#rsvp',
 
   musicFile: '/audio/background-music.mp3',
+  // Background-music level, 0–1. Kept low so it sits under the moment
+  // rather than competing with it. Raise toward 0.5 for a fuller sound.
+  musicVolume: 0.3,
 
   galleryImages: [
     { src: '/images/photo-01.jpg', caption: 'THE BIRTHDAY GIRL', variant: 'silhouette' },
