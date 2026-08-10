@@ -5,12 +5,15 @@ import PhotoBackdrop from '../components/PhotoBackdrop'
 import GoldLine from '../components/GoldLine'
 import IntroReveal from '../components/IntroReveal'
 import SmartImage from '../components/SmartImage'
+import PreferenceToggles from '../components/PreferenceToggles'
 import { useMusic } from '../MusicContext'
+import { useT } from '../LanguageContext'
 
 type Stage = 'sealed' | 'cracking' | 'open' | 'revealed' | 'intro'
 
 export default function CoverPage() {
   const navigate = useNavigate()
+  const t = useT()
   const { start: startMusic } = useMusic()
   const [mounted, setMounted] = useState(false)
   const [stage, setStage] = useState<Stage>('sealed')
@@ -54,6 +57,8 @@ export default function CoverPage() {
 
   return (
     <main className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-ink px-6 text-center">
+      <PreferenceToggles className="absolute right-4 top-4 z-20 sm:right-6 sm:top-6" />
+
       {/* A glimpse of the celebrant behind the sealed envelope — present
           enough to intrigue, faint enough that the envelope stays the subject. */}
       <PhotoBackdrop
@@ -75,11 +80,11 @@ export default function CoverPage() {
       >
         {stage === 'sealed' || stage === 'cracking' ? (
           <p className="mb-8 font-sans text-[11px] tracking-widest2 text-gold/80 uppercase animate-pulseSlow">
-            Tap the seal to open your invitation
+            {t.cover.tapSeal}
           </p>
         ) : (
           <p className="mb-8 max-w-xs font-script text-2xl text-gold/90 sm:text-3xl">
-            {invitationConfig.sealBrokenNote}
+            {t.cover.sealBrokenNote}
           </p>
         )}
 
@@ -105,13 +110,13 @@ export default function CoverPage() {
                 />
               </div>
               <p className="mt-3 max-w-[85%] font-display text-base tracking-wide text-ink sm:text-lg">
-                {invitationConfig.innerLetter.line1}
+                {t.cover.innerLine1}
               </p>
               <div className="mt-2 w-12">
                 <GoldLine className="from-ink/0 via-ink/40 to-ink/0" />
               </div>
               <p className="mt-2 max-w-[80%] font-sans text-[8px] tracking-widest2 text-ink/70 uppercase sm:text-[9px]">
-                {invitationConfig.innerLetter.line2}
+                {t.cover.innerLine2}
               </p>
             </div>
 
@@ -140,7 +145,7 @@ export default function CoverPage() {
             {stage !== 'revealed' && (
               <button
                 onClick={breakSeal}
-                aria-label="Break the wax seal to open your invitation"
+                aria-label={t.cover.tapSeal}
                 disabled={stage !== 'sealed'}
                 className={`absolute left-1/2 top-1/2 z-30 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gold/70 bg-gradient-to-br from-gold-light via-gold to-[#8a6a34] text-ink shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-all duration-500 sm:h-16 sm:w-16 ${
                   stage === 'sealed' ? 'hover:scale-105 focus-visible:scale-105 cursor-pointer' : ''
@@ -152,7 +157,7 @@ export default function CoverPage() {
           </div>
         </div>
 
-        <h1 className="sr-only">{invitationConfig.headline} — {invitationConfig.tagline}</h1>
+        <h1 className="sr-only">{t.headline} — {t.tagline}</h1>
 
         <div
           className={`mt-10 transition-all duration-700 ${
@@ -165,7 +170,7 @@ export default function CoverPage() {
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-gold px-10 py-4 font-sans text-xs tracking-widest2 text-gold uppercase transition-colors duration-500 hover:text-ink"
           >
             <span className="absolute inset-0 -z-10 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100" />
-            Open Invitation
+            {t.cover.openInvitation}
           </button>
         </div>
       </div>

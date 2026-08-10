@@ -46,7 +46,7 @@ export default function FlipUnit({ value, label }: { value: number; label: strin
         </div>
       </div>
 
-      <span className="mt-3 font-sans text-[9px] tracking-widest2 text-ivory/70 uppercase sm:text-xs">
+      <span className="mt-3 font-sans text-[9px] tracking-widest2 text-onsurface/70 uppercase sm:text-xs">
         {label}
       </span>
     </div>

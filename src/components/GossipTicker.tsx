@@ -1,11 +1,11 @@
-import invitationConfig from '../config'
+import { useT } from '../LanguageContext'
 
 export default function GossipTicker() {
-  const headlines = invitationConfig.tickerHeadlines
-  const line = headlines.join('   ·   ')
+  const t = useT()
+  const line = t.tickerHeadlines.join('   ·   ')
 
   return (
-    <div className="relative w-full overflow-hidden border-y border-gold/15 bg-ink py-3">
+    <div className="relative w-full overflow-hidden border-y border-gold/15 bg-surface py-3">
       <div className="flex w-max animate-[ticker_28s_linear_infinite] motion-reduce:animate-none gap-8 whitespace-nowrap">
         {[0, 1].map((rep) => (
           <span

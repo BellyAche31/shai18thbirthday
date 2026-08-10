@@ -1,15 +1,17 @@
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
+import { useT } from '../../LanguageContext'
 
 export default function TheNight() {
+  const t = useT()
   return (
-    <section id="the-night" className="relative bg-ivory px-6 py-24 text-ink sm:py-32">
+    <section id="the-night" className="relative bg-alt px-6 py-24 text-onalt sm:py-32">
       <Reveal>
-        <SectionLabel>The Night</SectionLabel>
+        <SectionLabel>{t.theNight.label}</SectionLabel>
       </Reveal>
       <Reveal delay={100}>
-        <h2 className="mt-6 text-center font-display text-3xl tracking-wide sm:text-4xl">HOW IT UNFOLDS</h2>
+        <h2 className="mt-6 text-center font-display text-3xl tracking-wide sm:text-4xl">{t.theNight.heading}</h2>
       </Reveal>
 
       <div className="relative mx-auto mt-16 max-w-md">
@@ -18,10 +20,10 @@ export default function TheNight() {
           {invitationConfig.program.map((item, i) => (
             <Reveal key={item.title} delay={i * 100}>
               <div className="relative flex items-start gap-6 pl-6 sm:pl-8">
-                <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border border-gold bg-ivory sm:h-4 sm:w-4" />
+                <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border border-gold bg-alt sm:h-4 sm:w-4" />
                 <div>
                   <p className="font-sans text-[11px] tracking-widest2 text-gold uppercase">{item.time}</p>
-                  <p className="mt-1 font-display text-2xl text-ink sm:text-3xl">{item.title}</p>
+                  <p className="mt-1 font-display text-2xl text-onalt sm:text-3xl">{t.programTitles[i] ?? item.title}</p>
                 </div>
               </div>
             </Reveal>

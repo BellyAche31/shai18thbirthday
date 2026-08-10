@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import BokehLights from './BokehLights'
 import SpottedCard from './SpottedCard'
+import { useT } from '../LanguageContext'
 
 /** title -> the gossip dispatch -> fade out into the invitation. */
 type Phase = 'title-in' | 'title' | 'card' | 'out'
@@ -20,6 +21,7 @@ const REDUCED = {
 }
 
 export default function IntroReveal({ onFinished }: { onFinished: () => void }) {
+  const t = useT()
   const [phase, setPhase] = useState<Phase>('title-in')
   const firedRef = useRef(false)
   const timers = useRef<number[]>([])
@@ -79,7 +81,7 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
           titleVisible ? 'scale-100 opacity-100 blur-0' : 'scale-95 opacity-0 blur-md'
         }`}
       >
-        Shai&rsquo;s 18th Birthday
+        {t.intro.title}
       </h1>
 
       {/* Beat two: the dispatch. */}
@@ -103,7 +105,7 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
         }}
         className="absolute bottom-6 right-6 z-10 font-sans text-[10px] tracking-widest2 text-ivory/40 uppercase transition-colors hover:text-gold"
       >
-        Skip
+        {t.intro.skip}
       </button>
     </div>
   )

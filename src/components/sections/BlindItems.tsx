@@ -1,9 +1,20 @@
 import { useState } from 'react'
-import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
+import { useT } from '../../LanguageContext'
+import type { Copy } from '../../i18n'
 
-function BlindCard({ teaser, reveal, index }: { teaser: string; reveal: string; index: number }) {
+function BlindCard({
+  teaser,
+  reveal,
+  index,
+  labels,
+}: {
+  teaser: string
+  reveal: string
+  index: number
+  labels: Copy['blindItems']
+}) {
   const [flipped, setFlipped] = useState(false)
 
   return (
@@ -11,24 +22,25 @@ function BlindCard({ teaser, reveal, index }: { teaser: string; reveal: string; 
       <button
         onClick={() => setFlipped((f) => !f)}
         aria-pressed={flipped}
-        aria-label={flipped ? `Revealed: ${reveal}` : `Blind item ${index + 1}, tap to reveal`}
+        aria-label={flipped ? `${labels.confirmed}: ${reveal}` : `${labels.itemPrefix} ${index + 1}, ${labels.tapToReveal}`}
         className="flip-unit block h-56 w-full text-left sm:h-52"
         style={{ perspective: '1200px' }}
       >
         <div className={`flip-card ${flipped ? 'is-flipping' : ''}`}>
-          <div className="flip-face flip-face-front flex-col items-start justify-between border border-gold/30 bg-gradient-to-br from-[#141414] to-[#050505] p-6">
+          <div className="flip-face flip-face-front flex-col items-start justify-between border border-gold/30 bg-gradient-to-br from-onsurface/[0.07] to-onsurface/[0.02] p-6">
             <span className="font-sans text-[10px] tracking-widest2 text-gold uppercase">
-              Blind Item #{index + 1}
+              {labels.itemPrefix} #{index + 1}
             </span>
-            <p className="font-display text-lg leading-snug text-ivory sm:text-xl">{teaser}</p>
+            <p className="font-display text-lg leading-snug text-onsurface sm:text-xl">{teaser}</p>
             <span className="font-sans text-[10px] tracking-widest2 text-gold/70 uppercase">
-              Tap to reveal
+              {labels.tapToReveal}
             </span>
           </div>
+          {/* Gold fill — its text stays dark whichever theme is on. */}
           <div className="flip-face flip-face-back flex-col items-start justify-between border border-gold bg-gradient-to-br from-gold-light/95 to-gold p-6">
-            <span className="font-sans text-[10px] tracking-widest2 text-ink/70 uppercase">Confirmed</span>
+            <span className="font-sans text-[10px] tracking-widest2 text-ink/70 uppercase">{labels.confirmed}</span>
             <p className="font-display text-lg leading-snug text-ink sm:text-xl">{reveal}</p>
-            <span className="font-sans text-[10px] tracking-widest2 text-ink/60 uppercase">Tap to hide</span>
+            <span className="font-sans text-[10px] tracking-widest2 text-ink/60 uppercase">{labels.tapToHide}</span>
           </div>
         </div>
       </button>
@@ -37,25 +49,26 @@ function BlindCard({ teaser, reveal, index }: { teaser: string; reveal: string; 
 }
 
 export default function BlindItems() {
+  const t = useT()
   return (
-    <section className="relative bg-ink px-6 py-24 sm:py-32">
+    <section className="relative bg-surface px-6 py-24 sm:py-32">
       <Reveal>
-        <SectionLabel>Blind Items</SectionLabel>
+        <SectionLabel>{t.blindItems.label}</SectionLabel>
       </Reveal>
       <Reveal delay={100}>
-        <h2 className="mt-6 text-center font-display text-3xl tracking-wide text-ivory sm:text-4xl">
-          WHAT WE'VE HEARD
+        <h2 className="mt-6 text-center font-display text-3xl tracking-wide text-onsurface sm:text-4xl">
+          {t.blindItems.heading}
         </h2>
       </Reveal>
       <Reveal delay={150}>
-        <p className="mx-auto mt-4 max-w-md text-center font-body text-lg text-ivory/60">
-          Every good scandal starts with a question. Tap a card for the answer.
+        <p className="mx-auto mt-4 max-w-md text-center font-body text-lg text-onsurface/60">
+          {t.blindItems.subtitle}
         </p>
       </Reveal>
 
       <div className="mx-auto mt-14 grid max-w-3xl gap-5 sm:grid-cols-2">
-        {invitationConfig.blindItems.map((item, i) => (
-          <BlindCard key={item.teaser} teaser={item.teaser} reveal={item.reveal} index={i} />
+        {t.blindItems.items.map((item, i) => (
+          <BlindCard key={item.teaser} teaser={item.teaser} reveal={item.reveal} index={i} labels={t.blindItems} />
         ))}
       </div>
     </section>

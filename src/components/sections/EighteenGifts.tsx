@@ -2,16 +2,18 @@ import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import GoldLine from '../GoldLine'
+import { useT } from '../../LanguageContext'
 
 export default function EighteenGifts() {
+  const t = useT()
   return (
-    <section className="relative bg-ink px-6 py-24 text-center sm:py-32">
+    <section className="relative bg-surface px-6 py-24 text-center sm:py-32">
       <Reveal>
-        <SectionLabel>The Eighteen Gifts</SectionLabel>
+        <SectionLabel>{t.gifts.label}</SectionLabel>
       </Reveal>
       <Reveal delay={100}>
-        <h2 className="mt-6 font-display text-3xl tracking-wide text-ivory sm:text-4xl">
-          A KEEPSAKE FOR EIGHTEEN
+        <h2 className="mt-6 font-display text-3xl tracking-wide text-onsurface sm:text-4xl">
+          {t.gifts.heading}
         </h2>
       </Reveal>
       <Reveal delay={150}>
@@ -21,12 +23,12 @@ export default function EighteenGifts() {
       </Reveal>
       <Reveal delay={200}>
         <p className="mx-auto mt-8 max-w-md font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">
-          The insider's note
+          {t.insidersNote}
         </p>
       </Reveal>
       <Reveal delay={250}>
-        <p className="mx-auto mt-3 max-w-md font-body text-lg italic text-ivory/70">
-          {invitationConfig.eighteenGiftsNote}
+        <p className="mx-auto mt-3 max-w-md font-body text-lg italic text-onsurface/70">
+          {t.gifts.note}
         </p>
       </Reveal>
 
@@ -35,7 +37,7 @@ export default function EighteenGifts() {
           <Reveal key={name} delay={(i % 9) * 60}>
             <div className="flex items-baseline gap-3 border-b border-gold/10 pb-3">
               <span className="font-display text-sm text-gold">{String(i + 1).padStart(2, '0')}</span>
-              <p className="font-body text-lg text-ivory/90">{name}</p>
+              <p className="font-body text-lg text-onsurface/90">{name}</p>
             </div>
           </Reveal>
         ))}

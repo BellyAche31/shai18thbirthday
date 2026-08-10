@@ -1,12 +1,13 @@
 import invitationConfig from '../config'
 import SmartImage from './SmartImage'
+import { useT } from '../LanguageContext'
 
 /**
  * The opening gossip-column dispatch: an instant photo of the celebrant with
  * a note scrawled beneath it, tilted like it was pinned to a corkboard.
  */
 export default function SpottedCard({ visible }: { visible: boolean }) {
-  const { eyebrow, lines, signoff } = invitationConfig.spottedCard
+  const { eyebrow, lines, signoff } = useT().spottedCard
 
   return (
     <article

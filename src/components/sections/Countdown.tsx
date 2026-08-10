@@ -5,8 +5,10 @@ import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import FlipUnit from '../FlipUnit'
 import Confetti from '../Confetti'
+import { useT } from '../../LanguageContext'
 
 export default function Countdown() {
+  const t = useT()
   const { days, hours, minutes, seconds, done } = useCountdown(invitationConfig.eventDate)
   const [fire, setFire] = useState(0)
   const firedRef = useRef(false)
@@ -19,23 +21,23 @@ export default function Countdown() {
   }, [done])
 
   const units = [
-    { value: days, label: 'Days' },
-    { value: hours, label: 'Hours' },
-    { value: minutes, label: 'Minutes' },
-    { value: seconds, label: 'Seconds' },
+    { value: days, label: t.countdown.days },
+    { value: hours, label: t.countdown.hours },
+    { value: minutes, label: t.countdown.minutes },
+    { value: seconds, label: t.countdown.seconds },
   ]
 
   return (
-    <section className="relative overflow-hidden bg-ink px-6 py-24 text-center text-ivory sm:py-32">
+    <section className="relative overflow-hidden bg-surface px-6 py-24 text-center text-onsurface sm:py-32">
       <div className="pointer-events-none absolute inset-0 border-y border-gold/10" />
       <Reveal>
-        <SectionLabel>Counting Down</SectionLabel>
+        <SectionLabel>{t.countdown.label}</SectionLabel>
       </Reveal>
 
       {done ? (
         <Reveal delay={150}>
           <p className="mt-14 font-display text-4xl tracking-wide text-gold sm:text-5xl">
-            THE NIGHT HAS ARRIVED.
+            {t.countdown.arrived}
           </p>
         </Reveal>
       ) : (

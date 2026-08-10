@@ -4,10 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Fixed pair — the cinematic, photo-backed moments (cover, hero, intro
+        // reveal, the instant-photo card) stay dark in both themes on purpose,
+        // and text sitting on gold is always dark. These never re-theme.
         ink: '#080808',
         ivory: '#F5F1E8',
-        gold: '#C6A15B',
-        'gold-light': '#E4C989',
+
+        // Themeable pair-of-pairs. The page alternates two section styles:
+        // "surface" sections and "alt" sections. Each carries its own
+        // foreground so light mode can make BOTH light rather than merely
+        // swapping which half is dark.
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        onsurface: 'rgb(var(--c-onsurface) / <alpha-value>)',
+        alt: 'rgb(var(--c-alt) / <alpha-value>)',
+        onalt: 'rgb(var(--c-onalt) / <alpha-value>)',
+
+        gold: 'rgb(var(--c-gold) / <alpha-value>)',
+        'gold-light': 'rgb(var(--c-gold-light) / <alpha-value>)',
         burgundy: '#3A1018',
       },
       fontFamily: {

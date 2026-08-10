@@ -1,10 +1,12 @@
 import { useMusic } from '../MusicContext'
+import { useT } from '../LanguageContext'
 
 /**
  * Floating play/pause control. The <audio> element itself lives in
  * MusicProvider so playback survives the cover -> invitation transition.
  */
 export default function MusicPlayer() {
+  const t = useT()
   const { playing, unavailable, toggle } = useMusic()
 
   return (
@@ -12,13 +14,13 @@ export default function MusicPlayer() {
       <button
         onClick={toggle}
         disabled={unavailable}
-        aria-label={playing ? 'Pause music' : 'Play music'}
+        aria-label={playing ? t.music.pause : t.music.play}
         aria-pressed={playing}
-        title={unavailable ? 'Music coming soon' : playing ? 'Pause music' : 'Play music'}
+        title={unavailable ? t.music.comingSoon : playing ? t.music.pause : t.music.play}
         className={`group relative flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-300 ${
           unavailable
             ? 'border-gold/15 opacity-40 cursor-not-allowed'
-            : 'border-gold/40 bg-ink/70 backdrop-blur-md hover:border-gold hover:bg-ink/90'
+            : 'border-gold/40 bg-surface/70 backdrop-blur-md hover:border-gold hover:bg-surface/90'
         }`}
       >
         <span

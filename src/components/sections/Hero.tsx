@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import invitationConfig from '../../config'
 import PhotoBackdrop from '../PhotoBackdrop'
 import GoldLine from '../GoldLine'
+import { useT } from '../../LanguageContext'
 
 export default function Hero() {
+  const t = useT()
   const [mounted, setMounted] = useState(false)
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const enableTilt = useRef(false)
@@ -54,7 +56,7 @@ export default function Hero() {
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
           }`}
         >
-          Exclusive
+          {t.hero.eyebrow}
         </p>
 
         <div
@@ -63,7 +65,7 @@ export default function Hero() {
           }`}
         >
           <h1 className="font-display text-6xl leading-[0.95] tracking-wide text-ivory sm:text-7xl md:text-8xl">
-            SHAI'S
+            {t.hero.name}
           </h1>
         </div>
 
@@ -86,7 +88,7 @@ export default function Hero() {
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
           }`}
         >
-          {invitationConfig.tagline}
+          {t.tagline}
         </p>
 
         <p
@@ -94,7 +96,7 @@ export default function Hero() {
             mounted ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          New York &middot; After Dark
+          {t.hero.place}
         </p>
 
         <p
@@ -102,7 +104,7 @@ export default function Hero() {
             mounted ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          XOXO
+          {t.hero.signoff}
         </p>
       </div>
 
@@ -111,7 +113,7 @@ export default function Hero() {
           mounted ? 'opacity-60' : 'opacity-0'
         }`}
       >
-        <span className="font-sans text-[9px] tracking-widest2 text-ivory uppercase">Scroll</span>
+        <span className="font-sans text-[9px] tracking-widest2 text-ivory uppercase">{t.hero.scroll}</span>
         <span className="h-8 w-px bg-gradient-to-b from-gold to-transparent" />
       </div>
     </section>

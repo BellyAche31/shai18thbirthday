@@ -2,13 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark is the default look, so it lives on the bare :root — a guest who has
+   never touched the toggle gets the intended cinematic version. */
+:root {
+  --c-surface: 8 8 8;
+  --c-onsurface: 245 241 232;
+  --c-alt: 245 241 232;
+  --c-onalt: 8 8 8;
+  --c-gold: 198 161 91;
+  --c-gold-light: 228 201 137;
+}
+
+:root[data-theme='light'] {
+  --c-surface: 253 251 246;
+  --c-onsurface: 26 22 17;
+  --c-alt: 239 231 214;
+  --c-onalt: 26 22 17;
+  /* Deepened so gold keeps its contrast against paper, while staying bright
+     enough to read on the photo sections that stay dark in both themes. */
+  --c-gold: 156 119 51;
+  --c-gold-light: 190 150 76;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-ink text-ivory antialiased;
+  @apply bg-surface text-onsurface antialiased;
   font-family: 'Cormorant Garamond', serif;
+  transition: background-color 400ms ease, color 400ms ease;
 }
 
 ::selection {

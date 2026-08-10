@@ -3,6 +3,7 @@ import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import GoldLine from '../GoldLine'
 import SmartImage from '../SmartImage'
+import { useT } from '../../LanguageContext'
 
 function CalendarIcon() {
   return (
@@ -30,22 +31,23 @@ function PinIcon() {
 }
 
 export default function Scoop() {
+  const t = useT()
   const rows = [
-    { icon: <CalendarIcon />, label: 'The Evening Date', value: invitationConfig.eventDateDisplay },
-    { icon: <ClockIcon />, label: 'The Hour', value: invitationConfig.eventTimeDisplay },
-    { icon: <PinIcon />, label: 'The Venue', value: invitationConfig.venue, sub: invitationConfig.address },
+    { icon: <CalendarIcon />, label: t.scoop.dateLabel, value: t.scoop.dateDisplay },
+    { icon: <ClockIcon />, label: t.scoop.timeLabel, value: t.scoop.timeDisplay },
+    { icon: <PinIcon />, label: t.scoop.venueLabel, value: invitationConfig.venue, sub: invitationConfig.address },
   ]
 
   return (
-    <section id="scoop" className="relative bg-ink px-6 py-24 text-ivory sm:py-32">
+    <section id="scoop" className="relative bg-surface px-6 py-24 text-onsurface sm:py-32">
       <div className="mx-auto max-w-4xl">
         <Reveal>
-          <SectionLabel>The Scoop</SectionLabel>
+          <SectionLabel>{t.scoop.label}</SectionLabel>
         </Reveal>
 
         <Reveal delay={100}>
           <h2 className="mt-6 text-center font-display text-4xl tracking-wide sm:text-5xl">
-            {invitationConfig.headline}
+            {t.headline}
           </h2>
         </Reveal>
 
@@ -74,8 +76,8 @@ export default function Scoop() {
                   <span className="mt-0.5 text-gold">{row.icon}</span>
                   <div>
                     <p className="font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">{row.label}</p>
-                    <p className="mt-1 font-body text-xl text-ivory/90 sm:text-2xl">{row.value}</p>
-                    {row.sub && <p className="mt-1 font-body text-sm text-ivory/60">{row.sub}</p>}
+                    <p className="mt-1 font-body text-xl text-onsurface/90 sm:text-2xl">{row.value}</p>
+                    {row.sub && <p className="mt-1 font-body text-sm text-onsurface/60">{row.sub}</p>}
                   </div>
                 </div>
               </Reveal>
@@ -97,7 +99,7 @@ export default function Scoop() {
               rel="noreferrer"
               className="group relative inline-flex items-center justify-center gap-3 border border-gold/50 px-8 py-4 font-sans text-xs tracking-widest2 text-gold uppercase transition-colors hover:bg-gold hover:text-ink"
             >
-              Google Maps
+              {t.scoop.googleMaps}
             </a>
             <a
               href={invitationConfig.wazeUrl}
@@ -105,7 +107,7 @@ export default function Scoop() {
               rel="noreferrer"
               className="group relative inline-flex items-center justify-center gap-3 border border-gold/50 px-8 py-4 font-sans text-xs tracking-widest2 text-gold uppercase transition-colors hover:bg-gold hover:text-ink"
             >
-              Waze
+              {t.scoop.waze}
             </a>
           </div>
         </Reveal>

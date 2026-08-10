@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import invitationConfig from '../config'
+import { useT } from '../LanguageContext'
 
 export default function SpottedToast() {
-  const headlines = invitationConfig.spottedHeadlines
+  const t = useT()
+  const headlines = t.spottedHeadlines
   const [index, setIndex] = useState(0)
   const [visible, setVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)
@@ -39,21 +40,21 @@ export default function SpottedToast() {
       onMouseLeave={() => (pausedRef.current = false)}
     >
       <div
-        className={`relative rounded-sm border border-gold/30 bg-ink/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md transition-all duration-500 ${
+        className={`relative rounded-sm border border-gold/30 bg-surface/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md transition-all duration-500 ${
           visible ? 'opacity-100 translate-y-0' : 'pointer-events-none opacity-0 translate-y-3'
         }`}
         role="status"
       >
         <button
           onClick={() => setDismissed(true)}
-          aria-label="Dismiss notification"
-          className="absolute right-2 top-2 text-ivory/40 hover:text-gold transition-colors"
+          aria-label={t.dismissNotification}
+          className="absolute right-2 top-2 text-onsurface/40 hover:text-gold transition-colors"
         >
           <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>
         </button>
-        <p className="pr-4 font-body text-sm italic leading-snug text-ivory/90">{headlines[index]}</p>
+        <p className="pr-4 font-body text-sm italic leading-snug text-onsurface/90">{headlines[index]}</p>
       </div>
     </div>
   )
