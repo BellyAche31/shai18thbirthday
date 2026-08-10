@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import invitationConfig from '../config'
+import assetUrl from '../assetUrl'
 
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -28,7 +29,7 @@ export default function MusicPlayer() {
     <div className="fixed bottom-5 right-5 z-40">
       <audio
         ref={audioRef}
-        src={invitationConfig.musicFile}
+        src={assetUrl(invitationConfig.musicFile)}
         loop
         preload="none"
         onError={() => setUnavailable(true)}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PlaceholderArt from './PlaceholderArt'
+import assetUrl from '../assetUrl'
 import type { GalleryImage } from '../config'
 
 export default function SmartImage({
@@ -21,7 +22,7 @@ export default function SmartImage({
 
   return (
     <img
-      src={src}
+      src={assetUrl(src)}
       alt={alt}
       loading="lazy"
       className={className}
