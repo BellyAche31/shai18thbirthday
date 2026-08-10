@@ -46,6 +46,10 @@ export const invitationConfig = {
   mapsUrl: '#location',
   rsvpUrl: '#rsvp',
 
+  // The celebrant's portrait, used as the softly-darkened backdrop behind the
+  // sealed envelope and the hero. Swap the path to change both at once.
+  portraitPhoto: '/images/photo-01.jpg',
+
   musicFile: '/audio/background-music.mp3',
   // Background-music level, 0–1. Kept low so it sits under the moment
   // rather than competing with it. Raise toward 0.5 for a fuller sound.

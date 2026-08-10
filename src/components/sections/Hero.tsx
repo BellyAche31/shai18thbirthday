@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import invitationConfig from '../../config'
-import PlaceholderArt from '../PlaceholderArt'
+import PhotoBackdrop from '../PhotoBackdrop'
 import GoldLine from '../GoldLine'
 
 export default function Hero() {
@@ -33,18 +33,20 @@ export default function Hero() {
       onMouseLeave={handleMouseLeave}
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-ink px-6 text-center"
     >
-      <div
+      <PhotoBackdrop
+        src={invitationConfig.portraitPhoto}
+        variant="silhouette"
+        label="The celebrant"
         className={`absolute inset-0 transition-opacity duration-[2000ms] ease-out ${
           mounted ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{
-          transform: `scale(${mounted ? 1.08 : 1.16}) translate3d(${tilt.x * -12}px, ${tilt.y * -12}px, 0)`,
-          transition: 'transform 0.6s ease-out',
-        }}
-      >
-        <PlaceholderArt variant="silhouette" className="h-full w-full" label="Editorial portrait placeholder" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink" />
-      </div>
+        opacity={0.58}
+        blurPx={2}
+        grayscale={0.5}
+        sizingClassName="[background-size:contain] [background-position:50%_4%] md:[background-size:cover] md:[background-position:50%_16%]"
+        overlayClassName="bg-gradient-to-b from-ink/70 via-ink/45 to-ink md:via-ink/60"
+        offset={{ x: tilt.x * -12, y: tilt.y * -12 }}
+      />
 
       <div className="relative z-10 flex flex-col items-center">
         <p

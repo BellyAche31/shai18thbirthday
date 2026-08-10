@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import invitationConfig from '../config'
-import PlaceholderArt from '../components/PlaceholderArt'
+import PhotoBackdrop from '../components/PhotoBackdrop'
 import GoldLine from '../components/GoldLine'
 import IntroReveal from '../components/IntroReveal'
 import { useMusic } from '../MusicContext'
@@ -53,10 +53,19 @@ export default function CoverPage() {
 
   return (
     <main className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-ink px-6 text-center">
-      <div className="absolute inset-0">
-        <PlaceholderArt variant="nightlife" className="h-full w-full" label="Manhattan night editorial placeholder" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/80 to-ink" />
-      </div>
+      {/* A glimpse of the celebrant behind the sealed envelope — present
+          enough to intrigue, faint enough that the envelope stays the subject. */}
+      <PhotoBackdrop
+        src={invitationConfig.portraitPhoto}
+        variant="nightlife"
+        label="The celebrant"
+        className="absolute inset-0"
+        opacity={0.5}
+        blurPx={4}
+        grayscale={0.65}
+        sizingClassName="[background-size:contain] [background-position:50%_4%] md:[background-size:cover] md:[background-position:50%_16%]"
+        overlayClassName="bg-gradient-to-b from-ink/70 via-ink/45 to-ink/95 md:from-ink/85 md:via-ink/80"
+      />
 
       <div
         className={`relative z-10 flex flex-col items-center transition-all duration-[1200ms] ease-out ${
