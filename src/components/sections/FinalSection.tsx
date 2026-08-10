@@ -1,3 +1,4 @@
+import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import GoldLine from '../GoldLine'
 
@@ -18,6 +19,13 @@ export default function FinalSection() {
       </Reveal>
       <Reveal delay={500}>
         <p className="mt-6 font-script text-5xl text-gold/90">XOXO</p>
+      </Reveal>
+
+      {/* A little unfiltered credit from whoever stayed up building this. */}
+      <Reveal delay={800}>
+        <p className="mx-auto mt-16 max-w-xs font-body text-sm italic text-ivory/35">
+          {invitationConfig.creatorCredit}
+        </p>
       </Reveal>
     </section>
   )

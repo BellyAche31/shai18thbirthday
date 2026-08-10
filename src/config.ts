@@ -44,7 +44,7 @@ export const invitationConfig = {
   exclusivityNote: 'No plus ones — this invitation is exclusive to you.',
 
   mapsUrl: '#location',
-  rsvpUrl: '#rsvp',
+  rsvpUrl: 'https://appt.apptrainings.com/r/caS9k1HFSz8pvaj1',
 
   // The celebrant's portrait, used as the softly-darkened backdrop behind the
   // sealed envelope and the hero. Swap the path to change both at once.
@@ -215,6 +215,9 @@ export const invitationConfig = {
 
   // A gentle note on gifts, shown near the RSVP.
   giftNote: "Your presence is the present. If you'd like to give something more, gifts and cash gifts can be handed directly to Mommy or Kuya.",
+
+  // A small, honest, self-promoting easter egg from whoever built this thing.
+  creatorCredit: "Gawa ni JC Gasmen tong invitation hehe #broken aray koooo.. cool pa rin ba yan? haha",
 } as const
 
 export default invitationConfig
