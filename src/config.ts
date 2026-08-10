@@ -35,8 +35,8 @@ export const invitationConfig = {
   },
 
   // ISO date string — drives the live countdown. Change this when the date is set.
-  eventDate: '2025-09-26T18:00:00',
-  eventDateDisplay: 'FRIDAY, SEPTEMBER 26, 2025',
+  eventDate: '2026-09-26T18:00:00',
+  eventDateDisplay: 'SATURDAY, SEPTEMBER 26, 2026',
   eventTimeDisplay: 'Six o’clock in the evening',
 
   venue: 'DOS CASA DE AMENA',
