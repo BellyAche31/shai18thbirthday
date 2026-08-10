@@ -266,7 +266,7 @@ export const invitationConfig = {
     'Jason Ordiz',
     'Alvin Cortez',
     'Tito Larry Aujero',
-    'Dhen Colipano',
+    'Dhenz Colipano',
     'Doc Robert Corpuz',
     'Alexis Taguinod',
     'Ramie Depiedra',
