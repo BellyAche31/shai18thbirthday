@@ -7,7 +7,6 @@ import GossipIntro from '../components/sections/GossipIntro'
 import BlindItems from '../components/sections/BlindItems'
 import Scoop from '../components/sections/Scoop'
 import Countdown from '../components/sections/Countdown'
-import Poll from '../components/sections/Poll'
 import EighteenRoses from '../components/sections/EighteenRoses'
 import EighteenGossips from '../components/sections/EighteenGossips'
 import EighteenGifts from '../components/sections/EighteenGifts'
@@ -28,7 +27,6 @@ export default function HomePage() {
       <BlindItems />
       <Scoop />
       <Countdown />
-      <Poll />
       <EighteenRoses />
       <EighteenGossips />
       <EighteenGifts />

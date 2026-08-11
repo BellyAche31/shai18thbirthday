@@ -2,6 +2,7 @@ import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import GoldLine from '../GoldLine'
 import PhotoBackdrop from '../PhotoBackdrop'
+import SmartImage from '../SmartImage'
 import Signoff from '../Signoff'
 import { useT } from '../../LanguageContext'
 
@@ -20,7 +21,20 @@ export default function FinalSection() {
         overlayClassName="bg-surface/85"
       />
       <div className="pointer-events-none absolute inset-0 border-y border-gold/10" />
+
+      {/* The celebrant gets the last word, so she gets the last frame too. */}
       <Reveal>
+        <div className="relative mx-auto mb-10 h-28 w-28 overflow-hidden rounded-full border border-gold/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)] sm:h-32 sm:w-32">
+          <SmartImage
+            src={invitationConfig.portraitPhoto}
+            variant="silhouette"
+            alt={`${invitationConfig.name}, the celebrant`}
+            className="h-full w-full object-cover object-[50%_16%]"
+          />
+        </div>
+      </Reveal>
+
+      <Reveal delay={100}>
         <p className="font-display text-3xl tracking-wide text-onsurface sm:text-4xl">{t.final.seeYouThere}</p>
       </Reveal>
       <Reveal delay={200}>
