@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import BokehLights from './BokehLights'
 import SpottedCard from './SpottedCard'
+import assetUrl from '../assetUrl'
 import { useT } from '../LanguageContext'
 
 /** title -> the gossip dispatch -> fade out into the invitation. */
@@ -26,7 +27,10 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
   const t = useT()
   const [phase, setPhase] = useState<Phase>('title-in')
   const firedRef = useRef(false)
+  const armedRef = useRef(false)
   const timers = useRef<number[]>([])
+  const reducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   const finish = () => {
     if (firedRef.current) return
@@ -41,6 +45,10 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
 
   /** Tap anywhere: skip ahead to the card, or out of the intro entirely. */
   const advance = () => {
+    // The tap that opened the invitation can land here the moment this
+    // overlay mounts under the finger, skipping the first beat instantly.
+    if (!armedRef.current) return
+
     if (phase === 'title-in' || phase === 'title') {
       clearTimers()
       setPhase('card')
@@ -54,9 +62,9 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
   }
 
   useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const t = reduced ? REDUCED : TIMINGS
+    const t = reducedMotion ? REDUCED : TIMINGS
 
+    timers.current.push(window.setTimeout(() => (armedRef.current = true), 600))
     timers.current.push(window.setTimeout(() => setPhase('title'), t.toTitle))
     timers.current.push(window.setTimeout(() => setPhase('card'), t.toCard))
     timers.current.push(window.setTimeout(() => setPhase('out'), t.toOut))
@@ -74,14 +82,30 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
       onClick={advance}
       role="presentation"
     >
-      <BokehLights />
-      <div className="absolute inset-0 bg-ink/45" />
+      {/* The city-bokeh loop, shown whole rather than cropped — the lights
+          resolve into the wordmark, so filling the screen would cut the
+          payoff off. Its own background is black and matches this one, so
+          the letterboxing is invisible. A GIF can't be paused, so
+          reduced-motion guests get the static blob version instead. */}
+      {reducedMotion ? (
+        <BokehLights />
+      ) : (
+        <img
+          src={assetUrl('/images/intro-bokeh.gif')}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-contain"
+        />
+      )}
+      <div className="absolute inset-0 bg-ink/25" />
 
       {/* Beat one: the title, easing up into place. Same reasoning as the
           card — no filter in the transition, so the type stays sharp. */}
       <h1
-        className={`absolute px-6 text-center font-display text-3xl tracking-wide text-ivory transition-[opacity,transform] duration-[1300ms] ease-out motion-reduce:transition-none sm:text-5xl ${
-          titleVisible ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+        // Leaves faster than it arrives, so it's gone before the card lands
+        // rather than lingering across it during the crossfade.
+        className={`absolute left-1/2 top-[64%] w-full -translate-x-1/2 px-6 text-center font-display text-3xl tracking-wide text-ivory transition-[opacity,transform] ease-out motion-reduce:transition-none sm:text-5xl ${
+          titleVisible ? 'translate-y-0 opacity-100 duration-[1300ms]' : 'translate-y-3 opacity-0 duration-300'
         }`}
       >
         {t.intro.title}

@@ -6,6 +6,7 @@ import GoldLine from '../components/GoldLine'
 import IntroReveal from '../components/IntroReveal'
 import SmartImage from '../components/SmartImage'
 import PreferenceToggles from '../components/PreferenceToggles'
+import assetUrl from '../assetUrl'
 import { useMusic } from '../MusicContext'
 import { useT } from '../LanguageContext'
 
@@ -23,8 +24,14 @@ export default function CoverPage() {
 
   useEffect(() => {
     const t = window.setTimeout(() => setMounted(true), 150)
+
+    // Warm the intro's bokeh loop while the guest is still looking at the
+    // envelope, so it's already there the moment the intro opens instead of
+    // fading in a beat late on mobile data.
+    if (!reducedMotion) new Image().src = assetUrl('/images/intro-bokeh.gif')
+
     return () => window.clearTimeout(t)
-  }, [])
+  }, [reducedMotion])
 
   useEffect(() => {
     if (stage === 'revealed') {
