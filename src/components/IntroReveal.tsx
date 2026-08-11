@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import BokehLights from './BokehLights'
+import IntroTitle from './IntroTitle'
 import SpottedCard from './SpottedCard'
 import assetUrl from '../assetUrl'
 import { useT } from '../LanguageContext'
@@ -7,25 +7,30 @@ import { useT } from '../LanguageContext'
 /** title -> the gossip dispatch -> fade out into the invitation. */
 type Phase = 'title-in' | 'title' | 'card' | 'out'
 
-// The card carries a full paragraph now (eyebrow, four lines, sign-off), so
-// it needs real reading time — not just enough to register the photo.
+/** The city the titles open over. */
+const CITY = '/images/bg-nyc-midtown.jpg'
+
+// The title now animates letter by letter and needs room to land before the
+// card takes over; the card carries a full paragraph, so it needs real
+// reading time after that.
 const TIMINGS = {
-  toTitle: 800,
-  toCard: 2900,
-  toOut: 15000,
-  toDone: 15900,
+  toTitle: 500,
+  toCard: 6200,
+  toOut: 18200,
+  toDone: 19100,
 }
 
 const REDUCED = {
   toTitle: 50,
-  toCard: 700,
-  toOut: 6000,
-  toDone: 6500,
+  toCard: 1400,
+  toOut: 6800,
+  toDone: 7300,
 }
 
 export default function IntroReveal({ onFinished }: { onFinished: () => void }) {
   const t = useT()
   const [phase, setPhase] = useState<Phase>('title-in')
+  const [citySettled, setCitySettled] = useState(false)
   const firedRef = useRef(false)
   const armedRef = useRef(false)
   const timers = useRef<number[]>([])
@@ -70,10 +75,14 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
     timers.current.push(window.setTimeout(() => setPhase('out'), t.toOut))
     timers.current.push(window.setTimeout(finish, t.toDone))
 
+    // Matches the focus-pull keyframes; after this the photo carries no
+    // filter at all, only the slow push in.
+    timers.current.push(window.setTimeout(() => setCitySettled(true), reducedMotion ? 0 : 3400))
+
     return clearTimers
   }, [])
 
-  const titleVisible = phase === 'title'
+  const titleVisible = phase === 'title-in' || phase === 'title'
   const cardVisible = phase === 'card'
 
   return (
@@ -82,34 +91,22 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
       onClick={advance}
       role="presentation"
     >
-      {/* The city-bokeh loop, shown whole rather than cropped — the lights
-          resolve into the wordmark, so filling the screen would cut the
-          payoff off. Its own background is black and matches this one, so
-          the letterboxing is invisible. A GIF can't be paused, so
-          reduced-motion guests get the static blob version instead. */}
-      {reducedMotion ? (
-        <BokehLights />
-      ) : (
-        <img
-          src={assetUrl('/images/intro-bokeh.gif')}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-contain"
-        />
-      )}
-      <div className="absolute inset-0 bg-ink/25" />
-
-      {/* Beat one: the title, easing up into place. Same reasoning as the
-          card — no filter in the transition, so the type stays sharp. */}
-      <h1
-        // Leaves faster than it arrives, so it's gone before the card lands
-        // rather than lingering across it during the crossfade.
-        className={`absolute left-1/2 top-[64%] w-full -translate-x-1/2 px-6 text-center font-display text-3xl tracking-wide text-ivory transition-[opacity,transform] ease-out motion-reduce:transition-none sm:text-5xl ${
-          titleVisible ? 'translate-y-0 opacity-100 duration-[1300ms]' : 'translate-y-3 opacity-0 duration-300'
+      {/* The skyline the titles play over, pulling from defocused lights into
+          focus. Kept dark enough that the type never has to fight it. */}
+      <img
+        src={assetUrl(CITY)}
+        alt=""
+        aria-hidden="true"
+        className={`intro-city absolute inset-0 h-full w-full object-cover ${
+          citySettled ? 'is-settled' : ''
         }`}
-      >
-        {t.intro.title}
-      </h1>
+      />
+      {/* Light enough that the skyline is genuinely the backdrop rather than a
+          texture — the title carries its own radial bed for contrast. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/35 to-ink/85" />
+
+      {/* Beat one: the title card. */}
+      <IntroTitle text={t.intro.title} eyebrow={t.intro.eyebrow} visible={titleVisible} />
 
       {/* Beat two: the dispatch. */}
       <div className={`relative ${cardVisible ? '' : 'pointer-events-none'}`}>
