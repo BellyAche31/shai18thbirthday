@@ -51,7 +51,7 @@ export default function Scoop() {
           </h2>
         </Reveal>
 
-        <Reveal delay={150}>
+        <Reveal delay={200}>
           <div className="mx-auto mt-10 w-full max-w-xl">
             <GoldLine />
           </div>
