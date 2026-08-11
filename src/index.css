@@ -23,19 +23,22 @@
 /* Dark is the default look, so it lives on the bare :root — a guest who has
    never touched the toggle gets the intended cinematic version. */
 :root {
-  --c-surface: 8 8 8;
-  --c-onsurface: 245 241 232;
-  --c-alt: 245 241 232;
-  --c-onalt: 8 8 8;
-  --c-gold: 198 161 91;
-  --c-gold-light: 228 201 137;
+  /* Warm near-black rather than neutral. The reference bathes everything in
+     amber — lit windows, sepia photographs — and a true grey-black under it
+     reads as cold and digital by comparison. */
+  --c-surface: 13 10 8;
+  --c-onsurface: 246 240 228;
+  --c-alt: 243 236 222;
+  --c-onalt: 20 15 11;
+  --c-gold: 205 167 96;
+  --c-gold-light: 233 206 146;
 }
 
 :root[data-theme='light'] {
-  --c-surface: 253 251 246;
-  --c-onsurface: 26 22 17;
-  --c-alt: 239 231 214;
-  --c-onalt: 26 22 17;
+  --c-surface: 252 248 240;
+  --c-onsurface: 28 22 15;
+  --c-alt: 240 231 213;
+  --c-onalt: 28 22 15;
   /* Deepened so gold keeps its contrast against paper, while staying bright
      enough to read on the photo sections that stay dark in both themes. */
   --c-gold: 156 119 51;
@@ -63,6 +66,32 @@ body {
 ::selection {
   background: #C6A15B;
   color: #080808;
+}
+
+/* The corner fall-off the reference leans on heavily. Sits inside a section
+   and darkens its edges without touching the content's own colours, so it
+   works over photographs and flat panels alike. Pure paint — no filter, so
+   nothing gets promoted to its own composited layer. */
+.page-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 120% 85% at 50% 45%,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.22) 78%,
+    rgba(0, 0, 0, 0.42) 100%
+  );
+}
+/* On paper the same shape has to warm rather than dim, or the light theme
+   ends up with grubby grey corners. */
+:root[data-theme='light'] .page-vignette {
+  background: radial-gradient(
+    ellipse 120% 85% at 50% 45%,
+    rgba(120, 88, 40, 0) 45%,
+    rgba(120, 88, 40, 0.07) 78%,
+    rgba(120, 88, 40, 0.14) 100%
+  );
 }
 
 /* ---------------------------------------------------------------------------

@@ -8,7 +8,7 @@ import { useT } from '../LanguageContext'
  * a note scrawled beneath it, tilted like it was pinned to a corkboard.
  */
 export default function SpottedCard({ visible }: { visible: boolean }) {
-  const { eyebrow, lines } = useT().spottedCard
+  const { eyebrow, dateline, pullQuote, lines } = useT().spottedCard
 
   return (
     // Deliberately no blur/scale in this transition. A lingering `filter`
@@ -20,7 +20,21 @@ export default function SpottedCard({ visible }: { visible: boolean }) {
         visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
       }`}
     >
-      <p className="font-display text-lg italic tracking-wide text-ink sm:text-xl">{eyebrow}</p>
+      {/* The masthead bar: subject on the left, dateline on the right, the way
+          the column files its entries. */}
+      <div className="flex items-baseline justify-between gap-3 border-b border-ink/20 pb-2">
+        <p className="font-sans text-[9px] tracking-widest2 text-ink/70 uppercase sm:text-[10px]">
+          {eyebrow}
+        </p>
+        <p className="shrink-0 font-sans text-[9px] tracking-widest2 text-ink/50 sm:text-[10px]">
+          {dateline}
+        </p>
+      </div>
+
+      {/* The pull quote, set in guillemets like the reference. */}
+      <p className="mt-3 text-center font-display text-lg italic leading-snug text-ink sm:text-xl">
+        «{pullQuote}»
+      </p>
 
       <div className="relative mt-3 aspect-square w-full overflow-hidden bg-ink">
         <SmartImage

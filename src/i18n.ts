@@ -34,6 +34,8 @@ const en = {
   },
   spottedCard: {
     eyebrow: 'Spotted: Shaina Jhianne',
+    dateline: '26.09.26',
+    pullQuote: 'You know you love her.',
     lines: [
       'Hey, Upper East Siders. Gossip Girl here…',
       'Stepping into the spotlight and leaving childhood behind. On September 26, 2026, our favorite girl will officially be turning 18—and you’re invited to witness the celebration.',
@@ -262,6 +264,8 @@ const tl: Copy = {
   },
   spottedCard: {
     eyebrow: 'Spotted: Shaina Jhianne',
+    dateline: '26.09.26',
+    pullQuote: 'Alam mong mahal mo siya.',
     lines: [
       'Uy, mga taga-Upper East Side. Gossip Girl ito…',
       'Papasok na siya sa spotlight at iiwan na ang pagkabata. Sa Setyembre 26, 2026, opisyal nang magiging 18 ang paborito nating dalaga—at imbitado kang saksihan ang selebrasyon.',
