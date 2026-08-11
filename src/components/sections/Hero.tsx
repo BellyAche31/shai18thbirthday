@@ -18,6 +18,9 @@ export default function Hero() {
     return () => window.clearTimeout(t)
   }, [])
 
+  const reducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!enableTilt.current) return
     const rect = e.currentTarget.getBoundingClientRect()
@@ -97,14 +100,42 @@ export default function Hero() {
         />
       </div>
 
-      <div
-        className={`absolute bottom-8 flex flex-col items-center gap-2 transition-opacity duration-1000 delay-[1800ms] ${
-          mounted ? 'opacity-60' : 'opacity-0'
+      {/* Nothing peeks above the fold on a full-height hero, so this is the
+          only thing telling a guest there's an invitation below. It's a
+          button as well as a hint — tapping it moves them down a screen. */}
+      <button
+        onClick={() =>
+          window.scrollTo({
+            top: window.innerHeight * 0.94,
+            behavior: reducedMotion ? 'auto' : 'smooth',
+          })
+        }
+        className={`group absolute bottom-7 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2.5 px-6 py-2 transition-opacity duration-1000 delay-[1800ms] ${
+          mounted ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        <span className="font-sans text-[9px] tracking-widest2 text-ivory uppercase">{t.hero.scroll}</span>
-        <span className="h-8 w-px bg-gradient-to-b from-gold to-transparent" />
-      </div>
+        <span className="font-sans text-[11px] tracking-widest3 text-gold uppercase transition-colors group-hover:text-gold-light">
+          {t.hero.scroll}
+        </span>
+
+        {/* A lit segment running down a faint track. */}
+        <span className="relative block h-11 w-px overflow-hidden bg-gold/20">
+          <span className="absolute inset-x-0 top-0 block h-1/2 animate-scrollTrace bg-gradient-to-b from-transparent via-gold to-transparent motion-reduce:animate-none" />
+        </span>
+
+        <svg
+          viewBox="0 0 24 24"
+          className="h-3.5 w-3.5 animate-nudgeDown text-gold motion-reduce:animate-none"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
     </section>
   )
 }

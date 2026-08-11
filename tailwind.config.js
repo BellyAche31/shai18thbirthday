@@ -69,6 +69,15 @@ export default {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        // A bright segment running down the scroll cue's track.
+        scrollTrace: {
+          '0%': { transform: 'translateY(-110%)' },
+          '100%': { transform: 'translateY(320%)' },
+        },
+        nudgeDown: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(5px)' },
+        },
       },
       animation: {
         fadeIn: 'fadeIn 1.2s ease forwards',
@@ -78,6 +87,8 @@ export default {
         grain: 'grain 8s steps(10) infinite',
         pulseSlow: 'pulseSlow 3s ease-in-out infinite',
         spinSlow: 'spinSlow 12s linear infinite',
+        scrollTrace: 'scrollTrace 2.1s cubic-bezier(0.5,0,0.5,1) infinite',
+        nudgeDown: 'nudgeDown 2.1s ease-in-out infinite',
       },
     },
   },
