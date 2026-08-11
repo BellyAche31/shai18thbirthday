@@ -78,6 +78,12 @@ body {
 .flip-card.is-flipping {
   transform: rotateX(-180deg);
 }
+/* Snapping back to 0 has to be instant. Without this the card eases all the
+   way back over another 0.55s, so each tick read as a flip followed by a
+   visible spin in reverse — worst on the seconds, which never sat still. */
+.flip-card.is-resetting {
+  transition: none;
+}
 .flip-face {
   position: absolute;
   inset: 0;

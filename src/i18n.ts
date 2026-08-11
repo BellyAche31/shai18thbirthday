@@ -221,7 +221,17 @@ const en = {
     failed: 'Could not build the file — please try again.',
     calendar: 'Add to Calendar',
   },
-  programTitles: ['ARRIVAL', 'WELCOME', 'DINNER', '18 ROSES', '18 CANDLES', 'CELEBRATION'],
+  // Index-matched to invitationConfig.program.
+  programTitles: [
+    'ARRIVAL',
+    'WELCOME',
+    'DINNER',
+    '18 ROSES',
+    '18 GOSSIPS',
+    '18 GIFTS',
+    '18 BLUE BILLS',
+    'CELEBRATION',
+  ],
 
   // --- Dress code ---------------------------------------------------------
   dressCode: {
@@ -463,7 +473,16 @@ const tl: Copy = {
     failed: 'Hindi nagawa ang file — pakisubukan muli.',
     calendar: 'Idagdag sa Kalendaryo',
   },
-  programTitles: ['PAGDATING', 'PAGSALUBONG', 'HAPUNAN', '18 ROSAS', '18 KANDILA', 'SELEBRASYON'],
+  programTitles: [
+    'PAGDATING',
+    'PAGSALUBONG',
+    'HAPUNAN',
+    '18 ROSAS',
+    '18 TSISMIS',
+    '18 REGALO',
+    '18 BLUE BILLS',
+    'SELEBRASYON',
+  ],
 
   dressCode: {
     label: 'Ang Kasuotan',

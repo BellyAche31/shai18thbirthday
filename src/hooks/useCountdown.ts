@@ -29,10 +29,22 @@ export function useCountdown(isoDate: string): Countdown {
   const [countdown, setCountdown] = useState<Countdown>(() => diffToCountdown(target))
 
   useEffect(() => {
-    const tick = () => setCountdown(diffToCountdown(target))
-    tick()
-    const interval = window.setInterval(tick, 1000)
-    return () => window.clearInterval(interval)
+    let timer = 0
+
+    // setInterval(1000) drifts, so ticks slowly slide off the second boundary
+    // and eventually two land inside one second — the seconds tile flips
+    // twice, then sits still. Instead, sleep exactly until the next moment the
+    // remaining time crosses a whole second and re-aim after every tick.
+    const schedule = () => {
+      const next = diffToCountdown(target)
+      setCountdown(next)
+      if (next.done) return
+      const remainder = (target - Date.now()) % 1000
+      timer = window.setTimeout(schedule, (remainder > 0 ? remainder : 1000) + 20)
+    }
+
+    schedule()
+    return () => window.clearTimeout(timer)
   }, [target])
 
   return countdown

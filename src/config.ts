@@ -67,13 +67,18 @@ export const invitationConfig = {
   // on that opening gesture rather than firing on page load.
   autoplayOnOpen: true,
 
+  // Every tradition the invitation has a section for gets its own slot here,
+  // in the order it happens on the night. Titles are index-matched to
+  // `programTitles` in i18n.ts — add a row here, add a title there.
   program: [
     { time: '5:00 PM', title: 'ARRIVAL' },
     { time: '5:30 PM', title: 'WELCOME' },
     { time: '6:00 PM', title: 'DINNER' },
-    { time: '6:30 PM', title: '18 ROSES' },
-    { time: '7:00 PM', title: '18 CANDLES' },
-    { time: '7:30 PM', title: 'CELEBRATION' },
+    { time: '6:45 PM', title: '18 ROSES' },
+    { time: '7:15 PM', title: '18 GOSSIPS' },
+    { time: '7:45 PM', title: '18 GIFTS' },
+    { time: '8:15 PM', title: '18 BLUE BILLS' },
+    { time: '8:45 PM', title: 'CELEBRATION' },
   ] as ProgramItem[],
 
   // The Eighteen Roses — eighteen gentlemen presenting a rose during the program.

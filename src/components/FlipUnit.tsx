@@ -7,6 +7,11 @@ function pad(n: number) {
 export default function FlipUnit({ value, label }: { value: number; label: string }) {
   const [display, setDisplay] = useState(value)
   const [flipping, setFlipping] = useState(false)
+  // The card carries a permanent transition, so dropping `is-flipping` would
+  // ease it back from -180deg over another 0.55s — a flip followed by a
+  // visible spin in reverse. `is-resetting` kills the transition for the one
+  // frame the snap-back happens on.
+  const [resetting, setResetting] = useState(false)
   const prevRef = useRef(value)
 
   useEffect(() => {
@@ -18,12 +23,24 @@ export default function FlipUnit({ value, label }: { value: number; label: strin
       return
     }
     setFlipping(true)
+    let raf1 = 0
+    let raf2 = 0
     const t = window.setTimeout(() => {
       setDisplay(value)
       setFlipping(false)
+      setResetting(true)
       prevRef.current = value
+      // Two frames: the first paints the transition-less reset, the second
+      // re-arms the transition for the next tick.
+      raf1 = requestAnimationFrame(() => {
+        raf2 = requestAnimationFrame(() => setResetting(false))
+      })
     }, 550)
-    return () => window.clearTimeout(t)
+    return () => {
+      window.clearTimeout(t)
+      cancelAnimationFrame(raf1)
+      cancelAnimationFrame(raf2)
+    }
   }, [value])
 
   return (
@@ -32,7 +49,7 @@ export default function FlipUnit({ value, label }: { value: number; label: strin
       <span className="absolute right-2 bottom-2 h-2 w-2 border-r border-b border-gold/50 sm:right-3 sm:bottom-3" />
 
       <div className="flip-unit relative h-[3rem] w-[2.4rem] sm:h-[4.5rem] sm:w-[3.6rem] md:h-[5rem] md:w-[4rem]">
-        <div className={`flip-card ${flipping ? 'is-flipping' : ''}`}>
+        <div className={`flip-card ${flipping ? 'is-flipping' : ''} ${resetting ? 'is-resetting' : ''}`}>
           <div className="flip-face flip-face-front items-center justify-center">
             <span className="font-display text-4xl tabular-nums text-gold sm:text-6xl md:text-7xl">
               {pad(display)}
