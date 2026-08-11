@@ -25,13 +25,13 @@ export default function CoverPage() {
   useEffect(() => {
     const t = window.setTimeout(() => setMounted(true), 150)
 
-    // Warm the intro's bokeh loop while the guest is still looking at the
-    // envelope, so it's already there the moment the intro opens instead of
-    // fading in a beat late on mobile data.
-    if (!reducedMotion) new Image().src = assetUrl('/images/intro-bokeh.gif')
+    // Warm the intro's skyline while the guest is still looking at the
+    // envelope, so the titles open on it instead of on black while it
+    // downloads over mobile data.
+    new Image().src = assetUrl('/images/bg-nyc-midtown.jpg')
 
     return () => window.clearTimeout(t)
-  }, [reducedMotion])
+  }, [])
 
   useEffect(() => {
     if (stage === 'revealed') {

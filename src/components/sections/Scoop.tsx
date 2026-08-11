@@ -51,7 +51,7 @@ export default function Scoop() {
           </h2>
         </Reveal>
 
-        <Reveal delay={200}>
+        <Reveal delay={150}>
           <div className="mx-auto mt-10 w-full max-w-xl">
             <GoldLine />
           </div>
@@ -59,12 +59,29 @@ export default function Scoop() {
 
         <div className="mt-12 grid gap-10 sm:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] sm:items-center sm:gap-12">
           <Reveal delay={250}>
-            <div className="mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-sm border border-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:max-w-none">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-sm border border-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:max-w-none">
+              {/* The second look — the cover and the dispatch already carry
+                  the first, so repeating it here made the page feel like one
+                  photo on a loop. Pushed in past the busy room behind her: a
+                  transform rather than a filter, because a filter would pin
+                  this to its own composited layer and phones rasterize those
+                  at reduced resolution. */}
               <SmartImage
-                src={invitationConfig.portraitPhoto}
+                src={invitationConfig.portraitPhotoAlt}
                 variant="silhouette"
                 alt={`${invitationConfig.name}, the celebrant`}
-                className="h-full w-full object-cover object-[50%_18%]"
+                className="h-full w-full scale-[1.34] object-cover"
+                style={{ objectPosition: invitationConfig.portraitPhotoAltFocus }}
+              />
+              {/* Sinks the corners so the frame reads as of a piece with the
+                  darker photography around it. */}
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    'radial-gradient(ellipse at 50% 40%, rgba(8,8,8,0) 40%, rgba(8,8,8,0.45) 78%, rgba(8,8,8,0.72) 100%)',
+                }}
+                aria-hidden="true"
               />
             </div>
           </Reveal>
