@@ -57,6 +57,11 @@ export const invitationConfig = {
   // The celebrant's portrait, used as the softly-darkened backdrop behind the
   // sealed envelope and the hero. Swap the path to change both at once.
   portraitPhoto: '/images/photo-01.jpg',
+  // A second look, so the same frame isn't repeated down the whole page.
+  // `focus` is the object-position for its crops — this one sits off-centre
+  // and high, so the default 50%/18% would cut the face in half.
+  portraitPhotoAlt: '/images/photo-04.jpg',
+  portraitPhotoAltFocus: '58% 40%',
 
   musicFile: '/audio/background-music.mp3',
   // Background-music level, 0–1. Kept low so it sits under the moment
