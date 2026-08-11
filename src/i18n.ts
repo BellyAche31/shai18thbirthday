@@ -29,6 +29,7 @@ const en = {
   // --- The opening dispatch ----------------------------------------------
   intro: {
     title: "Shai's 18th Birthday",
+    eyebrow: 'You are cordially invited to',
     skip: 'Skip',
   },
   spottedCard: {
@@ -150,14 +151,6 @@ const en = {
     seconds: 'Seconds',
   },
 
-  // --- Poll ---------------------------------------------------------------
-  poll: {
-    label: 'Cast Your Vote',
-    question: '',
-    options: ['The Dress', 'The Playlist', 'The Cake', 'The Surprise'],
-    footer: 'votes and counting · tap to change your vote',
-  },
-
   // --- The eighteens ------------------------------------------------------
   insidersNote: "The insider's note",
   roses: {
@@ -180,7 +173,6 @@ const en = {
     heading: 'A BLESSING FOR THE JOURNEY AHEAD',
     note: 'Share a little blessing with a heartfelt wish for my journey ahead.',
   },
-
 
   // --- Programme ----------------------------------------------------------
   theNight: {
@@ -265,6 +257,7 @@ const tl: Copy = {
 
   intro: {
     title: 'Ika-18 Kaarawan ni Shai',
+    eyebrow: 'Ikaw ay malugod na inaanyayahan sa',
     skip: 'Laktawan',
   },
   spottedCard: {
@@ -379,13 +372,6 @@ const tl: Copy = {
     seconds: 'Segundo',
   },
 
-  poll: {
-    label: 'Iboto Mo',
-    question: '',
-    options: ['Ang Damit', 'Ang Playlist', 'Ang Cake', 'Ang Sorpresa'],
-    footer: 'boto at patuloy pa · pindutin para palitan ang boto mo',
-  },
-
   insidersNote: 'Paalala ng insider',
   roses: {
     label: 'Ang Labingwalong Rosas',
@@ -407,7 +393,6 @@ const tl: Copy = {
     heading: 'ISANG BASBAS PARA SA PAGLALAKBAY',
     note: 'Magbahagi ng kaunting biyaya kasama ang taos-pusong hiling para sa aking paglalakbay.',
   },
-
 
   theNight: {
     label: 'Ang Gabi',
@@ -467,3 +452,4 @@ const tl: Copy = {
 }
 
 export const copy: Record<Lang, Copy> = { en, tl }
+export default copy
