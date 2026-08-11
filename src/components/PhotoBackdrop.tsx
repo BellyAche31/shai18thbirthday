@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import PlaceholderArt from './PlaceholderArt'
 import assetUrl from '../assetUrl'
-import type { GalleryImage } from '../config'
+import type { ArtVariant } from '../config'
 
 const GRAIN =
   "url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.9%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E')"
@@ -9,7 +9,7 @@ const GRAIN =
 type Props = {
   src: string
   /** Generated art shown if the photo file isn't there. */
-  variant: GalleryImage['variant']
+  variant: ArtVariant
   label?: string
   /** 0–1. Deliberately low — this is atmosphere, not a photo on display. */
   opacity?: number

@@ -84,7 +84,10 @@ export default function CoverPage() {
           </p>
         ) : (
           <div className="mb-8 flex flex-col items-center gap-1">
-            <span className="font-sans text-[10px] tracking-widest3 text-gold/70 uppercase">
+            {/* Poiret One rather than the utilitarian sans — it's a thin
+                geometric face built for display caps, so the word carries
+                the letterspacing instead of looking like a form label. */}
+            <span className="font-gossip text-base tracking-widest3 text-gold/85 uppercase sm:text-lg">
               {t.cover.sealBrokenLabel}
             </span>
             <p className="font-xoxo text-4xl leading-none text-gold sm:text-5xl">

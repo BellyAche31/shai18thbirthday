@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PlaceholderArt from './PlaceholderArt'
 import assetUrl from '../assetUrl'
-import type { GalleryImage } from '../config'
+import type { ArtVariant } from '../config'
 
 export default function SmartImage({
   src,
@@ -10,7 +10,7 @@ export default function SmartImage({
   className = '',
 }: {
   src: string
-  variant: GalleryImage['variant']
+  variant: ArtVariant
   alt: string
   className?: string
 }) {

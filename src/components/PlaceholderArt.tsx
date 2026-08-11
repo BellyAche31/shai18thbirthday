@@ -1,6 +1,6 @@
-import type { GalleryImage } from '../config'
+import type { ArtVariant } from '../config'
 
-type Variant = GalleryImage['variant']
+type Variant = ArtVariant
 
 const GRADIENTS: Record<Variant, string> = {
   city: 'radial-gradient(circle at 30% 20%, #2a2a2a 0%, #0a0a0a 55%, #000 100%)',

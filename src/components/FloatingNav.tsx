@@ -21,6 +21,9 @@ export default function FloatingNav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  /** True whenever something opaque sits behind the bar. */
+  const onBackdrop = scrolled || open
+
   const handleClick = (href: string) => {
     setOpen(false)
     const el = document.querySelector(href)
@@ -37,11 +40,11 @@ export default function FloatingNav() {
         {/* Pre-scroll, the bar floats transparent over Hero, which stays a
             fixed dark photo in both themes — so the logo/links need fixed
             ivory here, not the themed onsurface, or light mode goes
-            dark-on-dark. Once scrolled, the bar gets its own themed
-            backdrop, so onsurface is correct again. */}
+            dark-on-dark. Once the bar has a backdrop of its own (scrolled,
+            or the menu panel open behind it) the themed color is correct. */}
         <a
           href="#home"
-          className={`font-display text-sm tracking-widest2 uppercase transition-colors duration-500 ${scrolled ? 'text-onsurface' : 'text-ivory'}`}
+          className={`font-display text-sm tracking-widest2 uppercase transition-colors duration-500 ${onBackdrop ? 'text-onsurface' : 'text-ivory'}`}
         >
           S<span className="text-gold">·</span>18
         </a>
@@ -51,7 +54,7 @@ export default function FloatingNav() {
             <button
               key={link.href}
               onClick={() => handleClick(link.href)}
-              className={`font-sans text-[11px] tracking-widest2 hover:text-gold transition-colors uppercase ${scrolled ? 'text-onsurface/80' : 'text-ivory/80'}`}
+              className={`font-sans text-[11px] tracking-widest2 hover:text-gold transition-colors uppercase ${onBackdrop ? 'text-onsurface/80' : 'text-ivory/80'}`}
             >
               {link.label}
             </button>
@@ -77,8 +80,11 @@ export default function FloatingNav() {
         </div>
       </nav>
 
+      {/* /95, not /97 — Tailwind never generated an opacity modifier for 97,
+          so this panel had no background at all and the links were being
+          read against whatever section happened to be behind them. */}
       <div
-        className={`fixed inset-0 z-30 flex flex-col items-center justify-center gap-8 bg-surface/97 backdrop-blur-sm transition-opacity duration-400 md:hidden ${
+        className={`fixed inset-0 z-30 flex flex-col items-center justify-center gap-8 bg-surface/95 backdrop-blur-md transition-opacity duration-400 md:hidden ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >

@@ -69,7 +69,7 @@ const en = {
   tickerHeadlines: [
     'SHAI TURNS 18 THIS SEPTEMBER',
     'THE GUEST LIST IS ALREADY A RUMOR',
-    'FORMAL ATTIRE. NO GOLD.',
+    'FORMAL ATTIRE. NO BLACK. NO GOLD.',
     'DOS CASA DE AMENA, TRANSFORMED FOR ONE NIGHT ONLY',
     'SOURCES CONFIRM: THIS IS THE PARTY OF THE SEASON',
     'XOXO',
@@ -81,7 +81,7 @@ const en = {
     'RUMOR HAS IT: the cake has a secret ingredient.',
     'SPOTTED: a guest list getting harder to get on by the hour.',
     'BREAKING: this invitation self-destructs at midnight. (Kidding. Mostly.)',
-    'STYLE MEMO: gold is reserved for the house tonight.',
+    'STYLE MEMO: black and gold are reserved for the house tonight.',
   ],
   dismissNotification: 'Dismiss notification',
 
@@ -221,13 +221,13 @@ const en = {
     label: 'The Look',
     heading: 'FORMAL ATTIRE',
     note: 'Come dressed like the night belongs to you.',
-    styleAlert: 'Please follow the assigned color palette, and do not wear gold.',
+    styleAlert: 'Please follow the assigned color palette. Do not wear black or gold.',
     women: 'Women',
     men: 'Men',
     insidersNote: "The Insider's Note",
     // Parallels invitationConfig.dressCodePalette's order exactly.
     womenColors: ['Midnight Blue', 'Emerald Green', 'Burgundy'],
-    menColors: ['Black', 'Blue'],
+    menColors: ['Blue'],
   },
 
   // --- RSVP ---------------------------------------------------------------
@@ -312,7 +312,7 @@ const tl: Copy = {
   tickerHeadlines: [
     'MAG-18 NA SI SHAI NGAYONG SETYEMBRE',
     'TSISMIS NA ANG GUEST LIST',
-    'PORMAL NA KASUOTAN. WALANG GINTO.',
+    'PORMAL NA KASUOTAN. WALANG ITIM. WALANG GINTO.',
     'DOS CASA DE AMENA, IBA ANG ANYO SA IISANG GABI LAMANG',
     'KUMPIRMADO: ITO ANG PARTIDO NG PANAHON',
     'XOXO',
@@ -324,7 +324,7 @@ const tl: Copy = {
     'TSISMIS: may lihim na sangkap ang cake.',
     'SPOTTED: lalong humihirap ang pagpasok sa guest list.',
     'BREAKING: mawawala ang paanyayang ito sa hatinggabi. (Biro lang. Medyo.)',
-    'PAALALA SA ESTILO: ang ginto ay para sa okasyon, hindi sa mga bisita.',
+    'PAALALA SA ESTILO: ang itim at ginto ay para sa okasyon, hindi sa mga bisita.',
   ],
   dismissNotification: 'Isara ang abiso',
 
@@ -455,12 +455,12 @@ const tl: Copy = {
     label: 'Ang Kasuotan',
     heading: 'PORMAL NA KASUOTAN',
     note: 'Magbihis na parang sa iyo ang gabing ito.',
-    styleAlert: 'Pakisunod ang itinakdang color palette, at huwag magsuot ng ginto.',
+    styleAlert: 'Pakisunod ang itinakdang color palette. Huwag magsuot ng itim o ginto.',
     women: 'Kababaihan',
     men: 'Kalalakihan',
     insidersNote: 'Paalala ng Insider',
     womenColors: ['Asul na Hatinggabi', 'Berdeng Emerald', 'Burgundy'],
-    menColors: ['Itim', 'Asul'],
+    menColors: ['Asul'],
   },
 
   rsvp: {
