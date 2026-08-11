@@ -1,6 +1,7 @@
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
+import KeepACopy from '../KeepACopy'
 import { useT } from '../../LanguageContext'
 
 export default function TheNight() {
@@ -32,6 +33,12 @@ export default function TheNight() {
           ))}
         </div>
       </div>
+
+      <Reveal delay={200}>
+        <div className="mt-16">
+          <KeepACopy />
+        </div>
+      </Reveal>
     </section>
   )
 }

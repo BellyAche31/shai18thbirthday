@@ -214,6 +214,13 @@ const en = {
     label: 'The Night',
     heading: '',
   },
+  downloads: {
+    program: 'Download the Programme',
+    programHint: 'A printable copy with the full running order and everyone’s role.',
+    preparing: 'Preparing…',
+    failed: 'Could not build the file — please try again.',
+    calendar: 'Add to Calendar',
+  },
   programTitles: ['ARRIVAL', 'WELCOME', 'DINNER', '18 ROSES', '18 CANDLES', 'CELEBRATION'],
 
   // --- Dress code ---------------------------------------------------------
@@ -448,6 +455,13 @@ const tl: Copy = {
   theNight: {
     label: 'Ang Gabi',
     heading: '',
+  },
+  downloads: {
+    program: 'I-download ang Programa',
+    programHint: 'Kopyang puwedeng i-print, kasama ang buong takbo ng gabi at ang papel ng bawat isa.',
+    preparing: 'Inihahanda…',
+    failed: 'Hindi nagawa ang file — pakisubukan muli.',
+    calendar: 'Idagdag sa Kalendaryo',
   },
   programTitles: ['PAGDATING', 'PAGSALUBONG', 'HAPUNAN', '18 ROSAS', '18 KANDILA', 'SELEBRASYON'],
 
