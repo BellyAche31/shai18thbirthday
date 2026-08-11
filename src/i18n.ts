@@ -150,33 +150,6 @@ const en = {
     seconds: 'Seconds',
   },
 
-  // --- 18 Wishes ----------------------------------------------------------
-  wishesSection: {
-    label: '18 Wishes',
-    subtitle: '',
-    reveal: 'Reveal',
-  },
-  wishes: [
-    'Dance until the heels come off.',
-    'Say something you actually mean.',
-    'Take the photo, not just the mental note.',
-    'Wear the outfit you almost didn’t buy.',
-    'Make a toast nobody asked for.',
-    'Forgive the small stuff before midnight.',
-    'Let someone else pick the song.',
-    'Stay for the last course.',
-    'Tell one secret. Keep the rest.',
-    'Thank the people who showed up early.',
-    'Ask someone to dance first.',
-    'Let the night run late.',
-    'Wear the good jewelry, not just save it.',
-    'Laugh loud enough to turn heads.',
-    'Take a moment alone to notice it all.',
-    'Give a compliment you mean completely.',
-    'Leave room for one more surprise.',
-    'Remember this is only the beginning.',
-  ],
-
   // --- Poll ---------------------------------------------------------------
   poll: {
     label: 'Cast Your Vote',
@@ -405,32 +378,6 @@ const tl: Copy = {
     minutes: 'Minuto',
     seconds: 'Segundo',
   },
-
-  wishesSection: {
-    label: '18 Hiling',
-    subtitle: '',
-    reveal: 'Buksan',
-  },
-  wishes: [
-    'Sumayaw hanggang matanggal ang takong.',
-    'Magsabi ng isang bagay na totoong nararamdaman mo.',
-    'Kunan mo ng litrato, huwag mo lang tandaan.',
-    'Isuot mo ang damit na muntik mo nang hindi bilhin.',
-    'Mag-toast kahit walang humihingi.',
-    'Patawarin ang maliliit na bagay bago maghatinggabi.',
-    'Hayaan mong iba naman ang pumili ng kanta.',
-    'Manatili hanggang huling putahe.',
-    'Magsabi ng isang sikreto. Itago ang iba.',
-    'Pasalamatan ang mga maagang dumating.',
-    'Ikaw ang maunang mag-aya ng sayaw.',
-    'Hayaan mong gumabi nang husto.',
-    'Isuot ang magandang alahas, huwag lang itago.',
-    'Tumawa nang malakas hanggang lumingon sila.',
-    'Maglaan ng sandali mag-isa para pagmasdan ang lahat.',
-    'Magbigay ng papuring buong-buo mong ibig sabihin.',
-    'Mag-iwan ng puwang para sa isa pang sorpresa.',
-    'Tandaan mong ito pa lang ang simula.',
-  ],
 
   poll: {
     label: 'Iboto Mo',
