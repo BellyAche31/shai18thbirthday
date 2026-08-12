@@ -227,6 +227,7 @@ const en = {
       "Your presence is the present. If you'd like to give something more, gifts and cash gifts can be handed directly to Mommy or Kuya.",
     button: 'RSVP Now',
     helper: 'Opens our RSVP form in a new tab — your response goes straight to us.',
+    contactLabel: 'Questions, or trouble with the form? Call or text us.',
   },
 
   // --- Closing ------------------------------------------------------------
@@ -446,6 +447,7 @@ const tl: Copy = {
       'Ang presensya mo ang regalo. Kung nais mong magbigay pa, ang mga regalo at cash gift ay maaaring ibigay nang direkta kay Mommy o Kuya.',
     button: 'Mag-RSVP Na',
     helper: 'Bubuksan ang aming RSVP form sa bagong tab — diretso sa amin ang sagot mo.',
+    contactLabel: 'May tanong, o may problema sa form? Tawagan o i-text kami.',
   },
 
   final: {

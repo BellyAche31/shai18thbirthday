@@ -46,6 +46,13 @@ export const invitationConfig = {
     menReferenceImage: '/images/dresscode-men-navy-v2.png',
   },
 
+  // Who a guest calls when the form breaks or they have a question. `tel` is
+  // the dialable form (+63, no spaces); `phone` is what's printed.
+  contacts: [
+    { name: 'Jhun Gasmen', phone: '(0949) 495 8855', tel: '+639494958855' },
+    { name: 'Annie Grace Gasmen', phone: '(0939) 153 6771', tel: '+639391536771' },
+  ] as { name: string; phone: string; tel: string }[],
+
   // The invitation is non-transferable — one name, one seat.
   allowPlusOnes: false,
 

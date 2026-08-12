@@ -71,6 +71,28 @@ export default function Rsvp() {
           <p className="mt-4 font-sans text-[11px] text-onalt/50">
             {t.rsvp.helper}
           </p>
+
+          {/* Somewhere to turn when the form misbehaves. `tel:` so a phone
+              dials straight from the tap rather than making a guest copy
+              digits out by hand. */}
+          <div className="mt-8 border-t border-gold/20 pt-6">
+            <p className="font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">
+              {t.rsvp.contactLabel}
+            </p>
+            <ul className="mt-3 flex flex-col items-center gap-2">
+              {invitationConfig.contacts.map((c) => (
+                <li key={c.tel}>
+                  <a
+                    href={`tel:${c.tel}`}
+                    className="inline-flex flex-wrap items-baseline justify-center gap-x-2 font-body text-base text-onalt/90 transition-colors hover:text-gold"
+                  >
+                    <span>{c.name}</span>
+                    <span className="font-sans text-sm tracking-wide text-gold">{c.phone}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Reveal>
 
