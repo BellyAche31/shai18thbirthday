@@ -160,6 +160,32 @@ body {
   }
 }
 
+/* The RSVP call to action. A slow breathing halo, so the eye is drawn back
+   to it without anything moving on the page — box-shadow only, no transform
+   and no filter, so it costs nothing to animate and promotes no layer. */
+.rsvp-cta {
+  box-shadow: 0 0 0 0 rgba(232, 219, 160, 0.5);
+  animation: rsvpPulse 3.2s ease-in-out infinite;
+}
+@keyframes rsvpPulse {
+  0%, 100% {
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.45),
+      0 0 0 0 rgba(232, 219, 160, 0.42);
+  }
+  55% {
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.45),
+      0 0 0 14px rgba(232, 219, 160, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rsvp-cta {
+    animation: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+}
+
 /* The floating panel the content sits on. */
 .gg-card {
   background-color: rgb(var(--c-card));
