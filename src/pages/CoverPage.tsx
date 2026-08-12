@@ -6,6 +6,7 @@ import GoldLine from '../components/GoldLine'
 import IntroReveal from '../components/IntroReveal'
 import SmartImage from '../components/SmartImage'
 import PreferenceToggles from '../components/PreferenceToggles'
+import HoldButton from '../components/HoldButton'
 import assetUrl from '../assetUrl'
 import { useMusic } from '../MusicContext'
 import { useT } from '../LanguageContext'
@@ -187,14 +188,15 @@ export default function CoverPage() {
             stage === 'revealed' ? 'opacity-100 translate-y-0 delay-500' : 'pointer-events-none opacity-0 translate-y-3'
           }`}
         >
-          <button
+          {/* Held rather than tapped: the invitation opens into a long title
+              sequence, and making a guest commit to it stops a stray thumb
+              launching the whole thing by accident. */}
+          <HoldButton
             ref={openButtonRef}
-            onClick={handleOpen}
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-gold px-10 py-4 font-sans text-xs tracking-widest2 text-gold uppercase transition-colors duration-500 hover:text-ink"
-          >
-            <span className="absolute inset-0 -z-10 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100" />
-            {t.cover.openInvitation}
-          </button>
+            onComplete={handleOpen}
+            label={t.cover.openInvitation}
+            hint={t.cover.holdToOpen}
+          />
         </div>
       </div>
 

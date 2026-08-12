@@ -24,6 +24,7 @@ const en = {
     innerLine1: 'Shaina reigns at eighteen',
     innerLine2: 'A new chapter, a timeless reign',
     openInvitation: 'Open Invitation',
+    holdToOpen: 'Press and hold',
   },
 
   // --- The opening dispatch ----------------------------------------------
@@ -255,6 +256,7 @@ const tl: Copy = {
     innerLine1: 'Naghahari si Shaina sa labingwalo',
     innerLine2: 'Bagong yugto, walang kupas na paghahari',
     openInvitation: 'Buksan ang Paanyaya',
+    holdToOpen: 'Pindutin nang matagal',
   },
 
   intro: {
