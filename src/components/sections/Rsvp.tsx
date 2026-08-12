@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Stickers from '../Stickers'
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
@@ -13,7 +12,6 @@ export default function Rsvp() {
 
   return (
     <section id="rsvp" className="relative px-6 py-24 text-center text-onalt sm:py-32">
-      <Stickers scatter="b" />
       <Reveal>
         <SectionLabel>{t.rsvp.label}</SectionLabel>
       </Reveal>

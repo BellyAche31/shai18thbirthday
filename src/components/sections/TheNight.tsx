@@ -1,4 +1,3 @@
-import Stickers from '../Stickers'
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
@@ -9,7 +8,6 @@ export default function TheNight() {
   const t = useT()
   return (
     <section id="the-night" className="relative px-6 py-24 text-onsurface sm:py-32">
-      <Stickers scatter="d" />
       <Reveal>
         <SectionLabel>{t.theNight.label}</SectionLabel>
       </Reveal>

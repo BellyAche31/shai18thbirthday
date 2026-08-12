@@ -1,4 +1,3 @@
-import Stickers from '../Stickers'
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
@@ -9,7 +8,6 @@ export default function DressCode() {
   const t = useT()
   return (
     <section className="relative min-h-[70vh] overflow-hidden px-6 py-24 text-center sm:py-32">
-      <Stickers scatter="a" />
 
       <div className="relative z-10">
         <Reveal>
