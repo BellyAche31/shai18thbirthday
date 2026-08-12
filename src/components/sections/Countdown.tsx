@@ -6,6 +6,7 @@ import SectionLabel from '../SectionLabel'
 import FlipUnit from '../FlipUnit'
 import Confetti from '../Confetti'
 import PhotoBackdrop from '../PhotoBackdrop'
+import { downloadCalendarEvent } from '../../lib/calendarEvent'
 import { useT } from '../../LanguageContext'
 
 export default function Countdown() {
@@ -59,6 +60,25 @@ export default function Countdown() {
             </Reveal>
           ))}
         </div>
+      )}
+
+      {/* Offered right here, at the moment a guest is looking at how long
+          they have to wait — rather than only at the bottom of the programme,
+          which is a long scroll away from the thought. Once the night has
+          arrived there is nothing left to diarise, so it goes with the clock. */}
+      {!done && (
+      <Reveal delay={600}>
+        <button
+          onClick={() => downloadCalendarEvent(t.intro.title)}
+          className="mx-auto mt-14 inline-flex items-center justify-center gap-2.5 border border-gold/50 px-7 py-4 font-sans text-xs tracking-widest2 text-gold uppercase transition-colors hover:bg-gold hover:text-ink"
+        >
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <rect x="3.5" y="5" width="17" height="15" rx="1" />
+            <path d="M3.5 9.5h17M8 3v4M16 3v4" />
+          </svg>
+          {t.downloads.calendar}
+        </button>
+      </Reveal>
       )}
 
       <Confetti fire={fire} />

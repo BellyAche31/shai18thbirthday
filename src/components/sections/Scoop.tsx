@@ -62,24 +62,23 @@ export default function Scoop() {
             <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-sm border border-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:max-w-none">
               {/* The second look — the cover and the dispatch already carry
                   the first, so repeating it here made the page feel like one
-                  photo on a loop. Pushed in past the busy room behind her: a
-                  transform rather than a filter, because a filter would pin
-                  this to its own composited layer and phones rasterize those
-                  at reduced resolution. */}
+                  photo on a loop. No push-in: unlike the frame this replaced,
+                  the room behind her belongs in shot. */}
               <SmartImage
                 src={invitationConfig.portraitPhotoAlt}
                 variant="silhouette"
                 alt={`${invitationConfig.name}, the celebrant`}
-                className="h-full w-full scale-[1.34] object-cover"
+                className="h-full w-full object-cover"
                 style={{ objectPosition: invitationConfig.portraitPhotoAltFocus }}
               />
-              {/* Sinks the corners so the frame reads as of a piece with the
-                  darker photography around it. */}
+              {/* Just enough fall-off at the corners to seat it against the
+                  page. Light, because the photograph is already lit the way
+                  the rest of the invitation is. */}
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    'radial-gradient(ellipse at 50% 40%, rgba(8,8,8,0) 40%, rgba(8,8,8,0.45) 78%, rgba(8,8,8,0.72) 100%)',
+                    'radial-gradient(ellipse at 50% 40%, rgba(8,8,8,0) 55%, rgba(8,8,8,0.22) 85%, rgba(8,8,8,0.42) 100%)',
                 }}
                 aria-hidden="true"
               />

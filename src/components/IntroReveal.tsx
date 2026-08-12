@@ -31,6 +31,11 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
   const t = useT()
   const [phase, setPhase] = useState<Phase>('title-in')
   const [citySettled, setCitySettled] = useState(false)
+  // The overlay used to mount already opaque, so the envelope was replaced by
+  // a slab of black in a single frame before the skyline began fading up —
+  // a visible black slap between the two beats. It now dissolves in over the
+  // cover instead.
+  const [entered, setEntered] = useState(false)
   const firedRef = useRef(false)
   const armedRef = useRef(false)
   const timers = useRef<number[]>([])
@@ -79,7 +84,20 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
     // filter at all, only the slow push in.
     timers.current.push(window.setTimeout(() => setCitySettled(true), reducedMotion ? 0 : 3400))
 
-    return clearTimers
+    // Two frames, so the browser paints the transparent state before the
+    // transition to opaque starts. One frame gets coalesced and the fade
+    // never runs.
+    let raf1 = 0
+    let raf2 = 0
+    raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => setEntered(true))
+    })
+
+    return () => {
+      clearTimers()
+      cancelAnimationFrame(raf1)
+      cancelAnimationFrame(raf2)
+    }
   }, [])
 
   const titleVisible = phase === 'title-in' || phase === 'title'
@@ -87,7 +105,9 @@ export default function IntroReveal({ onFinished }: { onFinished: () => void }) 
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-ink"
+      className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-ink transition-opacity duration-700 ease-out motion-reduce:transition-none ${
+        entered ? 'opacity-100' : 'opacity-0'
+      }`}
       onClick={advance}
       role="presentation"
     >

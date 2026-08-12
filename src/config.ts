@@ -58,10 +58,12 @@ export const invitationConfig = {
   // sealed envelope and the hero. Swap the path to change both at once.
   portraitPhoto: '/images/photo-01.jpg',
   // A second look, so the same frame isn't repeated down the whole page.
-  // `focus` is the object-position for its crops — this one sits off-centre
-  // and high, so the default 50%/18% would cut the face in half.
-  portraitPhotoAlt: '/images/photo-04.jpg',
-  portraitPhotoAltFocus: '58% 40%',
+  // Shot in a hotel lobby under chandeliers, which is more or less the exact
+  // palette the rest of the invitation is built from. Its aspect is already
+  // ~4:5, so the section crop shows essentially the whole frame.
+  // `focus` is the object-position for its crops.
+  portraitPhotoAlt: '/images/photo-gold.jpg',
+  portraitPhotoAltFocus: '50% 28%',
 
   musicFile: '/audio/background-music.mp3',
   // Background-music level, 0–1. Kept low so it sits under the moment
