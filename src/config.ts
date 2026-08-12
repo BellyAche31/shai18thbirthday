@@ -35,7 +35,7 @@ export const invitationConfig = {
     women: [
       { name: 'Midnight Blue', hex: '#1a2744', image: '/images/dresscode-women-midnight-v2.png' },
       { name: 'Emerald Green', hex: '#0b6e4f', image: '/images/dresscode-women-emerald-v2.png' },
-      { name: 'Burgundy', hex: '#5c1a2e', image: '/images/dresscode-women-burgundy-cut.png' },
+      { name: 'Burgundy', hex: '#5c1a2e', image: '/images/dresscode-women-burgundy-v2.png' },
     ],
     // Black is off the guest list along with gold, so blue is the men's palette.
     men: [
