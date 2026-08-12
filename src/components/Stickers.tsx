@@ -21,7 +21,7 @@ const cut = { paintOrder: 'stroke fill' as const, stroke: '#fff', strokeWidth: 9
 
 function Lips({ fill = PINK }: { fill?: string }) {
   return (
-    <svg viewBox="0 0 120 90" className="h-full w-full">
+    <svg viewBox="0 0 120 90" className="h-full w-full overflow-visible">
       <path
         d="M60 26c9-14 26-20 38-12 11 7 12 20 6 30-9 15-28 30-44 34-16-4-35-19-44-34-6-10-5-23 6-30 12-8 29-2 38 12z"
         fill={fill}
@@ -34,13 +34,13 @@ function Lips({ fill = PINK }: { fill?: string }) {
 
 function Xoxo({ fill = INK }: { fill?: string }) {
   return (
-    <svg viewBox="0 0 150 60" className="h-full w-full">
+    <svg viewBox="0 0 150 60" className="h-full w-full overflow-visible">
       <text
         x="75"
         y="45"
         textAnchor="middle"
         fontFamily="'Poiret One', system-ui, sans-serif"
-        fontSize="44"
+        fontSize="38"
         letterSpacing="2"
         fill={fill}
         {...cut}
@@ -53,7 +53,7 @@ function Xoxo({ fill = INK }: { fill?: string }) {
 
 function Crown({ fill = GOLD }: { fill?: string }) {
   return (
-    <svg viewBox="0 0 120 90" className="h-full w-full">
+    <svg viewBox="0 0 120 90" className="h-full w-full overflow-visible">
       <path d="M14 70l-8-44 30 20L60 16l24 30 30-20-8 44z" fill={fill} {...cut} />
       <rect x="14" y="70" width="92" height="12" rx="3" fill={fill} {...cut} />
     </svg>
@@ -62,7 +62,7 @@ function Crown({ fill = GOLD }: { fill?: string }) {
 
 function Coupe({ fill = GOLD }: { fill?: string }) {
   return (
-    <svg viewBox="0 0 90 120" className="h-full w-full">
+    <svg viewBox="0 0 90 120" className="h-full w-full overflow-visible">
       <path d="M12 16h66c0 26-13 40-29 43v39h18a5 5 0 010 10H23a5 5 0 010-10h18V59C25 56 12 42 12 16z" fill={fill} {...cut} />
     </svg>
   )
@@ -70,7 +70,7 @@ function Coupe({ fill = GOLD }: { fill?: string }) {
 
 function Heel({ fill = PINK }: { fill?: string }) {
   return (
-    <svg viewBox="0 0 130 90" className="h-full w-full">
+    <svg viewBox="0 0 130 90" className="h-full w-full overflow-visible">
       <path d="M10 22c26 6 44 20 58 36 9 10 22 16 40 16h14v12H74c-10 0-18-3-26-9-4 8-4 12-4 12H10z" fill={fill} {...cut} />
       <rect x="96" y="74" width="9" height="12" fill={fill} {...cut} />
     </svg>
@@ -79,7 +79,7 @@ function Heel({ fill = PINK }: { fill?: string }) {
 
 function Phone({ fill = BLUE }: { fill?: string }) {
   return (
-    <svg viewBox="0 0 80 120" className="h-full w-full">
+    <svg viewBox="0 0 80 120" className="h-full w-full overflow-visible">
       <rect x="10" y="8" width="60" height="104" rx="12" fill={fill} {...cut} />
       <rect x="20" y="22" width="40" height="60" rx="4" fill="#fff" opacity="0.85" />
       <circle cx="40" cy="97" r="7" fill="#fff" opacity="0.85" />
@@ -89,7 +89,7 @@ function Phone({ fill = BLUE }: { fill?: string }) {
 
 function Eighteen({ fill = CORAL }: { fill?: string }) {
   return (
-    <svg viewBox="0 0 110 90" className="h-full w-full">
+    <svg viewBox="0 0 110 90" className="h-full w-full overflow-visible">
       <circle cx="55" cy="45" r="38" fill={fill} {...cut} />
       <text
         x="55"
@@ -107,7 +107,7 @@ function Eighteen({ fill = CORAL }: { fill?: string }) {
 
 function Star({ fill = GOLD }: { fill?: string }) {
   return (
-    <svg viewBox="0 0 100 100" className="h-full w-full">
+    <svg viewBox="0 0 100 100" className="h-full w-full overflow-visible">
       <path d="M50 6l11 30 32 1-25 20 9 31-27-19-27 19 9-31L7 37l32-1z" fill={fill} {...cut} />
     </svg>
   )
@@ -116,7 +116,20 @@ function Star({ fill = GOLD }: { fill?: string }) {
 const GLYPHS = { lips: Lips, xoxo: Xoxo, crown: Crown, coupe: Coupe, heel: Heel, phone: Phone, eighteen: Eighteen, star: Star }
 type Glyph = keyof typeof GLYPHS
 
-type Placed = { g: Glyph; top: string; left?: string; right?: string; w: number; rot: number; fill?: string }
+/** width / height of each glyph's viewBox. A square span letterboxed the
+ *  oblong ones and made them render smaller than their given size. */
+const RATIO: Record<Glyph, number> = {
+  lips: 120 / 90,
+  xoxo: 150 / 60,
+  crown: 120 / 90,
+  coupe: 90 / 120,
+  heel: 130 / 90,
+  phone: 80 / 120,
+  eighteen: 110 / 90,
+  star: 1,
+}
+
+type Placed = { g: Glyph; top?: string; bottom?: string; left?: string; right?: string; w: number; rot: number; fill?: string }
 
 /**
  * Preset scatters, so no two sections carry the same arrangement.
@@ -129,20 +142,20 @@ type Placed = { g: Glyph; top: string; left?: string; right?: string; w: number;
  */
 const SCATTERS: Record<string, Placed[]> = {
   a: [
-    { g: 'lips', top: '2%', left: '-2%', w: 62, rot: -16 },
-    { g: 'xoxo', top: '92%', right: '-1%', w: 86, rot: 11, fill: GOLD },
+    { g: 'lips', top: '3%', left: '3%', w: 62, rot: -16 },
+    { g: 'xoxo', bottom: '3%', right: '3%', w: 88, rot: 11, fill: GOLD },
   ],
   b: [
-    { g: 'crown', top: '2.5%', right: '0%', w: 58, rot: 13 },
-    { g: 'coupe', top: '92%', left: '1%', w: 44, rot: -12 },
+    { g: 'crown', top: '3%', right: '3%', w: 58, rot: 13 },
+    { g: 'coupe', bottom: '3%', left: '4%', w: 34, rot: -12 },
   ],
   c: [
-    { g: 'heel', top: '3%', left: '-3%', w: 72, rot: 9 },
-    { g: 'star', top: '93%', right: '3%', w: 34, rot: -20, fill: CORAL },
+    { g: 'heel', top: '3.5%', left: '3%', w: 72, rot: 9 },
+    { g: 'star', bottom: '4%', right: '5%', w: 34, rot: -20, fill: CORAL },
   ],
   d: [
-    { g: 'eighteen', top: '2.5%', left: '0%', w: 50, rot: -9 },
-    { g: 'phone', top: '90%', right: '1%', w: 42, rot: -14, fill: PINK },
+    { g: 'eighteen', top: '3%', left: '4%', w: 52, rot: -9 },
+    { g: 'phone', bottom: '3%', right: '4%', w: 32, rot: -14, fill: PINK },
   ],
 }
 
@@ -157,10 +170,11 @@ export default function Stickers({ scatter = 'a' }: { scatter?: keyof typeof SCA
             className="absolute block opacity-55 sm:opacity-75"
             style={{
               top: s.top,
+              bottom: s.bottom,
               left: s.left,
               right: s.right,
               width: s.w,
-              height: s.w,
+              height: s.w / RATIO[s.g],
               transform: `rotate(${s.rot}deg)`,
             }}
           >
