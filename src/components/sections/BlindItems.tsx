@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Stickers from '../Stickers'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import { useT } from '../../LanguageContext'
@@ -56,6 +57,7 @@ export default function BlindItems() {
   const t = useT()
   return (
     <section className="relative px-6 py-24 sm:py-32">
+      <Stickers scatter="b" />
       <Reveal>
         <SectionLabel>{t.blindItems.label}</SectionLabel>
       </Reveal>

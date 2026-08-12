@@ -37,11 +37,16 @@ export default function SpottedCard({ visible }: { visible: boolean }) {
       </p>
 
       <div className="relative mt-3 aspect-square w-full overflow-hidden bg-ink">
+        {/* In colour. It was greyscale to look like newsprint, but the
+            photograph is the warmest thing on the card and desaturating it
+            threw that away — and `grayscale` is a filter, which pins the card
+            to its own composited layer for phones to rasterize badly. */}
         <SmartImage
-          src={invitationConfig.portraitPhoto}
+          src={invitationConfig.spottedPhoto}
           variant="silhouette"
           alt={`${invitationConfig.name}, the celebrant`}
-          className="h-full w-full object-cover object-[50%_18%] grayscale contrast-[1.08]"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: invitationConfig.spottedPhotoFocus }}
         />
         {/* A touch of flash-photo bloom across the top of the print. */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20" />

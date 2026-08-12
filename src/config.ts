@@ -33,18 +33,20 @@ export const invitationConfig = {
 
   dressCodePalette: {
     women: [
-      { name: 'Midnight Blue', hex: '#1a2744', image: '/images/dresscode-women-midnight.jpg' },
-      { name: 'Emerald Green', hex: '#0b6e4f', image: '/images/dresscode-women-emerald.jpg' },
-      { name: 'Burgundy', hex: '#5c1a2e', image: '/images/dresscode-women-burgundy.jpg' },
+      { name: 'Midnight Blue', hex: '#1a2744', image: '/images/dresscode-women-midnight-cut.png' },
+      { name: 'Emerald Green', hex: '#0b6e4f', image: '/images/dresscode-women-emerald-cut.png' },
+      { name: 'Burgundy', hex: '#5c1a2e', image: '/images/dresscode-women-burgundy-cut.png' },
     ],
     // Black is off the guest list along with gold, so blue is the men's palette.
     men: [
       { name: 'Blue', hex: '#1e3a6d' },
     ],
     // The sheet you sent had a black tuxedo in it, which the no-black rule
-    // rules out — this is the same image with that one suit cropped away.
-    // The untouched original is still in public/images/ if you want it back.
-    menReferenceImage: '/images/dresscode-men-blue-noblack.jpg',
+    // rules out — this is the same image with that one suit cropped away, and
+    // with its light studio background keyed out so the suits sit on the page
+    // rather than in a white box. The untouched original is still in
+    // public/images/ if you want it back.
+    menReferenceImage: '/images/dresscode-men-blue-noblack-cut.png',
   },
 
   // The invitation is non-transferable — one name, one seat.
@@ -64,6 +66,10 @@ export const invitationConfig = {
   // `focus` is the object-position for its crops.
   portraitPhotoAlt: '/images/photo-gold.jpg',
   portraitPhotoAltFocus: '50% 28%',
+  // The frame on the opening dispatch card. Its own entry because that card
+  // is a square crop and wants a shot framed for it.
+  spottedPhoto: '/images/photo-spotted.jpg',
+  spottedPhotoFocus: '40% 24%',
 
   musicFile: '/audio/background-music.mp3',
   // Background-music level, 0–1. Kept low so it sits under the moment

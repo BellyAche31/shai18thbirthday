@@ -1,3 +1,4 @@
+import Stickers from '../Stickers'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import GoldLine from '../GoldLine'
@@ -7,6 +8,7 @@ export default function GossipIntro() {
   const t = useT()
   return (
     <section className="relative px-6 py-24 text-onalt sm:py-32">
+      <Stickers scatter="a" />
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <SectionLabel>{t.gossipIntro.label}</SectionLabel>

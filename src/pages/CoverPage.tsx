@@ -91,13 +91,7 @@ export default function CoverPage() {
             {t.cover.tapSeal}
           </p>
         ) : (
-          <div className="mb-8 flex flex-col items-center gap-1">
-            {/* Poiret One rather than the utilitarian sans — it's a thin
-                geometric face built for display caps, so the word carries
-                the letterspacing instead of looking like a form label. */}
-            <span className="font-gossip text-base tracking-widest3 text-gold/85 uppercase sm:text-lg">
-              {t.cover.sealBrokenLabel}
-            </span>
+          <div className="mb-8 flex flex-col items-center">
             <p className="font-xoxo text-4xl leading-none text-gold sm:text-5xl">
               {t.cover.sealBrokenNote}
             </p>

@@ -1,3 +1,4 @@
+import Stickers from '../Stickers'
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
@@ -8,6 +9,7 @@ export default function DressCode() {
   const t = useT()
   return (
     <section className="relative min-h-[70vh] overflow-hidden px-6 py-24 text-center sm:py-32">
+      <Stickers scatter="a" />
 
       <div className="relative z-10">
         <Reveal>
@@ -37,12 +39,14 @@ export default function DressCode() {
             <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3">
               {invitationConfig.dressCodePalette.women.map((c, i) => (
                 <div key={c.name} className="flex flex-col items-center gap-3">
-                  <div className="aspect-[3/4] w-full max-w-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+                  {/* No frame. The studio background is keyed out of these
+                      now, so a box would just put the white back. */}
+                  <div className="w-full max-w-[220px]">
                     <SmartImage
                       src={c.image}
                       variant="flowers"
                       alt={t.dressCode.womenColors[i] ?? c.name}
-                      className="h-full w-full object-cover object-top"
+                      className="h-auto w-full object-contain"
                     />
                   </div>
                   <div className="flex items-center gap-2">
@@ -62,12 +66,12 @@ export default function DressCode() {
         <Reveal delay={500}>
           <div className="mx-auto mt-14 max-w-2xl">
             <p className="font-sans text-[10px] tracking-widest2 text-gold/80 uppercase">{t.dressCode.men}</p>
-            <div className="mt-4 overflow-hidden rounded-sm border border-gold/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+            <div className="mt-4">
               <SmartImage
                 src={invitationConfig.dressCodePalette.menReferenceImage}
                 variant="silhouette"
                 alt={`${t.dressCode.men}: ${invitationConfig.dressCodePalette.men.map((c, i) => t.dressCode.menColors[i] ?? c.name).join(' & ')}`}
-                className="h-full w-full object-cover object-top"
+                className="h-auto w-full object-contain"
               />
             </div>
             <div className="mt-4 flex justify-center gap-4">

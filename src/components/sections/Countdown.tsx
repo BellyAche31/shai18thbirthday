@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import Stickers from '../Stickers'
 import invitationConfig from '../../config'
 import { useCountdown } from '../../hooks/useCountdown'
 import Reveal from '../Reveal'
@@ -30,6 +31,7 @@ export default function Countdown() {
 
   return (
     <section className="relative overflow-hidden px-6 py-24 text-center text-onsurface sm:py-32">
+      <Stickers scatter="c" />
       <div className="pointer-events-none absolute inset-0 border-y border-gold/10" />
       <Reveal>
         <SectionLabel>{t.countdown.label}</SectionLabel>
