@@ -1,9 +1,57 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import invitationConfig from '../config'
 import { useT } from '../LanguageContext'
+
+/** Fisher–Yates. Unbiased, unlike sorting on `Math.random() - 0.5`. */
+function shuffled<T>(input: readonly T[]): T[] {
+  const a = [...input]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
 
 export default function SpottedToast() {
   const t = useT()
-  const headlines = t.spottedHeadlines
+
+  // ---- PHASE1XB ------------------------------------------------------------
+  // The gossip lines interleaved with invented "just replied yes" notices.
+  // Both the names and the running order are shuffled once per mount, so the
+  // feed opens somewhere different every visit rather than always leading on
+  // the same name. To remove the feature, drop this block and go back to
+  // reading t.spottedHeadlines directly.
+  const headlines = useMemo(() => {
+    // Any invented name that matches a real guest's first name is dropped.
+    // Without this the toast can announce "Elaine just replied yes" while an
+    // actual Elaine is on the entourage list, and it reads as a real reply
+    // from her rather than as part of the gossip.
+    const realFirstNames = new Set(
+      [
+        ...invitationConfig.roses,
+        ...invitationConfig.gossipsAndShots.names,
+        ...invitationConfig.eighteenGifts,
+        ...invitationConfig.eighteenBlueBills,
+      ].map((full) => full.split(' ')[0].toLowerCase()),
+    )
+
+    const facts = shuffled(t.spottedHeadlines)
+    const rsvps = shuffled(invitationConfig.rsvpTickerNames)
+      .filter((name) => !realFirstNames.has(name.toLowerCase()))
+      .slice(0, facts.length + 3)
+      .map((name) => t.rsvpToast.replace('{name}', name))
+
+    // Woven rather than concatenated: a run of nothing but RSVPs would read
+    // like a queue, and the facts are half the charm.
+    const feed: string[] = []
+    const longer = Math.max(facts.length, rsvps.length)
+    for (let i = 0; i < longer; i++) {
+      if (rsvps[i]) feed.push(rsvps[i])
+      if (facts[i]) feed.push(facts[i])
+    }
+    return feed
+  }, [t])
+  // ---- end PHASE1XB --------------------------------------------------------
   const [index, setIndex] = useState(0)
   const [visible, setVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)

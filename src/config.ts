@@ -184,6 +184,34 @@ export const invitationConfig = {
     'Violy Ipanag',
   ] as string[],
 
+  // ---- PHASE1XB ----------------------------------------------------------
+  // Names for the invented "just RSVP'd" notices in the corner toast. These
+  // are made up, not the guest list, and they are shuffled per page load so
+  // the same name never leads twice. To remove the feature: delete this
+  // array, `rsvpToast` in i18n.ts, and the PHASE1XB block in SpottedToast.tsx.
+  rsvpTickerNames: [
+    'Althea', 'Bianca', 'Camille', 'Danica', 'Erika',
+    'Faye', 'Gabrielle', 'Hazel', 'Isabel', 'Jasmine',
+    'Kyla', 'Liana', 'Mikaela', 'Nadine', 'Olivia',
+    'Patricia', 'Queenie', 'Rhea', 'Sofia', 'Trisha',
+    'Ursula', 'Verna', 'Wilma', 'Ximena', 'Yvonne',
+    'Zoe', 'Aaliyah', 'Beatrice', 'Cielo', 'Denise',
+    'Elaine', 'Francine', 'Gwyneth', 'Heart', 'Ivy',
+    'Jewel', 'Katrina', 'Lorraine', 'Maureen', 'Nicolette',
+    'Odette', 'Precious', 'Rowena', 'Shaira', 'Tricia',
+    'Venus', 'Winona', 'Yasmin', 'Angelo', 'Bryan',
+    'Carlo', 'Dominic', 'Enrico', 'Franco', 'Gabriel',
+    'Hector', 'Ivan', 'Joaquin', 'Kervin', 'Lorenzo',
+    'Marco', 'Nathaniel', 'Oliver', 'Paolo', 'Quentin',
+    'Rafael', 'Sebastian', 'Tobias', 'Ulysses', 'Vincent',
+    'Warren', 'Xander', 'Yuri', 'Zachary', 'Adrian',
+    'Brandon', 'Cedric', 'Darius', 'Emmanuel', 'Fidel',
+    'Gerard', 'Hansel', 'Ignacio', 'Jerome', 'Kenneth',
+    'Lester', 'Miguel', 'Norman', 'Orlando', 'Percival',
+    'Quirino', 'Ramon', 'Stefano', 'Teodoro', 'Uriel',
+    'Valentin', 'Wendell', 'Yohan', 'Zaldy', 'Arabella',
+  ] as string[],
+
   // A small, honest, self-promoting easter egg from whoever built this thing.
   creatorCredit: '— made by JC Gasmen',
 

@@ -87,6 +87,8 @@ const en = {
     'BREAKING: this invitation self-destructs at midnight. (Kidding. Mostly.)',
     'STYLE MEMO: black and gold are reserved for the house tonight.',
   ],
+  // PHASE1XB — {name} is substituted at runtime.
+  rsvpToast: 'SPOTTED: {name} just replied yes.',
   dismissNotification: 'Dismiss notification',
 
   // --- Gossip intro -------------------------------------------------------
@@ -315,6 +317,7 @@ const tl: Copy = {
     'BREAKING: mawawala ang paanyayang ito sa hatinggabi. (Biro lang. Medyo.)',
     'PAALALA SA ESTILO: ang itim at ginto ay para sa okasyon, hindi sa mga bisita.',
   ],
+  rsvpToast: 'SPOTTED: Sumagot na ng oo si {name}.',
   dismissNotification: 'Isara ang abiso',
 
   gossipIntro: {
