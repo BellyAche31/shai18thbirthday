@@ -1,24 +1,13 @@
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
-import PhotoBackdrop from '../PhotoBackdrop'
 import SmartImage from '../SmartImage'
 import { useT } from '../../LanguageContext'
 
 export default function DressCode() {
   const t = useT()
   return (
-    <section className="relative min-h-[70vh] overflow-hidden bg-surface px-6 py-24 text-center sm:py-32">
-      <PhotoBackdrop
-        src="/images/bg-nyc-midtown.jpg"
-        variant="city"
-        label="New York at night"
-        className="absolute inset-0 h-full w-full"
-        opacity={0.35}
-        blurPx={4}
-        grayscale={0.2}
-        overlayClassName="bg-surface/90"
-      />
+    <section className="relative min-h-[70vh] overflow-hidden px-6 py-24 text-center sm:py-32">
 
       <div className="relative z-10">
         <Reveal>

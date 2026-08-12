@@ -30,7 +30,7 @@ export default function EighteenSection({
   return (
     <section
       className={`relative overflow-hidden px-6 py-24 sm:py-32 ${
-        onAlt ? 'bg-alt text-onalt' : 'bg-surface text-onsurface'
+        onAlt ? 'text-onalt' : 'text-onsurface'
       }`}
     >
       {/* The warm corner fall-off from the reference — keeps the grid from
@@ -39,7 +39,7 @@ export default function EighteenSection({
 
       <div className="relative mx-auto max-w-3xl">
         <Reveal>
-          <h2 className="text-center font-display text-4xl tracking-wide sm:text-5xl">{label}</h2>
+          <h2 className="wordmark text-center text-4xl sm:text-6xl">{label}</h2>
         </Reveal>
         <Reveal delay={100}>
           <div className="mt-5">

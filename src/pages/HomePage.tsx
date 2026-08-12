@@ -1,3 +1,4 @@
+import BokehField from '../components/BokehField'
 import FloatingNav from '../components/FloatingNav'
 import ScrollProgress from '../components/ScrollProgress'
 import GossipTicker from '../components/GossipTicker'
@@ -18,7 +19,12 @@ import FinalSection from '../components/sections/FinalSection'
 
 export default function HomePage() {
   return (
-    <main className="relative w-full overflow-x-hidden">
+    <>
+      {/* One continuous field of defocused lights behind the whole page, so
+          scrolling moves over a single place rather than past a stack of
+          separately-painted panels. */}
+      <BokehField />
+      <main className="relative z-10 w-full overflow-x-hidden">
       <ScrollProgress />
       <FloatingNav />
       <Hero />
@@ -36,6 +42,7 @@ export default function HomePage() {
       <Rsvp />
       <FinalSection />
       <SpottedToast />
-    </main>
+      </main>
+    </>
   )
 }

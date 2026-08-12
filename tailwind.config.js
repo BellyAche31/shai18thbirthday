@@ -22,6 +22,21 @@ export default {
         gold: 'rgb(var(--c-gold) / <alpha-value>)',
         'gold-light': 'rgb(var(--c-gold-light) / <alpha-value>)',
         burgundy: '#3A1018',
+
+        // The floating panel the reference puts its content in: a light card
+        // over the dark bokeh field. Its own pair, because it stays light in
+        // both themes while `surface` behind it does not.
+        card: 'rgb(var(--c-card) / <alpha-value>)',
+        oncard: 'rgb(var(--c-oncard) / <alpha-value>)',
+
+        // The reference gives each nav item its own colour rather than running
+        // everything in one metal. Sections take one each.
+        neon: {
+          blue: 'rgb(var(--c-blue) / <alpha-value>)',
+          coral: 'rgb(var(--c-coral) / <alpha-value>)',
+          pink: 'rgb(var(--c-pink) / <alpha-value>)',
+          green: 'rgb(var(--c-green) / <alpha-value>)',
+        },
       },
       fontFamily: {
         display: ['"Playfair Display"', 'Georgia', 'serif'],

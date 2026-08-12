@@ -7,7 +7,7 @@ import { useT } from '../../LanguageContext'
 export default function TheNight() {
   const t = useT()
   return (
-    <section id="the-night" className="relative bg-surface px-6 py-24 text-onsurface sm:py-32">
+    <section id="the-night" className="relative px-6 py-24 text-onsurface sm:py-32">
       <Reveal>
         <SectionLabel>{t.theNight.label}</SectionLabel>
       </Reveal>

@@ -23,26 +23,46 @@
 /* Dark is the default look, so it lives on the bare :root — a guest who has
    never touched the toggle gets the intended cinematic version. */
 :root {
-  /* Warm near-black rather than neutral. The reference bathes everything in
-     amber — lit windows, sepia photographs — and a true grey-black under it
-     reads as cold and digital by comparison. */
-  --c-surface: 13 10 8;
-  --c-onsurface: 246 240 228;
-  --c-alt: 243 236 222;
-  --c-onalt: 20 15 11;
-  --c-gold: 205 167 96;
-  --c-gold-light: 233 206 146;
+  /* Near-black, so the defocused city lights behind everything have something
+     to burn against. The reference is essentially black plus bokeh. */
+  --c-surface: 5 5 7;
+  --c-onsurface: 246 242 234;
+  --c-alt: 10 10 13;
+  --c-onalt: 246 242 234;
+  --c-gold: 232 219 160;
+  --c-gold-light: 244 236 196;
+
+  /* The floating panel. Light in both themes — it is the page's paper. */
+  --c-card: 251 249 245;
+  --c-oncard: 20 18 16;
+
+  /* One colour per section, taken off the reference's nav. */
+  --c-blue: 93 173 226;
+  --c-coral: 232 129 92;
+  --c-pink: 226 106 168;
+  --c-green: 138 201 122;
 }
 
 :root[data-theme='light'] {
-  --c-surface: 252 248 240;
-  --c-onsurface: 28 22 15;
-  --c-alt: 240 231 213;
-  --c-onalt: 28 22 15;
+  --c-surface: 244 241 235;
+  --c-onsurface: 28 24 19;
+  --c-alt: 236 232 224;
+  --c-onalt: 28 24 19;
   /* Deepened so gold keeps its contrast against paper, while staying bright
      enough to read on the photo sections that stay dark in both themes. */
   --c-gold: 156 119 51;
   --c-gold-light: 190 150 76;
+
+  /* Cards go pure white and lean on their border, since the page behind them
+     is no longer dark enough to separate them on its own. */
+  --c-card: 255 255 255;
+  --c-oncard: 26 22 17;
+
+  /* Same hues, taken down so they read as ink on paper rather than as lights. */
+  --c-blue: 42 114 168;
+  --c-coral: 186 84 48;
+  --c-pink: 178 62 122;
+  --c-green: 74 138 62;
 }
 
 html {
@@ -66,6 +86,110 @@ body {
 ::selection {
   background: #C6A15B;
   color: #080808;
+}
+
+/* ---------------------------------------------------------------------------
+   The defocused city behind everything.
+
+   Built from stacked radial gradients rather than a blurred photograph. A
+   radial gradient is already soft, so this needs no `filter` — which matters,
+   because a full-viewport filtered layer is exactly the thing phones
+   rasterize at reduced resolution. It also costs no bytes and scales to any
+   screen.
+   --------------------------------------------------------------------------- */
+.bokeh-field {
+  position: fixed;
+  inset: -10%;
+  z-index: 0;
+  pointer-events: none;
+  background-color: rgb(var(--c-surface));
+  background-repeat: no-repeat;
+  /* `closest-side`, centred in its own box: the gradient reaches full
+     transparency exactly at the edge of the box it is sized into. Off-centre
+     circles leave a hard rectangular cut where the box ends before the colour
+     has faded out. */
+  background-image:
+    radial-gradient(circle closest-side, rgba(93, 173, 226, 0.29), rgba(93, 173, 226, 0) 100%),
+    radial-gradient(circle closest-side, rgba(244, 236, 196, 0.26), rgba(244, 236, 196, 0) 100%),
+    radial-gradient(circle closest-side, rgba(226, 106, 168, 0.22), rgba(226, 106, 168, 0) 100%),
+    radial-gradient(circle closest-side, rgba(232, 129, 92, 0.21), rgba(232, 129, 92, 0) 100%),
+    radial-gradient(circle closest-side, rgba(138, 201, 122, 0.18), rgba(138, 201, 122, 0) 100%),
+    radial-gradient(circle closest-side, rgba(232, 219, 160, 0.21), rgba(232, 219, 160, 0) 100%),
+    radial-gradient(circle closest-side, rgba(226, 106, 168, 0.16), rgba(226, 106, 168, 0) 100%),
+    radial-gradient(circle closest-side, rgba(93, 173, 226, 0.18), rgba(93, 173, 226, 0) 100%),
+    radial-gradient(circle closest-side, rgba(244, 236, 196, 0.15), rgba(244, 236, 196, 0) 100%),
+    radial-gradient(circle closest-side, rgba(138, 201, 122, 0.14), rgba(138, 201, 122, 0) 100%);
+  background-size:
+    52vmax 52vmax, 38vmax 38vmax, 34vmax 34vmax, 42vmax 42vmax, 30vmax 30vmax,
+    36vmax 36vmax, 28vmax 28vmax, 33vmax 33vmax, 22vmax 22vmax, 25vmax 25vmax;
+  background-position:
+    6% 6%, 84% 3%, 64% 22%, 14% 34%, 92% 44%,
+    38% 58%, 2% 72%, 70% 80%, 46% 14%, 26% 92%;
+  /* Transform only, so the lights drift without repainting anything. */
+  animation: bokehDrift 46s ease-in-out infinite alternate;
+}
+/* Sits over the lights, not under them: the reference is a black page with
+   bright points in it, and without this veil the colour washes across the
+   whole viewport and every piece of text loses its ground. */
+.bokeh-field::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 45%, rgba(5, 5, 7, 0.34) 0%, rgba(5, 5, 7, 0.72) 70%, rgba(5, 5, 7, 0.88) 100%);
+}
+:root[data-theme='light'] .bokeh-field::after {
+  background: none;
+}
+@keyframes bokehDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-2.5%, -2%, 0) scale(1.08);
+  }
+}
+/* On paper the lights become a faint wash — at full strength they read as
+   stains rather than as a city at night. */
+:root[data-theme='light'] .bokeh-field {
+  opacity: 0.22;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bokeh-field {
+    animation: none;
+  }
+}
+
+/* The floating panel the content sits on. */
+.gg-card {
+  background-color: rgb(var(--c-card));
+  color: rgb(var(--c-oncard));
+  border-radius: 14px;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.55),
+    0 2px 0 rgba(255, 255, 255, 0.5) inset;
+}
+:root[data-theme='light'] .gg-card {
+  box-shadow:
+    0 16px 40px rgba(60, 48, 30, 0.13),
+    0 0 0 1px rgba(60, 48, 30, 0.08);
+}
+
+/* The wordmark: thin, lowercase, and lit from behind like a sign. */
+.wordmark {
+  font-family: 'Poiret One', system-ui, sans-serif;
+  font-weight: 400;
+  text-transform: lowercase;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: rgb(var(--c-gold-light));
+  text-shadow:
+    0 0 26px rgba(244, 236, 196, 0.4),
+    0 0 70px rgba(232, 219, 160, 0.22);
+}
+:root[data-theme='light'] .wordmark {
+  color: rgb(var(--c-gold));
+  text-shadow: none;
 }
 
 /* The corner fall-off the reference leans on heavily. Sits inside a section

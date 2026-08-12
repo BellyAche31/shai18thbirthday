@@ -6,7 +6,7 @@ import { useT } from '../../LanguageContext'
 export default function GossipIntro() {
   const t = useT()
   return (
-    <section className="relative bg-alt px-6 py-24 text-onalt sm:py-32">
+    <section className="relative px-6 py-24 text-onalt sm:py-32">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <SectionLabel>{t.gossipIntro.label}</SectionLabel>

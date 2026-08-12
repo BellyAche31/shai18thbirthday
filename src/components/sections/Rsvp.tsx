@@ -11,7 +11,7 @@ export default function Rsvp() {
   const [fire, setFire] = useState(0)
 
   return (
-    <section id="rsvp" className="relative bg-alt px-6 py-24 text-center text-onalt sm:py-32">
+    <section id="rsvp" className="relative px-6 py-24 text-center text-onalt sm:py-32">
       <Reveal>
         <SectionLabel>{t.rsvp.label}</SectionLabel>
       </Reveal>

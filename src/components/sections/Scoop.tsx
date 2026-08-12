@@ -39,16 +39,14 @@ export default function Scoop() {
   ]
 
   return (
-    <section id="scoop" className="relative bg-surface px-6 py-24 text-onsurface sm:py-32">
+    <section id="scoop" className="relative px-6 py-24 text-onsurface sm:py-32">
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <SectionLabel>{t.scoop.label}</SectionLabel>
         </Reveal>
 
         <Reveal delay={100}>
-          <h2 className="mt-6 text-center font-display text-4xl tracking-wide sm:text-5xl">
-            {t.headline}
-          </h2>
+          <h2 className="wordmark mt-6 text-center text-4xl sm:text-6xl">{t.headline}</h2>
         </Reveal>
 
         <Reveal delay={200}>
