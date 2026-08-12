@@ -34,19 +34,16 @@ export const invitationConfig = {
   dressCodePalette: {
     women: [
       { name: 'Midnight Blue', hex: '#1a2744', image: '/images/dresscode-women-midnight-cut.png' },
-      { name: 'Emerald Green', hex: '#0b6e4f', image: '/images/dresscode-women-emerald-cut.png' },
+      { name: 'Emerald Green', hex: '#0b6e4f', image: '/images/dresscode-women-emerald-v2.png' },
       { name: 'Burgundy', hex: '#5c1a2e', image: '/images/dresscode-women-burgundy-v2.png' },
     ],
     // Black is off the guest list along with gold, so blue is the men's palette.
     men: [
       { name: 'Blue', hex: '#1e3a6d' },
     ],
-    // The sheet you sent had a black tuxedo in it, which the no-black rule
-    // rules out — this is the same image with that one suit cropped away, and
-    // with its light studio background keyed out so the suits sit on the page
-    // rather than in a white box. The untouched original is still in
-    // public/images/ if you want it back.
-    menReferenceImage: '/images/dresscode-men-blue-noblack-cut.png',
+    // Supplied with a real alpha channel, so no background keying and none of
+    // the halo the earlier flood-filled sheets carried.
+    menReferenceImage: '/images/dresscode-men-navy-v2.png',
   },
 
   // The invitation is non-transferable — one name, one seat.
