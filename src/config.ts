@@ -72,8 +72,10 @@ export const invitationConfig = {
   portraitPhotoAltFocus: '50% 28%',
   // The frame on the opening dispatch card. Its own entry because that card
   // is a square crop and wants a shot framed for it.
-  spottedPhoto: '/images/photo-spotted.jpg',
-  spottedPhotoFocus: '40% 24%',
+  spottedPhoto: '/images/photo-spotted-v2.jpg',
+  // Square crop on a 2:3 source shows ~67% of the height; this lands that
+  // window on her face rather than the middle of the coat.
+  spottedPhotoFocus: '50% 26%',
 
   musicFile: '/audio/background-music.mp3',
   // Background-music level, 0–1. Kept low so it sits under the moment
