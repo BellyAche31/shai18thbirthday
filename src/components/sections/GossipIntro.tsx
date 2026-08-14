@@ -1,3 +1,4 @@
+import PhotoBackdrop from '../PhotoBackdrop'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import GoldLine from '../GoldLine'
@@ -7,6 +8,21 @@ export default function GossipIntro() {
   const t = useT()
   return (
     <section className="relative px-6 py-24 text-onalt sm:py-32">
+      {/* Her, faded well back — atmosphere behind the copy, not a photo on
+          display. `transparent` keeps the bokeh field readable underneath. */}
+      <PhotoBackdrop
+        src="/images/photo-closing.jpg"
+        variant="nightlife"
+        label="The celebrant"
+        transparent
+        className="absolute inset-0 h-full w-full"
+        opacity={0.2}
+        blurPx={5}
+        grayscale={0.5}
+        sizingClassName="[background-size:cover] [background-position:55%_18%]"
+        overlayClassName="bg-gradient-to-b from-ink/80 via-ink/55 to-ink/90"
+      />
+
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <SectionLabel>{t.gossipIntro.label}</SectionLabel>

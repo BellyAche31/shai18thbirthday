@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PhotoBackdrop from '../PhotoBackdrop'
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
@@ -12,6 +13,21 @@ export default function Rsvp() {
 
   return (
     <section id="rsvp" className="relative px-6 py-24 text-center text-onalt sm:py-32">
+      {/* Her, faded well back — atmosphere behind the copy, not a photo on
+          display. `transparent` keeps the bokeh field readable underneath. */}
+      <PhotoBackdrop
+        src="/images/photo-gold.jpg"
+        variant="interior"
+        label="The celebrant"
+        transparent
+        className="absolute inset-0 h-full w-full"
+        opacity={0.18}
+        blurPx={5}
+        grayscale={0.5}
+        sizingClassName="[background-size:cover] [background-position:50%_28%]"
+        overlayClassName="bg-gradient-to-b from-ink/80 via-ink/55 to-ink/90"
+      />
+
       <Reveal>
         <SectionLabel>{t.rsvp.label}</SectionLabel>
       </Reveal>

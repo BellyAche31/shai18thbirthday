@@ -29,6 +29,12 @@ type Props = {
   overlayClassName?: string
   /** Pointer-parallax offset in px. */
   offset?: { x: number; y: number }
+  /**
+   * Drops the opaque black plate behind the photo so whatever is further back
+   * — the page's bokeh field — still reads through it. Without this the
+   * backdrop hides the lights completely.
+   */
+  transparent?: boolean
   className?: string
 }
 
@@ -52,6 +58,7 @@ export default function PhotoBackdrop({
   // multiplies out to near-black, so this stays deliberately light.
   overlayClassName = 'bg-gradient-to-b from-ink/75 via-ink/40 to-ink/95',
   offset = { x: 0, y: 0 },
+  transparent = false,
   className = '',
 }: Props) {
   const [failed, setFailed] = useState(false)
@@ -78,7 +85,7 @@ export default function PhotoBackdrop({
     // No position utility here on purpose: callers pass their own (usually
     // `absolute inset-0`), and a hardcoded `relative` would win the cascade
     // and collapse this to a 0x0 box.
-    <div className={`overflow-hidden bg-ink ${className}`} aria-hidden="true">
+    <div className={`overflow-hidden ${transparent ? '' : 'bg-ink'} ${className}`} aria-hidden="true">
       <div
         className={`h-full w-full bg-no-repeat transition-all duration-[2200ms] ease-out motion-reduce:transition-none ${sizingClassName}`}
         style={{

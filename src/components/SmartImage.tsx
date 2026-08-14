@@ -30,6 +30,11 @@ export default function SmartImage({
       loading="lazy"
       className={className}
       style={style}
+      // Blocks the long-press callout on iOS and the right-click menu on
+      // desktop — the two easy ways to save a photo. A determined guest can
+      // still screenshot or open the file URL; see the note in index.css.
+      draggable={false}
+      onContextMenu={(e) => e.preventDefault()}
       onError={() => setErrored(true)}
     />
   )

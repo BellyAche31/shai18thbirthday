@@ -83,6 +83,21 @@ body {
   transition: background-color 400ms ease, color 400ms ease;
 }
 
+/* ---------------------------------------------------------------------------
+   Makes photographs awkward to save.
+
+   This is a deterrent, not protection. It stops the easy paths — long-press
+   "Save Image" on a phone, right-click "Save image as", and dragging a photo
+   out to the desktop — which is what casual saving actually looks like. It
+   cannot stop a screenshot, View Source, or opening the file's URL directly;
+   anything the browser renders has already been downloaded to the device.
+   --------------------------------------------------------------------------- */
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 ::selection {
   background: #C6A15B;
   color: #080808;

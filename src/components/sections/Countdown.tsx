@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import PhotoBackdrop from '../PhotoBackdrop'
 import invitationConfig from '../../config'
 import { useCountdown } from '../../hooks/useCountdown'
 import Reveal from '../Reveal'
@@ -30,6 +31,21 @@ export default function Countdown() {
 
   return (
     <section className="relative overflow-hidden px-6 py-24 text-center text-onsurface sm:py-32">
+      {/* Her, faded well back — atmosphere behind the copy, not a photo on
+          display. `transparent` keeps the bokeh field readable underneath. */}
+      <PhotoBackdrop
+        src="/images/photo-cover.jpg"
+        variant="nightlife"
+        label="The celebrant"
+        transparent
+        className="absolute inset-0 h-full w-full"
+        opacity={0.16}
+        blurPx={5}
+        grayscale={0.5}
+        sizingClassName="[background-size:cover] [background-position:58%_34%]"
+        overlayClassName="bg-gradient-to-b from-ink/80 via-ink/55 to-ink/90"
+      />
+
       <div className="pointer-events-none absolute inset-0 border-y border-gold/10" />
       <Reveal>
         <SectionLabel>{t.countdown.label}</SectionLabel>
