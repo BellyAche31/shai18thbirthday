@@ -61,8 +61,11 @@ export const invitationConfig = {
   rsvpUrl: 'https://appt.apptrainings.com/r/caS9k1HFSz8pvaj1',
 
   // The celebrant's portrait, used as the softly-darkened backdrop behind the
-  // sealed envelope and the hero. Swap the path to change both at once.
-  portraitPhoto: '/images/photo-01.jpg',
+  // sealed envelope and inside the envelope's letter. Swap the path to change
+  // both at once. Her face sits low-centre in this frame, so the crops need a
+  // focus well below the default.
+  portraitPhoto: '/images/photo-cover.jpg',
+  portraitPhotoFocus: '58% 41%',
   // A second look, so the same frame isn't repeated down the whole page.
   // Shot in a hotel lobby under chandeliers, which is more or less the exact
   // palette the rest of the invitation is built from. Its aspect is already

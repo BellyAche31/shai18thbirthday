@@ -77,7 +77,7 @@ export default function CoverPage() {
         opacity={0.5}
         blurPx={4}
         grayscale={0.65}
-        sizingClassName="[background-size:cover] [background-position:50%_22%]"
+        sizingClassName="[background-size:cover] [background-position:58%_38%]"
         overlayClassName="bg-gradient-to-b from-ink/75 via-ink/55 to-ink/90 md:from-ink/85 md:via-ink/80"
       />
 
@@ -114,7 +114,8 @@ export default function CoverPage() {
                     src={invitationConfig.portraitPhoto}
                     variant="silhouette"
                     alt={`${invitationConfig.name}, the celebrant`}
-                    className="h-full w-full object-cover object-[50%_18%]"
+                    className="h-full w-full object-cover"
+                    style={{ objectPosition: invitationConfig.portraitPhotoFocus }}
                   />
                 </div>
                 <p className="mt-3 max-w-[85%] font-display text-base tracking-wide text-ink sm:text-lg">
