@@ -15,10 +15,11 @@ export default function FinalSection() {
       <Reveal>
         <div className="relative mx-auto mb-10 h-28 w-28 overflow-hidden rounded-full border border-gold/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)] sm:h-32 sm:w-32">
           <SmartImage
-            src={invitationConfig.portraitPhoto}
+            src={invitationConfig.closingPhoto}
             variant="silhouette"
             alt={`${invitationConfig.name}, the celebrant`}
-            className="h-full w-full object-cover object-[50%_16%]"
+            className="h-full w-full object-cover"
+            style={{ objectPosition: invitationConfig.closingPhotoFocus }}
           />
         </div>
       </Reveal>

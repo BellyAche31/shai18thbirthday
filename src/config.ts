@@ -76,6 +76,11 @@ export const invitationConfig = {
   // Square crop on a 2:3 source shows ~67% of the height; this lands that
   // window on her face rather than the middle of the coat.
   spottedPhotoFocus: '50% 26%',
+  // The closing portrait, in the circle above the sign-off. Square crop on a
+  // 2:3 source, and her face sits high in frame, so the window is pulled
+  // near the top.
+  closingPhoto: '/images/photo-closing.jpg',
+  closingPhotoFocus: '55% 8%',
 
   musicFile: '/audio/background-music.mp3',
   // Background-music level, 0–1. Kept low so it sits under the moment
