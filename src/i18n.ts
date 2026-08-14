@@ -164,7 +164,7 @@ const en = {
     note: 'Accompany me as we share a graceful dance together.',
   },
   gossips: {
-    label: 'The Eighteen Gossips',
+    label: 'The Eighteen Gossips and Shots',
     heading: 'THE INSIDE SOURCES',
     note: 'Share a heartwarming message, favorite memory, or advice for me to cherish❤️',
   },
@@ -389,7 +389,7 @@ const tl: Copy = {
     note: 'Samahan mo ako sa isang marangal na sayaw.',
   },
   gossips: {
-    label: 'Ang Labingwalong Tsismis',
+    label: 'Ang Labingwalong Tsismis at Shots',
     heading: 'ANG MGA TAGALOOB',
     note: 'Magbahagi ng mensaheng magpapainit ng puso, paboritong alaala, o payong aking iingatan❤️',
   },
