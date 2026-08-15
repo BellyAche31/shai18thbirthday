@@ -10,6 +10,7 @@ export default function EighteenRoses() {
       heading={t.roses.heading}
       note={t.roses.note}
       names={invitationConfig.roses}
+      backdrop={{ src: '/images/photo-fur-03-cut.png', side: 'right' }}
     />
   )
 }

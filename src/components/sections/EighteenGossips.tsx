@@ -11,6 +11,7 @@ export default function EighteenGossips() {
       note={t.gossips.note}
       names={invitationConfig.gossipsAndShots.names}
       tone="alt"
+      backdrop={{ src: '/images/photo-fur-02-cut.png', side: 'left' }}
     />
   )
 }

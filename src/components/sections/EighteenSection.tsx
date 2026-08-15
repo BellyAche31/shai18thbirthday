@@ -1,3 +1,4 @@
+import PhotoBackdrop from '../PhotoBackdrop'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import { useT } from '../../LanguageContext'
@@ -16,6 +17,7 @@ export default function EighteenSection({
   note,
   names,
   tone = 'surface',
+  backdrop,
 }: {
   label: string
   heading: string
@@ -23,6 +25,12 @@ export default function EighteenSection({
   names: readonly string[]
   /** Alternating sections keeps four in a row from reading as one long block. */
   tone?: 'surface' | 'alt'
+  /**
+   * A keyed-out figure standing at one edge. Deliberately optional and only
+   * passed to some of the four: on every one of them it stops being a
+   * presence and becomes wallpaper.
+   */
+  backdrop?: { src: string; side: 'left' | 'right' }
 }) {
   const t = useT()
   const onAlt = tone === 'alt'
@@ -33,6 +41,29 @@ export default function EighteenSection({
         onAlt ? 'text-onalt' : 'text-onsurface'
       }`}
     >
+      {backdrop && (
+        <PhotoBackdrop
+          src={backdrop.src}
+          variant="nightlife"
+          label="The celebrant"
+          transparent
+          className="absolute inset-0 h-full w-full"
+          opacity={0.4}
+          blurPx={2}
+          grayscale={0.3}
+          // Sized against the viewport rather than the section: these run to
+          // eighteen name plates and can be twice the height of a screen, so a
+          // percentage of the section makes her tower over the grid and sit
+          // behind the first column.
+          sizingClassName={
+            backdrop.side === 'left'
+              ? '[background-size:auto_40vh] [background-position:2%_99%] sm:[background-size:auto_72vh] sm:[background-position:4%_99%]'
+              : '[background-size:auto_40vh] [background-position:98%_99%] sm:[background-size:auto_72vh] sm:[background-position:96%_99%]'
+          }
+          overlayClassName="bg-gradient-to-b from-ink/72 via-ink/40 to-ink/88"
+        />
+      )}
+
       {/* The warm corner fall-off from the reference — keeps the grid from
           looking like it was pasted onto a flat rectangle. */}
       <div className="page-vignette" aria-hidden="true" />
