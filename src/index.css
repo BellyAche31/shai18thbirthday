@@ -1,0 +1,467 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* The "xoxo, gossip girl" sign-off lockup. Self-hosted (rather than pulled
+   from the Google CDN with the other four) so the two faces the sign-off
+   depends on are always there — it's the last thing a guest reads. */
+@font-face {
+  font-family: 'Sacramento';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/sacramento-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poiret One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/poiret-one-latin.woff2') format('woff2');
+}
+
+/* Dark is the default look, so it lives on the bare :root — a guest who has
+   never touched the toggle gets the intended cinematic version. */
+:root {
+  /* Near-black, so the defocused city lights behind everything have something
+     to burn against. The reference is essentially black plus bokeh. */
+  --c-surface: 5 5 7;
+  --c-onsurface: 246 242 234;
+  --c-alt: 10 10 13;
+  --c-onalt: 246 242 234;
+  --c-gold: 232 219 160;
+  --c-gold-light: 244 236 196;
+
+  /* The floating panel. Light in both themes — it is the page's paper. */
+  --c-card: 251 249 245;
+  --c-oncard: 20 18 16;
+
+  /* One colour per section, taken off the reference's nav. */
+  --c-blue: 93 173 226;
+  --c-coral: 232 129 92;
+  --c-pink: 226 106 168;
+  --c-green: 138 201 122;
+}
+
+:root[data-theme='light'] {
+  --c-surface: 244 241 235;
+  --c-onsurface: 28 24 19;
+  --c-alt: 236 232 224;
+  --c-onalt: 28 24 19;
+  /* Deepened so gold keeps its contrast against paper, while staying bright
+     enough to read on the photo sections that stay dark in both themes. */
+  --c-gold: 156 119 51;
+  --c-gold-light: 190 150 76;
+
+  /* Cards go pure white and lean on their border, since the page behind them
+     is no longer dark enough to separate them on its own. */
+  --c-card: 255 255 255;
+  --c-oncard: 26 22 17;
+
+  /* Same hues, taken down so they read as ink on paper rather than as lights. */
+  --c-blue: 42 114 168;
+  --c-coral: 186 84 48;
+  --c-pink: 178 62 122;
+  --c-green: 74 138 62;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Several controls are gold-on-dark with no border, so the default focus
+   ring was invisible against them. Only shows for keyboard users. */
+:focus-visible {
+  outline: 2px solid rgb(var(--c-gold));
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+body {
+  @apply bg-surface text-onsurface antialiased;
+  font-family: 'Cormorant Garamond', serif;
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+/* ---------------------------------------------------------------------------
+   Makes photographs awkward to save.
+
+   This is a deterrent, not protection. It stops the easy paths — long-press
+   "Save Image" on a phone, right-click "Save image as", and dragging a photo
+   out to the desktop — which is what casual saving actually looks like. It
+   cannot stop a screenshot, View Source, or opening the file's URL directly;
+   anything the browser renders has already been downloaded to the device.
+   --------------------------------------------------------------------------- */
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+::selection {
+  background: #C6A15B;
+  color: #080808;
+}
+
+/* ---------------------------------------------------------------------------
+   The defocused city behind everything.
+
+   Built from stacked radial gradients rather than a blurred photograph. A
+   radial gradient is already soft, so this needs no `filter` — which matters,
+   because a full-viewport filtered layer is exactly the thing phones
+   rasterize at reduced resolution. It also costs no bytes and scales to any
+   screen.
+   --------------------------------------------------------------------------- */
+.bokeh-field {
+  position: fixed;
+  inset: -10%;
+  z-index: 0;
+  pointer-events: none;
+  background-color: rgb(var(--c-surface));
+  background-repeat: no-repeat;
+  /* `closest-side`, centred in its own box: the gradient reaches full
+     transparency exactly at the edge of the box it is sized into. Off-centre
+     circles leave a hard rectangular cut where the box ends before the colour
+     has faded out. */
+  background-image:
+    radial-gradient(circle closest-side, rgba(93, 173, 226, 0.29), rgba(93, 173, 226, 0) 100%),
+    radial-gradient(circle closest-side, rgba(244, 236, 196, 0.26), rgba(244, 236, 196, 0) 100%),
+    radial-gradient(circle closest-side, rgba(226, 106, 168, 0.22), rgba(226, 106, 168, 0) 100%),
+    radial-gradient(circle closest-side, rgba(232, 129, 92, 0.21), rgba(232, 129, 92, 0) 100%),
+    radial-gradient(circle closest-side, rgba(138, 201, 122, 0.18), rgba(138, 201, 122, 0) 100%),
+    radial-gradient(circle closest-side, rgba(232, 219, 160, 0.21), rgba(232, 219, 160, 0) 100%),
+    radial-gradient(circle closest-side, rgba(226, 106, 168, 0.16), rgba(226, 106, 168, 0) 100%),
+    radial-gradient(circle closest-side, rgba(93, 173, 226, 0.18), rgba(93, 173, 226, 0) 100%),
+    radial-gradient(circle closest-side, rgba(244, 236, 196, 0.15), rgba(244, 236, 196, 0) 100%),
+    radial-gradient(circle closest-side, rgba(138, 201, 122, 0.14), rgba(138, 201, 122, 0) 100%);
+  background-size:
+    52vmax 52vmax, 38vmax 38vmax, 34vmax 34vmax, 42vmax 42vmax, 30vmax 30vmax,
+    36vmax 36vmax, 28vmax 28vmax, 33vmax 33vmax, 22vmax 22vmax, 25vmax 25vmax;
+  background-position:
+    6% 6%, 84% 3%, 64% 22%, 14% 34%, 92% 44%,
+    38% 58%, 2% 72%, 70% 80%, 46% 14%, 26% 92%;
+  /* Transform only, so the lights drift without repainting anything. */
+  animation: bokehDrift 46s ease-in-out infinite alternate;
+}
+/* Sits over the lights, not under them: the reference is a black page with
+   bright points in it, and without this veil the colour washes across the
+   whole viewport and every piece of text loses its ground. */
+.bokeh-field::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 45%, rgba(5, 5, 7, 0.34) 0%, rgba(5, 5, 7, 0.72) 70%, rgba(5, 5, 7, 0.88) 100%);
+}
+:root[data-theme='light'] .bokeh-field::after {
+  background: none;
+}
+@keyframes bokehDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-2.5%, -2%, 0) scale(1.08);
+  }
+}
+/* On paper the lights become a faint wash — at full strength they read as
+   stains rather than as a city at night. */
+:root[data-theme='light'] .bokeh-field {
+  opacity: 0.22;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bokeh-field {
+    animation: none;
+  }
+}
+
+/* The RSVP call to action. A slow breathing halo, so the eye is drawn back
+   to it without anything moving on the page — box-shadow only, no transform
+   and no filter, so it costs nothing to animate and promotes no layer. */
+.rsvp-cta {
+  box-shadow: 0 0 0 0 rgba(232, 219, 160, 0.5);
+  animation: rsvpPulse 3.2s ease-in-out infinite;
+}
+@keyframes rsvpPulse {
+  0%, 100% {
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.45),
+      0 0 0 0 rgba(232, 219, 160, 0.42);
+  }
+  55% {
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.45),
+      0 0 0 14px rgba(232, 219, 160, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rsvp-cta {
+    animation: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* The floating panel the content sits on. */
+.gg-card {
+  background-color: rgb(var(--c-card));
+  color: rgb(var(--c-oncard));
+  border-radius: 14px;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.55),
+    0 2px 0 rgba(255, 255, 255, 0.5) inset;
+}
+:root[data-theme='light'] .gg-card {
+  box-shadow:
+    0 16px 40px rgba(60, 48, 30, 0.13),
+    0 0 0 1px rgba(60, 48, 30, 0.08);
+}
+
+/* The wordmark: thin, lowercase, and lit from behind like a sign. */
+.wordmark {
+  font-family: 'Poiret One', system-ui, sans-serif;
+  font-weight: 400;
+  text-transform: lowercase;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: rgb(var(--c-gold-light));
+  text-shadow:
+    0 0 26px rgba(244, 236, 196, 0.4),
+    0 0 70px rgba(232, 219, 160, 0.22);
+}
+:root[data-theme='light'] .wordmark {
+  color: rgb(var(--c-gold));
+  text-shadow: none;
+}
+
+/* The corner fall-off the reference leans on heavily. Sits inside a section
+   and darkens its edges without touching the content's own colours, so it
+   works over photographs and flat panels alike. Pure paint — no filter, so
+   nothing gets promoted to its own composited layer. */
+.page-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 120% 85% at 50% 45%,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.22) 78%,
+    rgba(0, 0, 0, 0.42) 100%
+  );
+}
+/* On paper the same shape has to warm rather than dim, or the light theme
+   ends up with grubby grey corners. */
+:root[data-theme='light'] .page-vignette {
+  background: radial-gradient(
+    ellipse 120% 85% at 50% 45%,
+    rgba(120, 88, 40, 0) 45%,
+    rgba(120, 88, 40, 0.07) 78%,
+    rgba(120, 88, 40, 0.14) 100%
+  );
+}
+
+/* The cut-out celebrant standing at a section edge. Sized here rather than in
+   utility classes because the height needs `min()` of two different units —
+   a share of the section and a share of the viewport — which no single
+   Tailwind class expresses. The viewport half is what keeps her sane inside
+   the entourage sections, which can run several screens tall. */
+.figure-cutout {
+  width: var(--fig-w);
+  height: min(var(--fig-h), var(--fig-vh));
+  opacity: var(--fig-o);
+}
+@media (min-width: 640px) {
+  .figure-cutout {
+    width: var(--fig-w-sm);
+    height: min(var(--fig-h), var(--fig-vh-sm));
+    opacity: var(--fig-o-sm);
+  }
+}
+/* On paper she is a dark shape on a pale page rather than a lit one in a dark
+   room, so she needs less presence to read just as clearly. */
+:root[data-theme='light'] .figure-cutout {
+  opacity: calc(var(--fig-o) * 0.82);
+}
+@media (min-width: 640px) {
+  :root[data-theme='light'] .figure-cutout {
+    opacity: calc(var(--fig-o-sm) * 0.82);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   The opening titles.
+
+   Every animation here ends with no `filter` left on the element. A filter
+   that outlives its animation pins the node to its own composited layer,
+   which phones rasterize at reduced resolution — that is what made an earlier
+   version of this intro look permanently pixelated. The `.is-settled` classes
+   remove the animations outright once they've played, so the final state is
+   plain, unfiltered, sharply-rendered text.
+   --------------------------------------------------------------------------- */
+
+/* The city, arriving out of focus and pulling sharp — the defocused-lights
+   opening. Base transform matches the animation's last frame so dropping the
+   animation on settle doesn't jump. */
+.intro-city {
+  transform: scale(1.06);
+  animation: introCityFocus 3400ms cubic-bezier(0.16, 0.84, 0.34, 1) both;
+}
+.intro-city.is-settled {
+  animation: none;
+  filter: none;
+  /* A long, barely-perceptible push in, so the frame is never quite still. */
+  transform: scale(1);
+  transition: transform 20s linear;
+}
+@keyframes introCityFocus {
+  from {
+    opacity: 0;
+    filter: blur(22px) saturate(1.5);
+    transform: scale(1.22);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: scale(1.06);
+  }
+}
+
+/* Keeps a word intact when the line wraps — the title opens at wide tracking
+   and won't fit a phone on one line. */
+.intro-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Each letter resolves out of the blur in turn. */
+.intro-char {
+  display: inline-block;
+  white-space: pre;
+  animation: introChar 900ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes introChar {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(18px) scale(1.14);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Tracking closes up as the line lands, then the glint runs through it. */
+.intro-title {
+  letter-spacing: 0.22em;
+  transition: letter-spacing 1400ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.intro-title.is-settled {
+  letter-spacing: 0.06em;
+  animation: introGlint 2200ms ease-out 200ms both;
+}
+.intro-title.is-settled .intro-char {
+  animation: none;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+/* text-shadow rather than a glow filter — same look, no composited layer. */
+@keyframes introGlint {
+  0% {
+    text-shadow: none;
+  }
+  35% {
+    text-shadow:
+      0 0 22px rgba(228, 201, 137, 0.75),
+      0 0 60px rgba(198, 161, 91, 0.35);
+  }
+  100% {
+    text-shadow: 0 0 26px rgba(198, 161, 91, 0.22);
+  }
+}
+
+.intro-eyebrow,
+.intro-rule {
+  opacity: 0;
+  transition:
+    opacity 1200ms ease-out,
+    transform 1200ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.intro-eyebrow {
+  transform: translateY(-6px);
+}
+.intro-rule {
+  transform: scaleX(0.2);
+}
+.intro-eyebrow.is-settled,
+.intro-rule.is-settled {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-city,
+  .intro-city.is-settled,
+  .intro-char,
+  .intro-title.is-settled {
+    animation: none;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+  .intro-char {
+    opacity: 1;
+  }
+}
+
+.flip-unit {
+  perspective: 900px;
+}
+.flip-card {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.45, 0, 0.2, 1);
+}
+.flip-card.is-flipping {
+  transform: rotateX(-180deg);
+}
+/* Snapping back to 0 has to be instant. Without this the card eases all the
+   way back over another 0.55s, so each tick read as a flip followed by a
+   visible spin in reverse — worst on the seconds, which never sat still. */
+.flip-card.is-resetting {
+  transition: none;
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  backface-visibility: hidden;
+}
+.flip-face-back {
+  transform: rotateX(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-card {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
