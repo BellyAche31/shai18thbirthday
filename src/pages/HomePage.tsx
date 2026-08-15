@@ -14,6 +14,7 @@ import EighteenGifts from '../components/sections/EighteenGifts'
 import EighteenBlueBills from '../components/sections/EighteenBlueBills'
 import TheNight from '../components/sections/TheNight'
 import DressCode from '../components/sections/DressCode'
+import Kiosks from '../components/sections/Kiosks'
 import Rsvp from '../components/sections/Rsvp'
 import FinalSection from '../components/sections/FinalSection'
 
@@ -39,6 +40,10 @@ export default function HomePage() {
       <EighteenBlueBills />
       <TheNight />
       <DressCode />
+      {/* Straight after the dress code and straight before the RSVP: this is
+          the section that makes the effort feel worth it, so it sits between
+          what we're asking of a guest and the button that commits them. */}
+      <Kiosks />
       <Rsvp />
       <FinalSection />
       <SpottedToast />

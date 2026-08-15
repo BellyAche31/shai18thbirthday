@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import PhotoBackdrop from '../PhotoBackdrop'
+import FigureCutout from '../FigureCutout'
 import invitationConfig from '../../config'
 import { useCountdown } from '../../hooks/useCountdown'
 import Reveal from '../Reveal'
@@ -30,26 +30,27 @@ export default function Countdown() {
   ]
 
   return (
-    <section className="relative overflow-hidden px-6 py-24 text-center text-onsurface sm:py-32">
-      {/* Her, standing at the edge of the section rather than smeared across
-          it. The white studio ground is keyed out, so sizing by height instead
-          of cover keeps her whole — a figure guests actually register, not a
-          crop of a shoulder. `transparent` keeps the bokeh field readable
-          underneath. */}
-      <PhotoBackdrop
+    // The deep bottom padding on phones is the figure's room: she stands in
+    // that band rather than under the type, which is the only way she reads at
+    // full strength on a screen this narrow.
+    <section className="relative overflow-hidden px-6 pb-56 pt-24 text-center text-onsurface sm:py-32">
+      {/* Her, standing at the edge of the section — sharp and in colour, not
+          dimmed into the background. She's the reason there's a clock here. */}
+      <FigureCutout
         src="/images/photo-fur-04-cut.png"
-        variant="nightlife"
-        label="The celebrant"
-        transparent
-        className="absolute inset-0 h-full w-full"
-        opacity={0.48}
-        blurPx={1.5}
-        grayscale={0.25}
-        sizingClassName="[background-size:auto_38%] [background-position:0%_100%] sm:[background-size:auto_56%] sm:[background-position:0%_100%]"
-        overlayClassName="bg-gradient-to-b from-ink/70 via-ink/35 to-ink/85"
+        side="left"
+        width={{ phone: 58, desktop: 30 }}
+        maxHeight={{ section: 88, viewport: 72, viewportPhone: 30 }}
+        opacity={{ phone: 0.95, desktop: 1 }}
       />
 
+      <div className="page-vignette" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 border-y border-gold/10" />
+
+      {/* Positioned, so it stacks above the figure: she is absolute, and an
+          absolute element paints over static content no matter the source
+          order. The clock has to be the thing you can read. */}
+      <div className="relative">
       <Reveal>
         <SectionLabel>{t.countdown.label}</SectionLabel>
       </Reveal>
@@ -88,6 +89,7 @@ export default function Countdown() {
         </button>
       </Reveal>
       )}
+      </div>
 
       <Confetti fire={fire} />
     </section>

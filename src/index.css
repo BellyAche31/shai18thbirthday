@@ -259,6 +259,34 @@ img {
   );
 }
 
+/* The cut-out celebrant standing at a section edge. Sized here rather than in
+   utility classes because the height needs `min()` of two different units —
+   a share of the section and a share of the viewport — which no single
+   Tailwind class expresses. The viewport half is what keeps her sane inside
+   the entourage sections, which can run several screens tall. */
+.figure-cutout {
+  width: var(--fig-w);
+  height: min(var(--fig-h), var(--fig-vh));
+  opacity: var(--fig-o);
+}
+@media (min-width: 640px) {
+  .figure-cutout {
+    width: var(--fig-w-sm);
+    height: min(var(--fig-h), var(--fig-vh-sm));
+    opacity: var(--fig-o-sm);
+  }
+}
+/* On paper she is a dark shape on a pale page rather than a lit one in a dark
+   room, so she needs less presence to read just as clearly. */
+:root[data-theme='light'] .figure-cutout {
+  opacity: calc(var(--fig-o) * 0.82);
+}
+@media (min-width: 640px) {
+  :root[data-theme='light'] .figure-cutout {
+    opacity: calc(var(--fig-o-sm) * 0.82);
+  }
+}
+
 /* ---------------------------------------------------------------------------
    The opening titles.
 

@@ -1,4 +1,4 @@
-import PhotoBackdrop from '../PhotoBackdrop'
+import FigureCutout from '../FigureCutout'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import { useT } from '../../LanguageContext'
@@ -37,30 +37,21 @@ export default function EighteenSection({
 
   return (
     <section
-      className={`relative overflow-hidden px-6 py-24 sm:py-32 ${
-        onAlt ? 'text-onalt' : 'text-onsurface'
-      }`}
+      className={`relative overflow-hidden px-6 pt-24 sm:py-32 ${
+        backdrop ? 'pb-56' : 'pb-24'
+      } ${onAlt ? 'text-onalt' : 'text-onsurface'}`}
     >
       {backdrop && (
-        <PhotoBackdrop
+        <FigureCutout
           src={backdrop.src}
-          variant="nightlife"
-          label="The celebrant"
-          transparent
-          className="absolute inset-0 h-full w-full"
-          opacity={0.4}
-          blurPx={2}
-          grayscale={0.3}
-          // Sized against the viewport rather than the section: these run to
-          // eighteen name plates and can be twice the height of a screen, so a
-          // percentage of the section makes her tower over the grid and sit
-          // behind the first column.
-          sizingClassName={
-            backdrop.side === 'left'
-              ? '[background-size:auto_28vh] [background-position:2%_99%] sm:[background-size:auto_52vh] sm:[background-position:4%_99%]'
-              : '[background-size:auto_28vh] [background-position:98%_99%] sm:[background-size:auto_52vh] sm:[background-position:96%_99%]'
-          }
-          overlayClassName="bg-gradient-to-b from-ink/72 via-ink/40 to-ink/88"
+          side={backdrop.side}
+          width={{ phone: 54, desktop: 26 }}
+          // The section half of the cap is deliberately generous and the
+          // viewport half deliberately tight: eighteen name plates can run
+          // well past one screen, and it's the viewport figure that keeps her
+          // from towering over the grid.
+          maxHeight={{ section: 60, viewport: 58, viewportPhone: 28 }}
+          opacity={{ phone: 0.9, desktop: 0.95 }}
         />
       )}
 

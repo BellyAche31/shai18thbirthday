@@ -1,4 +1,4 @@
-import PhotoBackdrop from '../PhotoBackdrop'
+import FigureCutout from '../FigureCutout'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
 import GoldLine from '../GoldLine'
@@ -7,26 +7,20 @@ import { useT } from '../../LanguageContext'
 export default function GossipIntro() {
   const t = useT()
   return (
-    <section className="relative px-6 py-24 text-onalt sm:py-32">
-      {/* Her, standing at the edge of the section rather than smeared across
-          it. The white studio ground is keyed out, so sizing by height instead
-          of cover keeps her whole — a figure guests actually register, not a
-          crop of a shoulder. `transparent` keeps the bokeh field readable
-          underneath. */}
-      <PhotoBackdrop
+    <section className="relative overflow-hidden px-6 pb-56 pt-24 text-onalt sm:py-32">
+      {/* The first time a guest sees her on this page, so she is sharp and in
+          colour rather than dimmed into the set dressing. */}
+      <FigureCutout
         src="/images/photo-fur-02-cut.png"
-        variant="nightlife"
-        label="The celebrant"
-        transparent
-        className="absolute inset-0 h-full w-full"
-        opacity={0.5}
-        blurPx={1.5}
-        grayscale={0.25}
-        sizingClassName="[background-size:auto_38%] [background-position:0%_100%] sm:[background-size:auto_56%] sm:[background-position:0%_100%]"
-        overlayClassName="bg-gradient-to-b from-ink/70 via-ink/35 to-ink/85"
+        side="left"
+        width={{ phone: 58, desktop: 31 }}
+        maxHeight={{ section: 90, viewport: 74, viewportPhone: 30 }}
+        opacity={{ phone: 0.95, desktop: 1 }}
       />
 
-      <div className="mx-auto max-w-2xl">
+      <div className="page-vignette" aria-hidden="true" />
+
+      <div className="relative mx-auto max-w-2xl">
         <Reveal>
           <SectionLabel>{t.gossipIntro.label}</SectionLabel>
         </Reveal>

@@ -217,6 +217,31 @@ const en = {
     menColors: ['Blue'],
   },
 
+  // --- What's waiting at the venue ----------------------------------------
+  kiosks: {
+    label: 'The Extras',
+    heading: 'WHAT’S WAITING FOR YOU',
+    note: 'Four stations open all night. Come ready for all of them.',
+    items: [
+      {
+        name: 'MOBILE BAR',
+        line: 'Cocktails and mocktails, mixed to order all evening.',
+      },
+      {
+        name: 'PHOTO BOOTH',
+        line: 'Prints to take home the same night. Dress for the frame.',
+      },
+      {
+        name: 'PERFUME BAR',
+        line: 'Blend a scent that’s yours, and keep the bottle.',
+      },
+      {
+        name: 'GRAZING TABLE',
+        line: 'Cheeses, cured meats, fruit and sweets, laid out to pick at.',
+      },
+    ],
+  },
+
   // --- RSVP ---------------------------------------------------------------
   rsvp: {
     label: "You're Invited",
@@ -438,6 +463,30 @@ const tl: Copy = {
     insidersNote: 'Paalala ng Insider',
     womenColors: ['Asul na Hatinggabi', 'Berdeng Emerald', 'Burgundy'],
     menColors: ['Asul'],
+  },
+
+  kiosks: {
+    label: 'Ang Dagdag',
+    heading: 'ANG NAGHIHINTAY SA IYO',
+    note: 'Apat na istasyon, bukas buong gabi. Maghanda ka para sa lahat.',
+    items: [
+      {
+        name: 'MOBILE BAR',
+        line: 'Cocktails at mocktails, hinahalo buong gabi.',
+      },
+      {
+        name: 'PHOTO BOOTH',
+        line: 'May print na iuuwi mismo sa gabing iyon. Magbihis para sa frame.',
+      },
+      {
+        name: 'PERFUME BAR',
+        line: 'Gumawa ng sariling halimuyak, at iuwi ang bote.',
+      },
+      {
+        name: 'GRAZING TABLE',
+        line: 'Keso, cured meats, prutas at matatamis, nakahain buong gabi.',
+      },
+    ],
   },
 
   rsvp: {

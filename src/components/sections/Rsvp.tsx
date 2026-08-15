@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import PhotoBackdrop from '../PhotoBackdrop'
+import FigureCutout from '../FigureCutout'
 import invitationConfig from '../../config'
 import Reveal from '../Reveal'
 import SectionLabel from '../SectionLabel'
@@ -12,25 +12,21 @@ export default function Rsvp() {
   const [fire, setFire] = useState(0)
 
   return (
-    <section id="rsvp" className="relative px-6 py-24 text-center text-onalt sm:py-32">
-      {/* Her, standing at the edge of the section rather than smeared across
-          it. The white studio ground is keyed out, so sizing by height instead
-          of cover keeps her whole — a figure guests actually register, not a
-          crop of a shoulder. `transparent` keeps the bokeh field readable
-          underneath. */}
-      <PhotoBackdrop
-        src="/images/photo-fur-01-cut.png"
-        variant="interior"
-        label="The celebrant"
-        transparent
-        className="absolute inset-0 h-full w-full"
-        opacity={0.5}
-        blurPx={1.5}
-        grayscale={0.25}
-        sizingClassName="[background-size:auto_38%] [background-position:100%_100%] sm:[background-size:auto_56%] sm:[background-position:100%_100%]"
-        overlayClassName="bg-gradient-to-b from-ink/70 via-ink/35 to-ink/85"
+    <section id="rsvp" className="relative overflow-hidden px-6 pb-56 pt-24 text-center text-onalt sm:py-32">
+      {/* Mirrored to the right, and a different frame from the one that opened
+          the page, so the last look at her doesn't read as the first one
+          repeated. */}
+      <FigureCutout
+        src="/images/photo-fur-02-cut.png"
+        side="right"
+        width={{ phone: 56, desktop: 29 }}
+        maxHeight={{ section: 82, viewport: 72, viewportPhone: 28 }}
+        opacity={{ phone: 0.92, desktop: 1 }}
       />
 
+      <div className="page-vignette" aria-hidden="true" />
+
+      <div className="relative">
       <Reveal>
         <SectionLabel>{t.rsvp.label}</SectionLabel>
       </Reveal>
@@ -128,6 +124,7 @@ export default function Rsvp() {
           </div>
         </div>
       </Reveal>
+      </div>
 
       <Confetti fire={fire} />
     </section>
