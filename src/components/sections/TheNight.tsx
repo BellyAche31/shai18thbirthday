@@ -17,11 +17,11 @@ export default function TheNight() {
         label="The celebrant"
         transparent
         className="absolute inset-0 h-full w-full"
-        opacity={0.16}
-        blurPx={5}
-        grayscale={0.5}
-        sizingClassName="[background-size:cover] [background-position:50%_26%]"
-        overlayClassName="bg-gradient-to-b from-ink/80 via-ink/55 to-ink/90"
+        opacity={0.34}
+        blurPx={3}
+        grayscale={0.35}
+        sizingClassName="[background-size:cover] [background-position:50%_22%]"
+        overlayClassName="bg-gradient-to-b from-ink/72 via-ink/42 to-ink/88"
       />
 
       <Reveal>

@@ -67,12 +67,13 @@ export const invitationConfig = {
   portraitPhoto: '/images/photo-cover.jpg',
   portraitPhotoFocus: '58% 41%',
   // A second look, so the same frame isn't repeated down the whole page.
-  // Shot in a hotel lobby under chandeliers, which is more or less the exact
-  // palette the rest of the invitation is built from. Its aspect is already
-  // ~4:5, so the section crop shows essentially the whole frame.
-  // `focus` is the object-position for its crops.
-  portraitPhotoAlt: '/images/photo-gold.jpg',
-  portraitPhotoAltFocus: '50% 28%',
+  // Studio frame with the white background keyed out, so she stands on the
+  // card's own dark ground instead of a lit white rectangle punched into a
+  // black-and-gold page. `focus` is the object-position for its crops: the
+  // 4:5 card shows ~83% of this 2:3 source, and bottom-anchoring lands that
+  // window on her rather than on the empty air above her head.
+  portraitPhotoAlt: '/images/photo-fur-03-cut.png',
+  portraitPhotoAltFocus: '51% 100%',
   // The frame on the opening dispatch card. Its own entry because that card
   // is a square crop and wants a shot framed for it.
   spottedPhoto: '/images/photo-spotted-v2.jpg',

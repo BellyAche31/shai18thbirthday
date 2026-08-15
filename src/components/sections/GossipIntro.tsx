@@ -8,19 +8,22 @@ export default function GossipIntro() {
   const t = useT()
   return (
     <section className="relative px-6 py-24 text-onalt sm:py-32">
-      {/* Her, faded well back — atmosphere behind the copy, not a photo on
-          display. `transparent` keeps the bokeh field readable underneath. */}
+      {/* Her, standing at the edge of the section rather than smeared across
+          it. The white studio ground is keyed out, so sizing by height instead
+          of cover keeps her whole — a figure guests actually register, not a
+          crop of a shoulder. `transparent` keeps the bokeh field readable
+          underneath. */}
       <PhotoBackdrop
-        src="/images/photo-closing.jpg"
+        src="/images/photo-fur-02-cut.png"
         variant="nightlife"
         label="The celebrant"
         transparent
         className="absolute inset-0 h-full w-full"
-        opacity={0.2}
-        blurPx={5}
-        grayscale={0.5}
-        sizingClassName="[background-size:cover] [background-position:55%_18%]"
-        overlayClassName="bg-gradient-to-b from-ink/80 via-ink/55 to-ink/90"
+        opacity={0.5}
+        blurPx={1.5}
+        grayscale={0.25}
+        sizingClassName="[background-size:auto_52%] [background-position:4%_100%] sm:[background-size:auto_92%] sm:[background-position:14%_100%]"
+        overlayClassName="bg-gradient-to-b from-ink/70 via-ink/35 to-ink/85"
       />
 
       <div className="mx-auto max-w-2xl">
