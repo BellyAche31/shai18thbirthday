@@ -226,6 +226,8 @@ const en = {
     giftNote:
       "Your presence is the present. If you'd like to give something more, gifts and cash gifts can be handed directly to Mommy or Kuya.",
     button: 'RSVP Now',
+    deadlineLabel: 'Kindly reply by',
+    deadlineDate: 'MONDAY, SEPTEMBER 7, 2026',
     helper: 'Opens our RSVP form in a new tab — your response goes straight to us.',
     contactLabel: 'Questions, or trouble with the form? Call or text us.',
   },
@@ -446,6 +448,8 @@ const tl: Copy = {
     giftNote:
       'Ang presensya mo ang regalo. Kung nais mong magbigay pa, ang mga regalo at cash gift ay maaaring ibigay nang direkta kay Mommy o Kuya.',
     button: 'Mag-RSVP Na',
+    deadlineLabel: 'Mangyaring sumagot bago ang',
+    deadlineDate: 'LUNES, SETYEMBRE 7, 2026',
     helper: 'Bubuksan ang aming RSVP form sa bagong tab — diretso sa amin ang sagot mo.',
     contactLabel: 'May tanong, o may problema sa form? Tawagan o i-text kami.',
   },

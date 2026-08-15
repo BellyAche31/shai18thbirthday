@@ -60,6 +60,20 @@ export default function Rsvp() {
         </div>
       </Reveal>
 
+      {/* Above the button rather than below it: a deadline read after the tap
+          has already been made is just trivia. Ruled off on both sides so it
+          reads as a stated term of the invitation, not a footnote. */}
+      <Reveal delay={350}>
+        <div className="mx-auto mt-10 flex max-w-sm flex-col items-center gap-1.5 border-y border-gold/25 py-4">
+          <span className="font-sans text-[10px] tracking-widest2 text-onalt/60 uppercase">
+            {t.rsvp.deadlineLabel}
+          </span>
+          <span className="font-sans text-sm tracking-widest2 text-gold uppercase sm:text-base">
+            {t.rsvp.deadlineDate}
+          </span>
+        </div>
+      </Reveal>
+
       <Reveal delay={400}>
         {/* The one thing every guest has to actually do, so it stops being an
             outline like every other control on the page and goes solid gold.
