@@ -27,7 +27,7 @@ export default function Rsvp() {
         opacity={0.5}
         blurPx={1.5}
         grayscale={0.25}
-        sizingClassName="[background-size:auto_52%] [background-position:96%_100%] sm:[background-size:auto_92%] sm:[background-position:80%_100%]"
+        sizingClassName="[background-size:auto_38%] [background-position:100%_100%] sm:[background-size:auto_56%] sm:[background-position:100%_100%]"
         overlayClassName="bg-gradient-to-b from-ink/70 via-ink/35 to-ink/85"
       />
 

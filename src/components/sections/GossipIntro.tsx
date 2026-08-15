@@ -22,7 +22,7 @@ export default function GossipIntro() {
         opacity={0.5}
         blurPx={1.5}
         grayscale={0.25}
-        sizingClassName="[background-size:auto_52%] [background-position:4%_100%] sm:[background-size:auto_92%] sm:[background-position:14%_100%]"
+        sizingClassName="[background-size:auto_38%] [background-position:0%_100%] sm:[background-size:auto_56%] sm:[background-position:0%_100%]"
         overlayClassName="bg-gradient-to-b from-ink/70 via-ink/35 to-ink/85"
       />
 

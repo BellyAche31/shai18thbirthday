@@ -57,8 +57,8 @@ export default function EighteenSection({
           // behind the first column.
           sizingClassName={
             backdrop.side === 'left'
-              ? '[background-size:auto_40vh] [background-position:2%_99%] sm:[background-size:auto_72vh] sm:[background-position:4%_99%]'
-              : '[background-size:auto_40vh] [background-position:98%_99%] sm:[background-size:auto_72vh] sm:[background-position:96%_99%]'
+              ? '[background-size:auto_28vh] [background-position:2%_99%] sm:[background-size:auto_52vh] sm:[background-position:4%_99%]'
+              : '[background-size:auto_28vh] [background-position:98%_99%] sm:[background-size:auto_52vh] sm:[background-position:96%_99%]'
           }
           overlayClassName="bg-gradient-to-b from-ink/72 via-ink/40 to-ink/88"
         />

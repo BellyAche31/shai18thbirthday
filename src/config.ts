@@ -67,12 +67,12 @@ export const invitationConfig = {
   portraitPhoto: '/images/photo-cover.jpg',
   portraitPhotoFocus: '58% 41%',
   // A second look, so the same frame isn't repeated down the whole page.
-  // Studio frame with the white background keyed out, so she stands on the
-  // card's own dark ground instead of a lit white rectangle punched into a
-  // black-and-gold page. `focus` is the object-position for its crops: the
-  // 4:5 card shows ~83% of this 2:3 source, and bottom-anchoring lands that
+  // The full studio frame, white ground and all — this one is a framed
+  // photograph on the page rather than a figure standing on it, so it keeps
+  // its background. `focus` is the object-position for its crops: the 4:5
+  // card shows ~83% of this 2:3 source, and bottom-anchoring lands that
   // window on her rather than on the empty air above her head.
-  portraitPhotoAlt: '/images/photo-fur-03-cut.png',
+  portraitPhotoAlt: '/images/photo-fur-03.jpg',
   portraitPhotoAltFocus: '51% 100%',
   // The frame on the opening dispatch card. Its own entry because that card
   // is a square crop and wants a shot framed for it.
