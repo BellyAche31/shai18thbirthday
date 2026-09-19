@@ -1,0 +1,56 @@
+name: Build and deploy to GitHub Pages
+
+# The site is served from the gh-pages branch, which holds the built output
+# rather than the source. Building it here means a push to the source branch
+# is all it takes to update the live invitation — no hand-copied dist folder.
+on:
+  push:
+    branches:
+      - main
+      - claude/shais-18th-invitation-q069np
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# A second push while one deploy is in flight should supersede it, not race it.
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # `npm run build` runs tsc first, so a type error fails the deploy
+      # instead of publishing a broken site.
+      - run: npm run build
+
+      - name: Publish dist to gh-pages
+        run: |
+          set -euo pipefail
+          # Stops Pages from running the output through Jekyll, which would
+          # swallow any file or folder beginning with an underscore.
+          touch dist/.nojekyll
+          cd dist
+          git init -b gh-pages
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Deploy ${GITHUB_SHA}"
+          # gh-pages carries build output only, so replacing it wholesale is
+          # correct — there is no history here worth preserving.
+          git push --force \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}" \
+            gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

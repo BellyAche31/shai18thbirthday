@@ -1,0 +1,66 @@
+import invitationConfig from '../config'
+import SmartImage from './SmartImage'
+import Signoff from './Signoff'
+import { useT } from '../LanguageContext'
+
+/**
+ * The opening gossip-column dispatch: an instant photo of the celebrant with
+ * a note scrawled beneath it, tilted like it was pinned to a corkboard.
+ */
+export default function SpottedCard({ visible }: { visible: boolean }) {
+  const { eyebrow, dateline, pullQuote, lines } = useT().spottedCard
+
+  return (
+    // Deliberately no blur/scale in this transition. A lingering `filter`
+    // (even blur(0)) keeps the card on its own composited layer, and mobile
+    // browsers rasterize those at reduced resolution — which turned the photo
+    // and the text visibly pixelated. Fading and sliding only keeps it crisp.
+    <article
+      className={`relative w-[86vw] max-w-[340px] rotate-[-1.5deg] bg-ivory p-4 shadow-[0_28px_70px_rgba(0,0,0,0.7)] transition-[opacity,transform] duration-[1100ms] ease-out motion-reduce:transition-none sm:max-w-[380px] sm:p-5 ${
+        visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+      }`}
+    >
+      {/* The masthead bar: subject on the left, dateline on the right, the way
+          the column files its entries. */}
+      <div className="flex items-baseline justify-between gap-3 border-b border-ink/20 pb-2">
+        <p className="font-sans text-[9px] tracking-widest2 text-ink/70 uppercase sm:text-[10px]">
+          {eyebrow}
+        </p>
+        <p className="shrink-0 font-sans text-[9px] tracking-widest2 text-ink/50 sm:text-[10px]">
+          {dateline}
+        </p>
+      </div>
+
+      {/* The pull quote, set in guillemets like the reference. */}
+      <p className="mt-3 text-center font-display text-lg italic leading-snug text-ink sm:text-xl">
+        «{pullQuote}»
+      </p>
+
+      <div className="relative mt-3 aspect-square w-full overflow-hidden bg-ink">
+        {/* In colour. It was greyscale to look like newsprint, but the
+            photograph is the warmest thing on the card and desaturating it
+            threw that away — and `grayscale` is a filter, which pins the card
+            to its own composited layer for phones to rasterize badly. */}
+        <SmartImage
+          src={invitationConfig.spottedPhoto}
+          variant="silhouette"
+          alt={`${invitationConfig.name}, the celebrant`}
+          className="h-full w-full object-cover"
+          style={{ objectPosition: invitationConfig.spottedPhotoFocus }}
+        />
+        {/* A touch of flash-photo bloom across the top of the print. */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20" />
+      </div>
+
+      <div className="mt-4 space-y-1.5">
+        {lines.map((line) => (
+          <p key={line} className="font-body text-[15px] leading-snug text-ink/85 sm:text-base">
+            {line}
+          </p>
+        ))}
+        {/* On the paper card the sign-off reads in ink, not gold. */}
+        <Signoff size="sm" align="left" className="pt-2 text-ink" />
+      </div>
+    </article>
+  )
+}
